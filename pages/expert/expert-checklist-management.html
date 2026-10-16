@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f9fc">
+  <title>Quản lý checklist | LegalPath</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <script src="../../js/api.js" defer></script>
+  <script src="../../js/expert/expert.js" defer></script>
+</head>
+<body data-page="checklists">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="expert-article-management.html" aria-label="LegalPath, trang chủ">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 6h14M8 6l-4 8h8L8 6zm8 0-4 8h8l-4-8zM7 21h10"/></svg></span><span>LegalPath</span>
+      </a>
+      <div class="side-label">Không gian chuyên gia</div>
+      <nav class="side-nav" aria-label="Điều hướng chính">
+        <a class="nav-link" href="expert-article-management.html"><span class="nav-icon">▦</span><span>Tổng quan</span></a>
+        <a class="nav-link" href="expert-article-management.html"><span class="nav-icon">▤</span><span>Quản lý bài viết</span></a>
+        <a class="nav-link active" href="expert-checklist-management.html" aria-current="page"><span class="nav-icon">☷</span><span>Quản lý checklist</span></a>
+        <a class="nav-link" href="expert-profile.html"><span class="nav-icon">♙</span><span>Hồ sơ chuyên gia</span></a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <a class="nav-link help-link" href="#help"><span class="nav-icon">ⓘ</span><span>Trung tâm trợ giúp</span></a>
+      <div class="side-account">
+        <span class="avatar avatar-small" data-side-initials>TM</span>
+        <span class="account-copy"><b data-side-name>Trần Minh</b><small data-side-role>Chuyên gia pháp lý</small></span>
+        <button class="icon-button" id="logoutBtn" type="button" title="Đăng xuất" aria-label="Đăng xuất"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+      </div>
+    </aside>
+    <div class="sidebar-scrim" id="scrim"></div>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuBtn" type="button" aria-label="Mở điều hướng">☰</button>
+        <div class="breadcrumbs"><span>Không gian chuyên gia</span><span aria-hidden="true">/</span><b>Quản lý checklist</b></div>
+        <div class="topbar-actions"><span class="verified-pill">Đã xác minh</span><button class="icon-button" type="button" title="Thông báo" aria-label="Thông báo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg></button></div>
+      </header>
+      <main class="main-content">
+        <section class="page-heading">
+          <div><h1 id="pageTitle">Quản lý checklist</h1><p id="pageDescription">Tạo và cập nhật bộ tiêu chí kiểm tra hồ sơ pháp lý.</p></div>
+          <div class="page-actions" id="pageActions"></div>
+        </section>
+        <div id="pageContent" class="page-content" aria-live="polite"></div>
+        <footer class="page-footer"><span>© 2026 LegalPath · Cổng chuyên gia pháp lý</span><span><a href="#privacy">Bảo mật thông tin</a><a href="#terms">Điều khoản sử dụng</a></span></footer>
+      </main>
+    </div>
+  </div>
+  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
