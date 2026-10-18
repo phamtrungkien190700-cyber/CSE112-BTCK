@@ -5,7 +5,7 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 
 const ROOT_DIR = __dirname;
-const DB_FILE = process.env.PORTAL_DB_FILE || path.join(ROOT_DIR, "js", "expert", "db.json");
+const DB_FILE = process.env.PORTAL_DB_FILE || path.join(ROOT_DIR, "pages", "expert", "db.json");
 const PORT = Number(process.env.PORT || 3001);
 const MAX_BODY_SIZE = 10 * 1024 * 1024;
 const MIME_TYPES = {

@@ -4,7 +4,7 @@
      · pages/expert/expert-article-management.html   — Xem & rà soát bài viết (R)
      · pages/expert/expert-checklist-management.html — Quản lý checklist (C / R / U)
      · pages/expert/expert-profile.html              — Quản lý hồ sơ chuyên gia (C / R / U / D)
-   Dữ liệu được lưu qua API backend vào js/expert/db.json; localStorage chỉ là cache.
+   Dữ liệu được lưu qua API backend vào pages/expert/db.json; localStorage chỉ là cache.
    ========================================================================== */
 "use strict";
 
@@ -865,7 +865,7 @@ async function savePortalData() {
   } catch (error) {
     portal.data = Store.read();
     console.error("[portal] Failed to save data:", error);
-    portalToast(`Không lưu được dữ liệu vào js/expert/db.json. Hãy kiểm tra server: ${error.message}`, "error");
+    portalToast(`Không lưu được dữ liệu vào pages/expert/db.json. Hãy kiểm tra server: ${error.message}`, "error");
     return false;
   }
 }
@@ -1317,7 +1317,7 @@ async function initExpertPortal() {
     }
   } catch (error) {
     console.error("[portal] Failed to load data:", error);
-    portalToast(`Không tải được dữ liệu từ js/expert/db.json. Hãy kiểm tra server: ${error.message}`, "error");
+    portalToast(`Không tải được dữ liệu từ pages/expert/db.json. Hãy kiểm tra server: ${error.message}`, "error");
   }
   if (portal.page === "articles") renderArticles();
   else if (portal.page === "checklists") renderChecklists();
