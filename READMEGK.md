@@ -6,5 +6,3 @@ Công nghệ sử dụng:  Claude, GPT
 Link Figma: https://www.figma.com/design/Rlq6CL8YqGJIdCXuK0bUdR/project-web?node-id=0-1&t=NPUyDwI2yNE4n0Pa-1
 Link Video: https://www.youtube.com/watch?v=goJ5Yc6Ckkc
 Link GitHub: https://github.com/cuongxkanh-stack/BTCK-LTW-Repository
-
-
