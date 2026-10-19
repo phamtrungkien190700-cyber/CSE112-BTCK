@@ -1,0 +1,42 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body[data-page-group="expert"] .topbar {
+  height: 44px;
+  gap: 16px;
+  padding: 0 28px;
+  border-bottom: 1px solid #e9eef5;
+  background: rgba(255, 255, 255, .68);
+}
+
+body[data-page-group="editor"] .topbar {
+  height: 56px;
+  padding: 0 24px;
+  border-bottom: 1px solid #e8edf2;
+  background: #fff;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #657995;
+  font-size: 10px;
+}
+
+.breadcrumbs [data-page-label] {
+  font-weight: 400;
+}
+
+body[data-page-group="expert"] .breadcrumbs {
+  color: #8390a4;
+  font-size: 9px;
+}
+
+body[data-page-group="expert"] .breadcrumbs [data-page-label] {
+  color: #40516b;
+  font-weight: 500;
+}

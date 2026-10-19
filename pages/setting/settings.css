@@ -41,9 +41,6 @@ button { -webkit-tap-highlight-color: transparent; }
 .logout-button:hover { background: #e5efff; }
 
 .workspace { min-height: 100vh; margin-left: 192px; }
-.topbar { display: flex; height: 56px; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid #e8edf2; background: #fff; }
-.breadcrumbs { display: flex; align-items: center; gap: 8px; color: #657995; font-size: 10px; }
-.breadcrumbs strong { font-weight: 400; }
 .profile-menu { display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: #526985; cursor: pointer; }
 .profile-avatar { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; background: #eff5ff; color: #1558c8; font-size: 9px; font-weight: 700; }
 .profile-menu > svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.7; }
@@ -130,7 +127,7 @@ button { -webkit-tap-highlight-color: transparent; }
   .nav-count { position: absolute; margin: -16px 0 0 24px; }
   .logout-button { justify-content: center; padding: 0; }
   .workspace { margin-left: 64px; }
-  .topbar { height: 50px; padding: 0 14px; }
+  body[data-page-group="editor"] .topbar { height: 50px; padding: 0 14px; }
   .main-content { padding: 17px 14px 22px; }
   .page-heading { margin-bottom: 13px; }
   .settings-layout { grid-template-columns: minmax(0, 1fr); }

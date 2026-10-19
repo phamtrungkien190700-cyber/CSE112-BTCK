@@ -6,11 +6,13 @@
   <meta name="theme-color" content="#f7f9fc">
   <title>Quản lý checklist | LegalPath</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/page-header.css">
   <link rel="stylesheet" href="responsive.css">
   <script src="../../js/api.js" defer></script>
+  <script src="../../css/page-header.js" defer></script>
   <script src="expert.js" defer></script>
 </head>
-<body data-page="checklists">
+<body data-page="checklists" data-page-group="expert">
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="expert-article-management.html" aria-label="LegalPath, trang chủ">
@@ -35,7 +37,7 @@
     <div class="workspace">
       <header class="topbar">
         <button class="icon-button menu-button" id="menuBtn" type="button" aria-label="Mở điều hướng">☰</button>
-        <div class="breadcrumbs"><span>Không gian chuyên gia</span><span aria-hidden="true">/</span><b>Quản lý checklist</b></div>
+        <div class="breadcrumbs"><span data-page-context>Không gian chuyên gia</span><span aria-hidden="true">/</span><b data-page-label>Quản lý checklist</b></div>
         <div class="topbar-actions"><span class="verified-pill">Đã xác minh</span><button class="icon-button" type="button" title="Thông báo" aria-label="Thông báo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg></button></div>
       </header>
       <main class="main-content">

@@ -50,9 +50,6 @@ button { color: inherit; }
 .account-copy b { overflow: hidden; color: #334155; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
 .account-copy small { overflow: hidden; color: var(--muted); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
 .workspace { min-height: 100vh; margin-left: 170px; }
-.topbar { display: flex; height: 44px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 28px; border-bottom: 1px solid var(--line-soft); background: rgba(255,255,255,.68); }
-.breadcrumbs { display: flex; align-items: center; gap: 8px; color: #8390a4; font-size: 9px; }
-.breadcrumbs b { color: #40516b; font-weight: 500; }
 .topbar-actions { display: flex; align-items: center; gap: 12px; }
 .verified-pill, .badge { display: inline-flex; align-items: center; justify-content: center; min-height: 18px; padding: 2px 8px; border-radius: 12px; background: var(--green-soft); color: var(--green); font-size: 9px; font-weight: 650; white-space: nowrap; }
 .icon-button { display: inline-grid; place-items: center; width: 30px; height: 30px; border: 0; border-radius: 5px; background: transparent; color: #64748b; cursor: pointer; }

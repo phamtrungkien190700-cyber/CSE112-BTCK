@@ -1,6 +1,6 @@
 @media (max-width: 1080px) {
 	.main-content { padding-right: 20px; padding-left: 20px; }
-	.topbar { padding-right: 20px; padding-left: 20px; }
+	body[data-page-group="expert"] .topbar { padding-right: 20px; padding-left: 20px; }
 	.profile-layout { grid-template-columns: minmax(180px, 205px) minmax(0, 1fr); gap: 11px; }
 	.stat-grid { gap: 7px; }
 	.stat-card { padding: 9px; }
@@ -12,7 +12,7 @@
 	.sidebar-scrim.show { position: fixed; z-index: 15; inset: 0; display: block; background: rgba(21, 35, 56, .28); }
 	.workspace { margin-left: 0; }
 	.menu-button { display: inline-grid; flex: 0 0 auto; }
-	.topbar { justify-content: flex-start; }
+	body[data-page-group="expert"] .topbar { justify-content: flex-start; }
 	.breadcrumbs { flex: 1; }
 	.topbar-actions { margin-left: auto; }
 	.profile-layout { grid-template-columns: minmax(0, 1fr); }
@@ -24,8 +24,8 @@
 
 @media (max-width: 560px) {
 	body { font-size: 12px; }
-	.topbar { height: 42px; gap: 8px; padding: 0 12px; }
-	.breadcrumbs { gap: 5px; overflow: hidden; font-size: 8px; white-space: nowrap; }
+	body[data-page-group="expert"] .topbar { height: 42px; gap: 8px; padding: 0 12px; }
+	body[data-page-group="expert"] .breadcrumbs { gap: 5px; overflow: hidden; font-size: 8px; white-space: nowrap; }
 	.breadcrumbs span:first-child { display: none; }
 	.verified-pill { min-height: 17px; padding: 2px 6px; font-size: 8px; }
 	.topbar-actions { gap: 4px; }

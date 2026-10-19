@@ -76,17 +76,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav-link.active { background: #eef5ff; color: #144eb5; font-weight: 600; }
 
 .workspace { min-height: 100vh; margin-left: 192px; }
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0 24px;
-  border-bottom: 1px solid #e8edf2;
-  background: #fff;
-}
-.breadcrumbs { display: flex; align-items: center; gap: 8px; color: #657995; font-size: 10px; }
-.breadcrumbs strong { font-weight: 400; }
 .profile-menu {
   display: flex;
   align-items: center;
@@ -231,17 +220,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .status-badge.read { background: #dff5ef; color: #078568; }
 .row-action {
-  justify-self: end;
+  justify-self: stretch;
+  width: 100%;
+  min-width: 0;
   max-width: 100%;
   min-height: 25px;
-  padding: 0 9px;
+  padding: 4px 6px;
   border: 1px solid #dce5ef;
   border-radius: 5px;
   background: #fff;
   color: #0757c9;
   font-size: 10px;
   font-weight: 600;
-  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   cursor: pointer;
 }
 .row-action:hover { border-color: #9db9e4; background: #f8fbff; }
@@ -291,9 +285,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .nav-link { justify-content: center; padding: 0; }
   .nav-link svg { width: 17px; height: 17px; }
   .workspace { margin-left: 64px; }
-  .topbar { height: 50px; padding: 0 14px; }
+  body[data-page-group="editor"] .topbar { height: 50px; padding: 0 14px; }
   .main-content { padding: 18px 14px 22px; }
-  .notification-row { grid-template-columns: minmax(0, 1fr) auto auto; gap: 5px 8px; padding: 10px; }
+  .notification-row { grid-template-columns: minmax(0, 1fr) auto minmax(0, 100px); gap: 5px 8px; padding: 10px; }
   .notification-copy { grid-column: 1 / -1; }
   .notification-time { grid-column: 1; grid-row: 2; justify-self: start; }
   .status-badge { grid-column: 2; grid-row: 2; justify-self: end; }
@@ -307,7 +301,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .notification-tools { align-items: stretch; }
   .search-box { flex: 1; }
   .button-filter { padding: 0 8px; }
-  .notification-row { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .notification-row { grid-template-columns: minmax(0, 1fr) auto minmax(0, 100px); }
   .notification-time { grid-column: 1; }
 }
 
