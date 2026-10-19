@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Cài đặt</title>
+    <link rel="stylesheet" href="caidatcss/caidat.css">
+    <link rel="stylesheet" href="caidatcss/caidat-taikhoan.css">
+    <link rel="stylesheet" href="caidatcss/caidat-thongbao.css">
+    <link rel="stylesheet" href="caidatcss/caidat-baomat.css">
+  </head>
+  <body data-page="settings">
+        <main class="page-view active">
+          <div class="page-heading">
+            <div>
+              <h1>Cài đặt</h1>
+              <p>Quản lý tài khoản và tùy chỉnh trải nghiệm của bạn.</p>
+            </div>
+          </div>
+
+          <form id="settingsForm">
+            <div class="settings-grid">
+              <div class="settings-main">
+                <section class="settings-card">
+                  <div class="card-heading">
+                    <h2>Thông tin tài khoản</h2>
+                    <p>Tài khoản cá nhân · Tham gia từ tháng <span id="joinedAt">08/2026</span></p>
+                  </div>
+                  <label class="field">
+                    <span>Họ và tên</span>
+                    <input id="accountName" name="name" type="text" autocomplete="name" required maxlength="100">
+                  </label>
+                  <label class="field">
+                    <span>Email</span>
+                    <input id="accountEmail" name="email" type="email" autocomplete="email" required maxlength="254">
+                  </label>
+                  <label class="field">
+                    <span>Số điện thoại</span>
+                    <input id="accountPhone" name="phone" type="tel" autocomplete="tel" required maxlength="20">
+                  </label>
+                </section>
+
+                <section class="settings-card notification-preferences">
+                  <div class="card-heading">
+                    <h2>Thông báo</h2>
+                  </div>
+                  <label class="preference-row">
+                    <span class="preference-copy">
+                      <strong>Cập nhật nội dung pháp lý</strong>
+                      <small>Nhận tin mới về các chủ đề bạn theo dõi.</small>
+                    </span>
+                    <input class="switch" id="legalUpdates" name="legalUpdates" type="checkbox">
+                  </label>
+                  <label class="preference-row">
+                    <span class="preference-copy">
+                      <strong>Phản hồi câu hỏi của bạn</strong>
+                      <small>Thông báo khi câu hỏi có phản hồi mới.</small>
+                    </span>
+                    <input class="switch" id="replyNotifications" name="replies" type="checkbox">
+                  </label>
+                  <label class="preference-row">
+                    <span class="preference-copy">
+                      <strong>Bản tin qua email</strong>
+                      <small>Tổng hợp thông tin hữu ích mỗi tuần.</small>
+                    </span>
+                    <input class="switch" id="emailNewsletter" name="emailNewsletter" type="checkbox">
+                  </label>
+                </section>
+              </div>
+
+              <aside class="settings-aside">
+                <section class="settings-card account-summary">
+                  <div class="large-avatar" id="summaryAvatar">MA</div>
+                  <strong id="summaryName">Nguyễn Minh Anh</strong>
+                  <span id="summaryRole">Editor</span>
+                  <small>Tài khoản cá nhân · Tham gia từ tháng <span id="summaryJoinedAt">08/2026</span></small>
+                </section>
+
+                <section class="settings-card summary-card">
+                  <h2>Thông báo</h2>
+                  <p id="summaryLegalUpdates">Cập nhật nội dung pháp lý: Bật</p>
+                  <p id="summaryReplies">Phản hồi câu hỏi của bạn: Bật</p>
+                  <p id="summaryNewsletter">Bản tin qua email: Tắt</p>
+                </section>
+
+                <section class="settings-card summary-card security-card">
+                  <h2>Mật khẩu và bảo mật</h2>
+                  <p>Đổi mật khẩu để bảo vệ tài khoản của bạn.</p>
+                  <button class="btn outline" id="changePasswordButton" type="button">Đổi mật khẩu</button>
+                </section>
+
+                <section class="settings-card summary-card language-card">
+                  <h2>Ngôn ngữ</h2>
+                  <p>Ngôn ngữ hiển thị trên LegalPath.</p>
+                  <label class="field">
+                    <span>Ngôn ngữ hiển thị</span>
+                    <select id="language" name="language">
+                      <option value="vi">Tiếng Việt</option>
+                    </select>
+                  </label>
+                </section>
+              </aside>
+            </div>
+
+            <div class="privacy-banner"><span aria-hidden="true">▣</span> Thông tin của bạn luôn được bảo mật tại LegalPath.</div>
+            <div class="form-footer">
+              <p>Thay đổi được áp dụng sau khi lưu.</p>
+              <div class="form-actions">
+                <button class="btn outline" id="cancelSettingsButton" type="button">Hủy</button>
+                <button class="btn primary" type="submit">Lưu thay đổi</button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+    <dialog class="password-dialog" id="passwordDialog">
+      <form id="passwordForm">
+        <div class="dialog-heading">
+          <div>
+            <h2>Đổi mật khẩu</h2>
+            <p>Tính năng đổi mật khẩu cần được kết nối với hệ thống xác thực.</p>
+          </div>
+          <button class="icon-button" id="closePasswordDialog" type="button" aria-label="Đóng">×</button>
+        </div>
+        <label class="field">
+          <span>Mật khẩu hiện tại</span>
+          <input type="password" autocomplete="current-password" required>
+        </label>
+        <label class="field">
+          <span>Mật khẩu mới</span>
+          <input type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label class="field">
+          <span>Xác nhận mật khẩu mới</span>
+          <input type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <div class="dialog-actions">
+          <button class="btn outline" id="cancelPasswordDialog" type="button">Đóng</button>
+          <button class="btn primary" type="submit">Tiếp tục</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="../api-client.js"></script>
+    <script src="caidat.js"></script>
+  </body>
+</html>

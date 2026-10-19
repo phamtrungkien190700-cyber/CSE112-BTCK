@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Thông báo</title>
+    <link rel="stylesheet" href="thongbaocss/thongbao.css">
+    <link rel="stylesheet" href="thongbaocss/thongbao-fillter.css">
+    <link rel="stylesheet" href="thongbaocss/thongbao-danhsach.css">
+    <link rel="stylesheet" href="thongbaocss/thongbao-caidat.css">
+  </head>
+  <body data-page="notifications">
+        <main class="page-view active" id="page-notifications">
+          <div class="page-heading">
+            <div>
+              <h1>Thông báo</h1>
+              <p>Theo dõi phản hồi và cập nhật pháp lý dành cho bạn.</p>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="search">
+              <span aria-hidden="true">⌕</span>
+              <input id="notificationSearch" type="search" placeholder="Tìm kiếm theo tiêu đề, nguồn, người gửi..." autocomplete="off">
+            </label>
+            <button class="btn outline" id="notificationFilterButton" type="button" aria-expanded="false" aria-controls="notificationFilters">
+              <span aria-hidden="true">▽</span> Bộ lọc
+            </button>
+          </div>
+
+          <div class="filter-panel hidden" id="notificationFilters">
+            <label>
+              Loại thông báo
+              <select id="notificationCategory">
+                <option value="all">Tất cả loại</option>
+                <option>Phản hồi</option>
+                <option>Hướng dẫn</option>
+                <option>Chủ đề</option>
+                <option>Bản tin</option>
+              </select>
+            </label>
+            <label>
+              Trạng thái
+              <select id="notificationStatus">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="unread">Chưa đọc</option>
+                <option value="read">Đã đọc</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Lọc thông báo">
+            <button class="tab active" id="allNotificationsTab" type="button" role="tab" aria-selected="true" data-status="all">Tất cả</button>
+            <button class="tab" id="unreadNotificationsTab" type="button" role="tab" aria-selected="false" data-status="unread">Chưa đọc <b id="unreadCount">0</b></button>
+            <button class="btn outline mark-all-button" id="markAllReadButton" type="button">Đánh dấu tất cả đã đọc</button>
+          </div>
+
+          <div class="notification-list" id="notificationList" aria-live="polite"></div>
+          <div class="empty hidden" id="notificationEmpty">Không có thông báo phù hợp.</div>
+
+          <div class="table-footer">
+            <span id="notificationCount">Hiển thị 0 thông báo gần đây</span>
+            <div class="pagination" id="notificationPagination" aria-label="Phân trang thông báo"></div>
+          </div>
+
+          <details class="notification-settings">
+            <summary><span aria-hidden="true">⚙</span> Cài đặt thông báo</summary>
+            <div class="settings-options">
+              <label><input type="checkbox" id="emailNotifications"> Nhận thông báo qua email</label>
+              <label><input type="checkbox" id="browserNotifications"> Nhận thông báo trên trình duyệt</label>
+            </div>
+          </details>
+          <p class="privacy-note">Thông tin của bạn luôn được bảo mật tại LegalPath.</p>
+        </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="../api-client.js"></script>
+    <script src="thongbao.js"></script>
+  </body>
+</html>

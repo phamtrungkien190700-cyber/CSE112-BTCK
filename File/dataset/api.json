@@ -1,0 +1,267 @@
+{
+  "sources": [
+    {
+      "name": "Bộ Công Thương",
+      "type": "Cơ quan nhà nước",
+      "url": "https://moit.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Cổng thông tin pháp luật Quốc gia",
+      "type": "Cổng thông tin",
+      "url": "https://phapluat.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Tạp chí Luật học",
+      "type": "Báo chí",
+      "url": "https://tapchiluathoc.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "VnExpress",
+      "type": "Báo chí",
+      "url": "https://vnexpress.net",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Sở Tư pháp Hà Nội",
+      "type": "Cơ quan nhà nước",
+      "url": "https://sotuphap.hanoi.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Thư viện pháp luật",
+      "type": "Tài liệu",
+      "url": "https://thuvienphapluat.vn",
+      "status": "Cần kiểm tra"
+    },
+    {
+      "name": "Báo Chính phủ",
+      "type": "Báo chí",
+      "url": "https://baochinhphu.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Luật Việt Nam",
+      "type": "Trang chuyên ngành",
+      "url": "https://luatvietnam.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Tổng cục Thuế",
+      "type": "Cơ quan nhà nước",
+      "url": "https://gdt.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Hội Luật gia Việt Nam",
+      "type": "Tổ chức",
+      "url": "https://hoiluatgia.vn",
+      "status": "Cần kiểm tra"
+    }
+  ],
+  "queue": [
+    {
+      "title": "Cập nhật quy định mới về thuế thu nhập doanh nghiệp",
+      "source": "Văn bản pháp luật",
+      "sender": "Nguyễn Văn An",
+      "date": "12/03/2026",
+      "time": "10:24",
+      "status": "Từ chối",
+      "description": "Văn bản cập nhật một số quy định mới về thuế TNDN áp dụng từ năm 2026."
+    },
+    {
+      "title": "Hướng dẫn thực hiện hợp đồng lao động",
+      "source": "Công văn",
+      "sender": "Lê Thị Hồng",
+      "date": "11/03/2026",
+      "time": "16:32",
+      "status": "Chờ duyệt",
+      "description": "Hướng dẫn thực hiện các nội dung cơ bản của hợp đồng lao động."
+    },
+    {
+      "title": "Thông tư sửa đổi về đăng ký kinh doanh",
+      "source": "Văn bản pháp luật",
+      "sender": "Trần Văn Bình",
+      "date": "10/03/2026",
+      "time": "14:20",
+      "status": "Chờ duyệt",
+      "description": "Thông tin về các thay đổi trong thủ tục đăng ký kinh doanh."
+    },
+    {
+      "title": "Cập nhật biểu mẫu hành chính mới",
+      "source": "Tài liệu hướng dẫn",
+      "sender": "Phạm Thị Mai",
+      "date": "09/03/2026",
+      "time": "09:15",
+      "status": "Đã duyệt",
+      "description": "Tổng hợp biểu mẫu hành chính được cập nhật gần đây."
+    },
+    {
+      "title": "Quy định về bảo vệ dữ liệu cá nhân",
+      "source": "Văn bản pháp luật",
+      "sender": "Hoàng Đức Nam",
+      "date": "08/03/2026",
+      "time": "11:37",
+      "status": "Chờ duyệt",
+      "description": "Tóm tắt quy định và trách nhiệm liên quan đến bảo vệ dữ liệu cá nhân."
+    },
+    {
+      "title": "Hướng dẫn kê khai thuế điện tử",
+      "source": "Tài liệu hướng dẫn",
+      "sender": "Đỗ Minh Anh",
+      "date": "07/03/2026",
+      "time": "08:45",
+      "status": "Đã duyệt",
+      "description": "Hướng dẫn thao tác kê khai thuế điện tử."
+    },
+    {
+      "title": "Quy định về hóa đơn điện tử",
+      "source": "Văn bản pháp luật",
+      "sender": "Nguyễn Thu Hà",
+      "date": "06/03/2026",
+      "time": "13:10",
+      "status": "Từ chối",
+      "description": "Nội dung cần bổ sung nguồn trích dẫn chính thức."
+    }
+  ],
+  "monitor": [
+    {
+      "title": "Thông tư 06/2025/TT-BTC về thuế TNDN",
+      "source": "Bộ Tài chính",
+      "date": "12/03/2026",
+      "time": "09:30",
+      "age": 3,
+      "status": "Ổn định"
+    },
+    {
+      "title": "Nghị định 70/2025/NĐ-CP",
+      "source": "Chính phủ",
+      "date": "10/03/2026",
+      "time": "14:20",
+      "age": 5,
+      "status": "Ổn định"
+    },
+    {
+      "title": "Hướng dẫn đăng ký doanh nghiệp",
+      "source": "Sở KH&ĐT",
+      "date": "08/03/2026",
+      "time": "11:45",
+      "age": 7,
+      "status": "Sắp hết hạn"
+    },
+    {
+      "title": "Công văn 1234/BCT",
+      "source": "Bộ Công Thương",
+      "date": "05/03/2026",
+      "time": "16:10",
+      "age": 10,
+      "status": "Sắp hết hạn"
+    },
+    {
+      "title": "Quy định bảo vệ dữ liệu cá nhân",
+      "source": "Bộ TT&TT",
+      "date": "28/02/2026",
+      "time": "09:15",
+      "age": 15,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Thông tư 01/2024/TT-NHNN",
+      "source": "Ngân hàng NN",
+      "date": "25/02/2026",
+      "time": "13:40",
+      "age": 18,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Luật Đất đai 2024",
+      "source": "Quốc hội",
+      "date": "20/02/2026",
+      "time": "10:05",
+      "age": 23,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Nghị định 100/2024/NĐ-CP",
+      "source": "Chính phủ",
+      "date": "15/02/2026",
+      "time": "16:32",
+      "age": 28,
+      "status": "Đã cũ"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "question-reply",
+      "title": "Câu hỏi của bạn có phản hồi mới",
+      "description": "Câu hỏi “Cần giấy tờ gì để đăng ký tạm trú?” đã có phản hồi. Xem hướng dẫn và các lưu ý cần thiết.",
+      "date": "03/10/2026",
+      "time": "09:15",
+      "isToday": true,
+      "isRead": true,
+      "category": "Phản hồi",
+      "action": "Xem phản hồi"
+    },
+    {
+      "id": "residency-guide",
+      "title": "Nội dung mới về thủ tục cư trú",
+      "description": "Hướng dẫn đăng ký tạm trú trực tuyến: điều kiện, hồ sơ và các bước thực hiện.",
+      "date": "03/10/2026",
+      "time": "08:30",
+      "isToday": true,
+      "isRead": true,
+      "category": "Hướng dẫn",
+      "action": "Đọc hướng dẫn"
+    },
+    {
+      "id": "followed-topic",
+      "title": "Chủ đề bạn theo dõi đã được cập nhật",
+      "description": "Chủ đề “Hợp đồng lao động” có thêm nội dung về quyền và nghĩa vụ khi chấm dứt hợp đồng.",
+      "date": "02/10/2026",
+      "time": "16:40",
+      "isToday": false,
+      "isRead": true,
+      "category": "Chủ đề",
+      "action": "Xem chủ đề"
+    },
+    {
+      "id": "legal-news",
+      "title": "Bản tin pháp lý tuần này",
+      "description": "Những điều cần biết về bảo hiểm xã hội, cư trú và các thủ tục hành chính thường gặp.",
+      "date": "01/10/2026",
+      "time": "10:00",
+      "isToday": false,
+      "isRead": true,
+      "category": "Bản tin",
+      "action": "Đọc bản tin"
+    },
+    {
+      "id": "welcome",
+      "title": "Chào mừng bạn đến với LegalPath",
+      "description": "Bắt đầu bằng cách theo dõi chủ đề quan tâm và lưu lại những hướng dẫn hữu ích.",
+      "date": "28/09/2026",
+      "time": "14:20",
+      "isToday": false,
+      "isRead": true,
+      "category": "Chủ đề",
+      "action": "Khám phá chủ đề"
+    }
+  ],
+  "settings": [
+    {
+      "name": "Nguyễn Minh Anh",
+      "email": "minhanh.nguyen@gmail.com",
+      "phone": "0912 345 678",
+      "role": "Editor",
+      "joinedAt": "08/2026",
+      "language": "vi",
+      "preferences": {
+        "legalUpdates": false,
+        "replies": false,
+        "emailNewsletter": false
+      }
+    }
+  ]
+}

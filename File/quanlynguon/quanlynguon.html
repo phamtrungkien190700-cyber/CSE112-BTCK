@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Quản lý nguồn</title>
+    <link rel="stylesheet" href="quanlynguoncss/quanlynguon.css">
+    <link rel="stylesheet" href="quanlynguoncss/quanlynguon-nhintoancanh.css">
+    <link rel="stylesheet" href="quanlynguoncss/quanglynguon-bang.css">
+    <link rel="stylesheet" href="quanlynguoncss/qualynguon-hopthoai.css">
+  </head>
+  <body data-page="sources">
+        <main class="page-view active" id="page-sources">
+          <div class="page-heading">
+            <div>
+              <h1>Quản lý nguồn</h1>
+              <p>Quản lý các nguồn nội dung pháp lý</p>
+            </div>
+            <button class="btn primary" id="addSourceBtn" type="button">＋ Thêm nguồn mới</button>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card">
+              <span class="stat-icon blue">▤</span>
+              <div>
+                <small>Tổng nguồn</small>
+                <strong id="sourceTotal">18</strong>
+                <small>nguồn</small>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon green">✓</span>
+              <div>
+                <small>Đang hoạt động</small>
+                <strong id="activeSourceTotal">0</strong>
+                <small>nguồn</small>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon orange">◷</span>
+              <div>
+                <small>Cần kiểm tra</small>
+                <strong id="checkSourceTotal">0</strong>
+                <small>nguồn</small>
+              </div>
+            </article>
+          </div>
+          <div class="toolbar">
+            <label class="search">
+              <span>⌕</span>
+              <input id="sourceSearch" placeholder="Tìm kiếm theo tên nguồn, URL...">
+            </label>
+            <button class="btn outline" id="sourceFilterBtn" type="button">▽ Bộ lọc</button>
+          </div>
+          <div class="filter-panel hidden" id="sourceFilter">
+            <label>
+              Trạng thái
+              <select id="sourceStatus">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="Hoạt động">Hoạt động</option>
+                <option value="Cần kiểm tra">Cần kiểm tra</option>
+              </select>
+            </label>
+            <label>
+              Loại nguồn
+              <select id="sourceType">
+                <option value="all">Tất cả loại nguồn</option>
+                <option>Cơ quan nhà nước</option>
+                <option>Cổng thông tin</option>
+                <option>Báo chí</option>
+                <option>Tài liệu</option>
+                <option>Trang chuyên ngành</option>
+                <option>Tổ chức</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tên nguồn</th>
+                  <th>Loại nguồn</th>
+                  <th>URL</th>
+                  <th>Trạng thái</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="sourceRows"></tbody>
+            </table>
+            <div class="empty hidden" id="sourceEmpty">Không tìm thấy nguồn phù hợp.</div>
+          </div>
+          <div class="table-footer">
+            <span id="sourceCount">Hiển thị 1 - 10 trong 18 nguồn</span>
+            <div class="pagination">
+              <button type="button" disabled>‹</button>
+              <button type="button" class="selected">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <button type="button">›</button>
+            </div>
+          </div>
+        </main>
+
+    <dialog id="sourceDialog">
+      <form id="sourceForm" method="dialog">
+        <div class="dialog-heading">
+          <h2>Thêm nguồn mới</h2>
+          <button class="icon-button" type="button" id="closeDialog" aria-label="Đóng">×</button>
+        </div>
+        <label>
+          Tên nguồn
+          <input name="name" required placeholder="Ví dụ: Cổng thông tin pháp luật">
+        </label>
+        <label>
+          Loại nguồn
+          <select name="type" required>
+            <option value="">Chọn loại nguồn</option>
+            <option>Cơ quan nhà nước</option>
+            <option>Cổng thông tin</option>
+            <option>Báo chí</option>
+            <option>Tài liệu</option>
+            <option>Trang chuyên ngành</option>
+            <option>Tổ chức</option>
+          </select>
+        </label>
+        <label>
+          URL
+          <input name="url" type="url" required placeholder="https://example.vn">
+        </label>
+        <label>
+          Trạng thái
+          <select name="status">
+            <option>Hoạt động</option>
+            <option>Cần kiểm tra</option>
+          </select>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" class="btn outline" id="cancelDialog">Hủy</button>
+          <button type="submit" class="btn primary">Thêm nguồn</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="../api-client.js"></script>
+    <script src="quanlynguon.js"></script>
+  </body>
+</html>

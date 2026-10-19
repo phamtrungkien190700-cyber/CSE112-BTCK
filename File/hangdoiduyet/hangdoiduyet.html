@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Hàng đợi duyệt</title>
+    <link rel="stylesheet" href="hangdoiduyetcss/hangdoiduyet.css">
+    <link rel="stylesheet" href="hangdoiduyetcss/hangdoiduyet-filler.css">
+    <link rel="stylesheet" href="hangdoiduyetcss/hangdoiduyet-bang.css">
+    <link rel="stylesheet" href="hangdoiduyetcss/hangdoiduyet-chitiet.css">
+  </head>
+  <body data-page="queue">
+        <main class="page-view active" id="page-queue">
+          <div class="page-heading"> 
+            <div>
+              <h1>Hàng đợi duyệt nội dung</h1>
+              <p>Xem và duyệt các nội dung pháp lý được gửi lên hệ thống.</p>
+            </div>
+          </div>
+          <div class="toolbar">
+            <label class="search">
+              <span>⌕</span>
+              <input id="queueSearch" placeholder="Tìm kiếm theo tiêu đề, nguồn, người gửi...">
+            </label>
+            <button class="btn outline" id="queueFilterBtn" type="button">▽ Bộ lọc</button>
+          </div>
+          <div class="tabs">
+            <button class="tab active" data-status="Chờ duyệt" type="button">
+              Chờ duyệt <b id="pendingCount">5</b>
+            </button>
+            <button class="tab" data-status="Đã duyệt" type="button">Đã duyệt <b id="approvedCount">0</b></button>
+            <button class="tab" data-status="Từ chối" type="button">Từ chối <b id="rejectedCount">0</b></button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tiêu đề</th>
+                  <th>Nguồn</th>
+                  <th>Người gửi</th>
+                  <th>Ngày gửi</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="queueRows"></tbody>
+            </table>
+            <div class="empty hidden" id="queueEmpty">Không có nội dung phù hợp.</div>
+          </div>
+          <div class="detail-panel" id="queueDetail"></div>
+        </main>
+
+    <div class="toast" id="toast" role="status"></div> 
+    <script src="../api-client.js"></script>
+    <script src="hangdoiduyet.js"></script>
+  </body>
+</html>

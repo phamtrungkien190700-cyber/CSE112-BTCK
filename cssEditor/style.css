@@ -1,0 +1,170 @@
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #253247;
+  background: #f6f8fb;
+  font-size: 13px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f6f8fb;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-right: 1px solid #dfe7f1;
+}
+
+.brand {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px;
+  border-bottom: 1px solid #dfe7f1;
+  color: #2450bd;
+  text-decoration: none;
+}
+
+.brand-mark {
+  font-size: 25px;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 16px;
+}
+
+.brand small {
+  margin-top: 3px;
+  color: #8a96aa;
+  font-size: 10px;
+}
+
+.side-nav {
+  display: grid;
+  gap: 4px;
+  padding: 16px 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 7px;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #2450bd;
+  background: #edf3ff;
+}
+
+.nav-link span {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 14px 18px;
+  border-top: 1px solid #dfe7f1;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.sidebar-bottom span {
+  float: right;
+  color: #8a96aa;
+}
+
+.main-area {
+  min-width: 0;
+  flex: 1;
+}
+
+.topbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #dfe7f1;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #74839a;
+}
+
+.breadcrumbs strong {
+  color: #253247;
+  font-weight: 600;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #475569;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e7edff;
+  color: #2450bd;
+  font-weight: 700;
+}
+
+.page-host {
+  min-height: calc(100vh - 60px);
+}
+
+.page-frame {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 60px);
+  min-height: 550px;
+  border: 0;
+  background: #f6f8fb;
+}
+
+.page-frame[hidden] {
+  display: none;
+}
+
+.loading {
+  margin: 24px;
+  color: #64748b;
+}

@@ -1,0 +1,119 @@
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+  margin: 9px 0;
+}
+
+.chart-card {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fff;
+  padding: 10px;
+}
+
+.chart-card h3 {
+  margin: 0 0 9px;
+  font-size: 10px;
+}
+
+.donut-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 82px;
+}
+
+.donut {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: conic-gradient(#079b78 0 70%,#f2a51c 70% 87%,#e84d5c 87% 100%);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.donut>div {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut strong {
+  font-size: 15px;
+  color: #079b78;
+}
+
+.donut small {
+  font-size: 8px;
+  color: #8390a3;
+}
+
+.legend {
+  display: grid;
+  gap: 8px;
+  color: #66758b;
+  font-size: 9px;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.line-chart {
+  height: 93px;
+  position: relative;
+  padding-left: 23px;
+}
+
+.line-chart svg {
+  width: 100%;
+  height: 70px;
+  overflow: visible;
+}
+
+.gridline {
+  stroke: #e8eef6;
+  stroke-width: 1;
+  fill: none;
+}
+
+.line-chart polyline {
+  fill: none;
+  stroke: #1558d6;
+  stroke-width: 2;
+}
+
+.y-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 7px;
+  color: #8a97aa;
+}
+
+.x-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #8a97aa;
+  font-size: 7px;
+}

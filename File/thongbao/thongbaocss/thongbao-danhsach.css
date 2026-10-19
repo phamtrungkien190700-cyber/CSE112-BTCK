@@ -1,0 +1,158 @@
+.notification-list {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.date-heading {
+  padding: 8px 10px;
+  color: #526987;
+  font-size: 9px;
+  border-bottom: 1px solid var(--border);
+}
+
+.date-heading:not(:first-child) {
+  border-top: 1px solid var(--border);
+}
+
+.notification-row {
+  min-height: 45px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60px auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e8eef6;
+}
+
+.notification-row:last-child {
+  border-bottom: 0;
+}
+
+.notification-row.unread {
+  background: #eef5ff;
+}
+
+.notification-copy {
+  min-width: 0;
+}
+
+.notification-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 4px;
+  color: #26364b;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.unread-dot {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  border-radius: 50%;
+  background: #2360c9;
+}
+
+.notification-description {
+  margin: 0;
+  color: #71819a;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.notification-time {
+  color: #2f4058;
+  font-size: 9px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.notification-time small {
+  display: block;
+  margin-top: 3px;
+  color: #8290a5;
+  font-size: 8px;
+}
+
+.read-status {
+  min-width: 43px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  background: #e0f6ef;
+  color: #078365;
+  font-size: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.read-status.unread {
+  background: #fff0d8;
+  color: #d47a00;
+}
+
+.action-button {
+  min-width: 65px;
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fff;
+  color: #1454ba;
+  font-size: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.action-button:hover {
+  border-color: #9eb5db;
+  background: #f8faff;
+}
+
+.empty {
+  padding: 24px 12px;
+  color: var(--muted);
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.table-footer {
+  min-height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #71819a;
+  font-size: 9px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination button {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #5d6d86;
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.pagination button.selected {
+  background: #1760c9;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  opacity: .45;
+  cursor: default;
+}

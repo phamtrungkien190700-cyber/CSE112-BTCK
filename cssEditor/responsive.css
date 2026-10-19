@@ -1,0 +1,46 @@
+@media (max-width: 700px) {
+  .app-shell {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid #dfe7f1;
+  }
+
+  .brand {
+    min-height: 54px;
+  }
+
+  .side-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 7px;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 0 9px;
+    font-size: 11px;
+  }
+
+  .nav-link span {
+    width: auto;
+  }
+
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .topbar {
+    height: 48px;
+    padding: 0 12px;
+  }
+
+  .page-frame {
+    height: calc(100vh - 156px);
+    min-height: 450px;
+  }
+}

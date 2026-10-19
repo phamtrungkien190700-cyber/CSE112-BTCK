@@ -1,0 +1,88 @@
+.card-heading p, .summary-card p {
+  margin: 0;
+  color: #75849a;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.notification-preferences {
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+.notification-preferences .card-heading {
+  margin-bottom: 3px;
+}
+
+.preference-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.preference-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.preference-copy strong, .preference-copy small {
+  font-size: 8px;
+}
+
+.preference-copy small {
+  color: #75849a;
+}
+
+.switch {
+  position: relative;
+  width: 25px;
+  height: 14px;
+  flex: 0 0 25px;
+  margin: 0;
+  appearance: none;
+  border-radius: 10px;
+  background: #dce4ee;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.switch::before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+  transition: transform .15s;
+}
+
+.switch:checked {
+  background: #1760c9;
+}
+
+.switch:checked::before {
+  transform: translateX(11px);
+}
+
+.switch:focus-visible {
+  outline: 2px solid #7899d4;
+  outline-offset: 2px;
+}
+
+.summary-card h2 {
+  margin-bottom: 6px;
+}
+
+.summary-card p + p {
+  margin-top: 2px;
+}
+
+.summary-card .btn {
+  margin-top: 8px;
+}
