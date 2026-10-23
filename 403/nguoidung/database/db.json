@@ -1,0 +1,173 @@
+{ 
+  
+  "data": [
+    {
+      "category_id": "dat_dai",
+      "category_name": "Đất đai",
+      "procedures": [
+        {
+          "id": "PROC-DD-01",
+          "name": "Đăng ký biến động đất đai do chuyển nhượng, tặng cho quyền sử dụng đất",
+          "code": "1.001123",
+          "processing_time": "Không quá 10 ngày làm việc",
+          "fee": "Theo quy định của HĐND cấp tỉnh (Lệ phí trước bạ, phí thẩm định...)",
+          "competent_authority": "Văn phòng đăng ký đất đai hoặc Chi nhánh Văn phòng đăng ký đất đai",
+          "required_documents": [
+            "Hợp đồng chuyển nhượng, tặng cho quyền sử dụng đất có công chứng/chứng thực",
+            "Bản gốc Giấy chứng nhận quyền sử dụng đất đã cấp",
+            "Căn cước công dân của các bên tham gia",
+            "Tờ khai lệ phí trước bạ và Tờ khai thuế thu nhập cá nhân"
+          ]
+        },
+        {
+          "id": "PROC-DD-02",
+          "name": "Cấp Giấy chứng nhận quyền sử dụng đất lần đầu",
+          "code": "1.000456",
+          "processing_time": "Không quá 30 ngày làm việc",
+          "fee": "Lệ phí cấp giấy chứng nhận, phí thẩm định, lệ phí trước bạ",
+          "competent_authority": "UBND cấp huyện hoặc Văn phòng đăng ký đất đai",
+          "required_documents": [
+            "Đơn đăng ký, cấp Giấy chứng nhận",
+            "Giấy tờ về nguồn gốc, quá trình sử dụng đất",
+            "Bản trích đo địa chính thửa đất"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "hon_nhan_gia_dinh",
+      "category_name": "Hôn nhân và gia đình",
+      "procedures": [
+        {
+          "id": "PROC-HNGD-01",
+          "name": "Đăng ký kết hôn trong nước",
+          "code": "2.000111",
+          "processing_time": "Ngay trong ngày tiếp nhận hồ sơ (hoặc tối đa 05 ngày làm việc nếu cần xác minh)",
+          "fee": "Miễn phí (trừ trường hợp địa phương có quy định thu lệ phí riêng)",
+          "competent_authority": "UBND cấp xã/phường",
+          "required_documents": [
+            "Tờ khai đăng ký kết hôn (theo mẫu có chữ ký của hai bên)",
+            "Căn cước công dân hoặc hộ chiếu còn hiệu lực của hai bên",
+            "Giấy xác nhận tình trạng hôn nhân do UBND cấp xã nơi cư trú cấp"
+          ]
+        },
+        {
+          "id": "PROC-HNGD-02",
+          "name": "Đăng ký thuận tình ly hôn",
+          "code": "2.000342",
+          "processing_time": "Theo thủ tục tố tụng tại Tòa án (khoảng 1 - 2 tháng)",
+          "fee": "Án phí dân sự sơ thẩm",
+          "competent_authority": "Tòa án nhân dân cấp quận/huyện",
+          "required_documents": [
+            "Đơn thuận tình ly hôn (có chữ ký của cả hai vợ chồng)",
+            "Giấy chứng nhận đăng ký kết hôn (bản chính)",
+            "CCCD của vợ và chồng (bản sao có chứng thực)",
+            "Giấy khai sinh của các con chung (bản sao)"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "lao_dong",
+      "category_name": "Lao động",
+      "procedures": [
+        {
+          "id": "PROC-LD-01",
+          "name": "Báo cáo tình hình sử dụng lao động định kỳ",
+          "code": "3.004512",
+          "processing_time": "Trước ngày 05/06 (6 tháng đầu năm) và trước ngày 05/12 (hàng năm)",
+          "fee": "Miễn phí",
+          "competent_authority": "Sở Lao động - Thương binh và Xã hội hoặc Phòng Lao động cấp huyện",
+          "required_documents": [
+            "Biểu mẫu báo cáo tình hình sử dụng lao động (Mẫu số 01/PLI Nghị định 145/2020/NĐ-CP)"
+          ]
+        },
+        {
+          "id": "PROC-LD-02",
+          "name": "Đăng ký nội bộ quy chế, nội quy lao động",
+          "code": "3.001890",
+          "processing_time": "10 ngày làm việc kể từ ngày nhận đủ hồ sơ",
+          "fee": "Miễn phí",
+          "competent_authority": "Sở Lao động - Thương binh và Xã hội hoặc Ban quản lý KCN",
+          "required_documents": [
+            "Văn bản đề nghị đăng ký nội quy lao động",
+            "Dự thảo nội quy lao động",
+            "Ý kiến của tổ chức đại diện người lao động tại cơ sở",
+            "Các văn bản của người sử dụng lao động có quy định liên quan đến kỷ luật lao động và vật chất"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "doanh_nghiep",
+      "category_name": "Doanh nghiệp",
+      "procedures": [
+        {
+          "id": "PROC-DN-01",
+          "name": "Đăng ký thành lập Công ty TNHH một thành viên / Hai thành viên trở lên",
+          "code": "4.008921",
+          "processing_time": "03 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+          "fee": "50.000 VNĐ (Miễn phí nếu nộp hồ sơ qua mạng điện tử)",
+          "competent_authority": "Phòng Đăng ký kinh doanh - Sở Kế hoạch và Đầu tư",
+          "required_documents": [
+            "Giấy đề nghị đăng ký doanh nghiệp",
+            "Điều lệ công ty",
+            "Danh sách thành viên (đối với công ty TNHH 2 thành viên trở lên)",
+            "Bản sao các giấy tờ pháp lý cá nhân của người đại diện theo pháp luật và các thành viên/cổ đông"
+          ]
+        },
+        {
+          "id": "PROC-DN-02",
+          "name": "Thông báo thay đổi nội dung đăng ký doanh nghiệp (Thay đổi trụ sở chính, người đại diện...)",
+          "code": "4.001205",
+          "processing_time": "03 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+          "fee": "Miễn phí",
+          "competent_authority": "Phòng Đăng ký kinh doanh - Sở Kế hoạch và Đầu tư",
+          "required_documents": [
+            "Thông báo thay đổi nội dung đăng ký doanh nghiệp do người đại diện theo pháp luật ký",
+            "Nghị quyết, quyết định và biên bản họp của Hội đồng thành viên/Đại hội đồng cổ đông",
+            "Các tài liệu liên quan trực tiếp đến nội dung thay đổi (ví dụ: hợp đồng thuê nhà, CCCD của người đại diện mới...)"
+          ]
+        }
+      ]
+    }
+  ],
+  "experts_directory": [
+    {
+      "expert_id": "EXP-01",
+      "full_name": "ThS. Luật sư Trần Minh",
+      "title": "Chuyên gia Luật Đất đai",
+      "category_id": "dat_dai",
+      "avatar_initials": "TM",
+      "description": "Hơn 10 năm kinh nghiệm tư vấn thủ tục nhà đất, tranh chấp tài sản và cấp giấy chứng nhận.",
+      "action_label": "Gửi yêu cầu tư vấn"
+    },
+    {
+      "expert_id": "EXP-02",
+      "full_name": "Luật sư Nguyễn Thị Mai",
+      "title": "Chuyên gia Hôn nhân & Gia đình",
+      "category_id": "hon_nhan_gia_dinh",
+      "avatar_initials": "NM",
+      "description": "Chuyên hỗ trợ pháp lý thủ tục ly hôn nhanh, quyền nuôi con và phân chia tài sản thừa kế.",
+      "action_label": "Gửi yêu cầu tư vấn"
+    },
+    {
+      "expert_id": "EXP-03",
+      "full_name": "Lê Hoàng Nam",
+      "title": "Chuyên gia Luật Lao động",
+      "category_id": "lao_dong",
+      "avatar_initials": "LN",
+      "description": "Tư vấn hợp đồng lao động, giải quyết tranh chấp và quyền lợi bảo hiểm xã hội cho người lao động.",
+      "action_label": "Gửi yêu cầu tư vấn"
+    },
+    {
+      "expert_id": "EXP-04",
+      "full_name": "Phạm Văn Hùng",
+      "title": "Chuyên gia Luật Doanh nghiệp",
+      "category_id": "doanh_nghiep",
+      "avatar_initials": "PH",
+      "description": "Tư vấn thành lập doanh nghiệp, tái cấu trúc công ty, hợp đồng thương mại và giải quyết tranh chấp nội bộ.",
+      "action_label": "Gửi yêu cầu tư vấn"
+    }
+  ]
+}

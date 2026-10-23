@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: #263754;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 58px 48px 60px minmax(0, 1fr);
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.sidebar {
+  display: contents;
+}
+
+.brand {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  grid-row: 1;
+  grid-column: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 0 14px;
+  color: #263e9e;
+  text-decoration: none;
+}
+
+.brand__icon {
+  display: block;
+  width: 160px;
+  height: 52px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.brand__text {
+  display: grid;
+  gap: 2px;
+}
+
+.brand__text strong {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.brand__text small {
+  color: #94a0b4;
+  font-size: 8px;
+}
+
+.primary-nav {
+  position: relative;
+  z-index: 2;
+  grid-row: 3;
+  grid-column: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 7px;
+  min-width: 0;
+  padding: 7px 12px;
+  overflow-x: auto;
+  border-top: 1px solid #edf0f4;
+  border-bottom: 1px solid #e6eaf0;
+  background: #fff;
+  scrollbar-width: thin;
+}
+
+.primary-nav__heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border: 1px solid #e1e7ef;
+  border-radius: 7px;
+  color: #53637d;
+  font-size: 11px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.nav-link.is-active {
+  border-color: #dceeff;
+  background: #e1f2ff;
+  color: #243e9c;
+  font-weight: 600;
+}
+
+.nav-link__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  background: #f2f5fa;
+}
+
+.nav-link__icon {
+  overflow: hidden;
+}
+
+.nav-link__icon img {
+  display: block;
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+.workspace {
+  position: relative;
+  z-index: 1;
+  grid-row: 1 / span 4;
+  grid-column: 1;
+  display: grid;
+  grid-template-rows: 58px 48px 60px minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  pointer-events: none;
+}
+
+.workspace > * {
+  pointer-events: auto;
+}
+
+.topbar {
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 0 14px;
+  border-bottom: 1px solid #edf0f4;
+  background: #fff;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.breadcrumbs > span:first-child,
+.breadcrumbs__separator {
+  display: none;
+}
+
+.user-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #697993;
+  font: inherit;
+  font-size: 10px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.user-profile__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eef3ff;
+  color: #293fa0;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.user-profile__name,
+.user-profile__chevron {
+  display: none;
+}
+
+.user-profile__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  color: #8090a8;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.page-content {
+  grid-row: 4;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.content-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #f7f8fa;
+}

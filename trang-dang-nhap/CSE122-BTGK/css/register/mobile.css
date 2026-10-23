@@ -1,0 +1,15 @@
+.page { width: calc(100% - 28px); padding: 14px 0 18px; }
+.auth-card { padding: 25px 18px 22px; border-radius: 18px; }
+.brand-icon { width: 32px; height: 32px; }
+.brand-name { font-size: 28px; }
+.brand-subtitle { font-size: 14px; }
+.divider { margin: 10px 0 19px; }
+.intro { margin-bottom: 20px; }
+.intro h1 { font-size: 25px; }
+.intro p { font-size: 13px; }
+.field { margin-bottom: 13px; }
+.field input, .field select { height: 47px; font-size: 14px; }
+.field-hint { font-size: 10px; }
+.checkbox-label { font-size: 11px; }
+.primary-button { min-height: 47px; }
+.security-note { padding: 0 8px; font-size: 11px; }

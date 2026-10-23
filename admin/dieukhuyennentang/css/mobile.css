@@ -1,0 +1,24 @@
+.dashboard { padding: 16px 12px 22px; }
+.page-heading { margin-bottom: 15px; }
+.page-heading h1 { font-size: 18px; line-height: 1.35; }
+.page-heading p { font-size: 11px; line-height: 1.5; }
+.stats-grid { grid-template-columns: minmax(0, 1fr); gap: 9px; margin-bottom: 13px; }
+.stat-card { padding: 12px 13px; }
+.stat-card h2 { font-size: 11px; }
+.stat-value { font-size: 19px; }
+.stat-trend { font-size: 10px; }
+.dashboard-panels { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+.panel-heading { min-height: 42px; padding: 0 11px; }
+.panel-heading h2 { font-size: 11px; }
+.table-scroll { overflow: visible; padding: 0 10px 9px; }
+.activity-table, .activity-table tbody { display: block; width: 100%; }
+.activity-table thead { position: absolute; overflow: hidden; width: 1px; height: 1px; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
+.activity-table tbody { display: grid; gap: 8px; }
+.activity-table tbody tr { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 10px; border: 1px solid #e8edf3; border-radius: 5px; }
+.activity-table td { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 8px; padding: 0; border: 0; font-size: 10px; white-space: normal; }
+.activity-table td::before { content: attr(data-label); color: #7d8ba0; font-size: 9px; }
+.activity-table td:first-child { color: #45536a; }
+.alert-list { padding: 0 11px 7px; }
+.alert-item { grid-template-columns: 14px minmax(0, 1fr); gap: 7px; padding: 10px 0; }
+.alert-item h3 { font-size: 10px; }
+.alert-item p { font-size: 9px; line-height: 1.45; }
