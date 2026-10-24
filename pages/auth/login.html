@@ -35,16 +35,18 @@
       <form class="auth-form" data-auth="login">
         <div class="field">
           <label for="login-identity">Số điện thoại hoặc email</label>
-          <input id="login-identity" name="identity" type="text" required autocomplete="username">
+          <input id="login-identity" name="identity" type="text" required autocomplete="username" aria-describedby="login-identity-error">
+          <small class="field-error" data-field-error="identity" id="login-identity-error" hidden></small>
         </div>
         <div class="field">
           <label for="login-password">Mật khẩu</label>
           <div class="password-input">
-            <input id="login-password" name="password" type="password" required maxlength="128" autocomplete="current-password">
+            <input id="login-password" name="password" type="password" required maxlength="128" autocomplete="current-password" aria-describedby="login-password-error">
             <button class="eye-icon toggle-password" type="button" aria-label="Hiện mật khẩu" aria-pressed="false">
               <svg viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
             </button>
           </div>
+          <small class="field-error" data-field-error="password" id="login-password-error" hidden></small>
         </div>
         <div class="form-options">
           <span></span>
@@ -57,11 +59,13 @@
       <form class="auth-form" data-auth="register" hidden>
         <div class="field">
           <label for="register-name">Họ và tên</label>
-          <input id="register-name" name="name" type="text" required maxlength="100" autocomplete="name">
+          <input id="register-name" name="name" type="text" required minlength="2" maxlength="100" autocomplete="name" aria-describedby="register-name-error">
+          <small class="field-error" data-field-error="name" id="register-name-error" hidden></small>
         </div>
         <div class="field">
           <label for="register-identity">Số điện thoại hoặc email</label>
-          <input id="register-identity" name="identity" type="text" required autocomplete="username">
+          <input id="register-identity" name="identity" type="text" required autocomplete="username" aria-describedby="register-identity-error">
+          <small class="field-error" data-field-error="identity" id="register-identity-error" hidden></small>
         </div>
         <div class="field">
           <label for="register-role">Vai trò</label>
@@ -73,16 +77,18 @@
         <div class="field">
           <label for="register-password">Mật khẩu</label>
           <div class="password-input">
-            <input id="register-password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password">
+            <input id="register-password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="register-password-hint register-password-error">
             <button class="eye-icon toggle-password" type="button" aria-label="Hiện mật khẩu" aria-pressed="false">
               <svg viewBox="0 0 24 24"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
             </button>
           </div>
-          <small class="field-hint">Tối thiểu 8 ký tự, gồm chữ cái và chữ số.</small>
+          <small class="field-hint" id="register-password-hint">Tối thiểu 8 ký tự, gồm chữ cái và chữ số.</small>
+          <small class="field-error" data-field-error="password" id="register-password-error" hidden></small>
         </div>
         <div class="field">
           <label for="register-confirm-password">Xác nhận mật khẩu</label>
-          <input id="register-confirm-password" name="confirm-password" type="password" required minlength="8" maxlength="128" autocomplete="new-password">
+          <input id="register-confirm-password" name="confirm-password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="register-confirm-password-error">
+          <small class="field-error" data-field-error="confirm-password" id="register-confirm-password-error" hidden></small>
         </div>
         <label class="checkbox-label agreement">
           <input type="checkbox" name="agreement" required>

@@ -210,20 +210,30 @@ body {
   font-weight: 700;
 }
 
-.user-profile__name,
-.user-profile__chevron {
+.user-profile__name {
   display: none;
 }
 
-.user-profile__chevron {
+.user-profile__logout {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 13px;
-  height: 13px;
-  color: #8090a8;
-  font-size: 15px;
-  line-height: 1;
+  min-height: 30px;
+  padding: 0 8px;
+  border: 1px solid #dce3ee;
+  border-radius: 6px;
+  background: #fff;
+  color: #53637d;
+  font: inherit;
+  font-size: 10px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.user-profile__logout:hover {
+  border-color: #c9d7f0;
+  background: #f6f8fc;
+  color: #293fa0;
 }
 
 .page-content {

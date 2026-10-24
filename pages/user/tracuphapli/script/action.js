@@ -7,6 +7,13 @@ const trangThaiKetQua = document.querySelector("#results-status");
 const hopThoai = document.querySelector("#procedure-dialog");
 const tieuDeHopThoai = document.querySelector("#dialog-title");
 const noiDungHopThoai = document.querySelector("#dialog-content");
+const boLocLePhi = document.querySelector("#fee-filter");
+const sapXepThuTuc = document.querySelector("#procedure-sort");
+const nutXoaBoLoc = document.querySelector("#reset-filters");
+const nutThuLai = taoPhanTu("button", "Thử tải lại");
+nutThuLai.type = "button";
+nutThuLai.className = "nut-xoa-bo-loc";
+nutThuLai.addEventListener("click", taiDanhSachThuTuc);
 
 // Danh sách thủ tục đã làm phẳng từ dữ liệu các lĩnh vực do API trả về.
 let danhSachThuTuc = [];
@@ -80,6 +87,11 @@ function hienThiChiTiet(thuTuc) {
 
   // Gắn toàn bộ nội dung vào dialog và mở ở chế độ modal.
   noiDungHopThoai.append(thongTinChiTiet, tieuDe, danhSachHoSo);
+  if (thuTuc.is_sample) {
+    const canhBao = taoPhanTu("p", "Dữ liệu minh họa để kiểm thử; cần kiểm tra thông tin hiện hành với nguồn chính thức.");
+    canhBao.className = "tra-cuu-phap-ly__minh-hoa";
+    noiDungHopThoai.append(canhBao);
+  }
   hopThoai.showModal();
 }
 
@@ -101,7 +113,12 @@ function hienThiBoLoc(danhSachLinhVuc) {
   });
 }
 
-// Lọc dữ liệu hiện có theo từ khóa và lĩnh vực, sau đó dựng lại danh sách kết quả.
+function loaiLePhi(thuTuc) {
+  if (!thuTuc.fee || thuTuc.fee.includes("Cần xác minh") || thuTuc.fee.includes("Dữ liệu minh họa")) return "unknown";
+  return chuanHoa(thuTuc.fee).includes("mien phi") ? "free" : "paid";
+}
+
+// Kết hợp từ khóa, lĩnh vực và mức lệ phí; việc sắp xếp giữ nguyên các bộ lọc.
 function hienThiKetQua() {
   // Bỏ khoảng trắng đầu/cuối rồi chuẩn hóa từ khóa tìm kiếm.
   const tuKhoa = chuanHoa(oNhapTimKiem.value.trim());
@@ -110,6 +127,7 @@ function hienThiKetQua() {
     // "all" cho qua mọi lĩnh vực; nếu không thì mã lĩnh vực phải trùng lựa chọn.
     const thuocLinhVucDangChon =
       linhVucDangChon === "all" || thuTuc.category_id === linhVucDangChon;
+    const dungMucLePhi = boLocLePhi.value === "all" || loaiLePhi(thuTuc) === boLocLePhi.value;
     // Gom các trường có thể tìm kiếm thành một chuỗi đã chuẩn hóa.
     const noiDungTimKiem = chuanHoa([
       thuTuc.name,
@@ -122,8 +140,11 @@ function hienThiKetQua() {
     ].join(" "));
 
     // includes("") trả về true nên khi ô tìm kiếm rỗng sẽ hiện mọi thủ tục trong lĩnh vực.
-    return thuocLinhVucDangChon && noiDungTimKiem.includes(tuKhoa);
+    return thuocLinhVucDangChon && dungMucLePhi && noiDungTimKiem.includes(tuKhoa);
   });
+  if (sapXepThuTuc.value === "name") {
+    thuTucPhuHop.sort((left, right) => left.name.localeCompare(right.name, "vi"));
+  }
 
   // Cập nhật số kết quả và dọn giao diện kết quả cũ.
   trangThaiKetQua.textContent = `${thuTucPhuHop.length} kết quả phù hợp với tìm kiếm của bạn`;
@@ -131,12 +152,12 @@ function hienThiKetQua() {
 
   // Nếu không có kết quả, hiển thị hướng dẫn và kết thúc hàm.
   if (thuTucPhuHop.length === 0) {
-    const thongBao = taoPhanTu(
-      "p",
-      "Không tìm thấy thủ tục phù hợp. Hãy thử từ khóa hoặc lĩnh vực khác."
-    );
+    const thongBao = taoPhanTu("p", "Không tìm thấy thủ tục phù hợp với các điều kiện đã chọn.");
     thongBao.className = "tra-cuu-phap-ly__khong-co-ket-qua";
-    ketQuaTraCuu.append(thongBao);
+    const nutDatLai = taoPhanTu("button", "Xóa bộ lọc và tìm lại");
+    nutDatLai.type = "button";
+    nutDatLai.addEventListener("click", xoaBoLoc);
+    ketQuaTraCuu.append(thongBao, nutDatLai);
     return;
   }
 
@@ -185,6 +206,11 @@ function hienThiKetQua() {
     // Hiển thị tên lĩnh vực của thủ tục.
     const tenLinhVuc = taoPhanTu("span", thuTuc.category_name);
     tenLinhVuc.className = "the-thu-tuc__linh-vuc";
+    if (thuTuc.is_sample) {
+      const nhanMinhHoa = taoPhanTu("span", "Dữ liệu minh họa");
+      nhanMinhHoa.className = "the-thu-tuc__linh-vuc";
+      cotBen.append(nhanMinhHoa);
+    }
 
     const nutChiTiet = taoPhanTu("button", "Xem chi tiết");
     nutChiTiet.type = "button";
@@ -197,6 +223,19 @@ function hienThiKetQua() {
     theThuTuc.append(noiDungChinh, cotBen);
     ketQuaTraCuu.append(theThuTuc);
   });
+}
+
+function xoaBoLoc() {
+  oNhapTimKiem.value = "";
+  linhVucDangChon = "all";
+  boLocLePhi.value = "all";
+  sapXepThuTuc.value = "relevance";
+  boLocLinhVuc.querySelectorAll("button[data-category]").forEach((nut) => {
+    const isActive = nut.dataset.category === "all";
+    nut.classList.toggle("dang-chon", isActive);
+    nut.setAttribute("aria-pressed", String(isActive));
+  });
+  hienThiKetQua();
 }
 
 // Dùng event delegation: một listener trên vùng lọc xử lý mọi nút lọc được tạo động.
@@ -226,6 +265,9 @@ bieuMauTimKiem.addEventListener("submit", (suKien) => {
 
 // Lọc ngay khi nội dung ô tìm kiếm thay đổi.
 oNhapTimKiem.addEventListener("input", hienThiKetQua);
+boLocLePhi.addEventListener("change", hienThiKetQua);
+sapXepThuTuc.addEventListener("change", hienThiKetQua);
+nutXoaBoLoc.addEventListener("click", xoaBoLoc);
 
 // Nút × đóng hộp thoại.
 document.querySelector("#dialog-close").addEventListener("click", () => {
@@ -238,46 +280,46 @@ hopThoai.addEventListener("click", (suKien) => {
 });
 
 // Tải dữ liệu từ API, xác thực cấu trúc, chuẩn hóa danh sách và cập nhật giao diện.
-function taiDanhSachThuTuc() {
-  window.LegalPathAPI.getLegalCategories()
-    .then((ketQua) => {
-      // API có thể trả thẳng mảng lĩnh vực hoặc bọc mảng trong thuộc tính data.
-      const danhSachLinhVuc = Array.isArray(ketQua) ? ketQua : ketQua.data;
-      // Báo lỗi rõ ràng nếu cấu trúc cấp cao nhất không phải danh sách lĩnh vực.
-      if (!Array.isArray(danhSachLinhVuc)) {
-        throw new Error("Dữ liệu lĩnh vực không hợp lệ.");
+async function taiDanhSachThuTuc() {
+  trangThaiKetQua.textContent = "Đang tải dữ liệu thủ tục...";
+  ketQuaTraCuu.setAttribute("aria-busy", "true");
+  try {
+    const ketQua = await window.LegalPathAPI.getLegalCategories();
+    // API có thể trả thẳng mảng lĩnh vực hoặc bọc mảng trong thuộc tính data.
+    const danhSachLinhVuc = Array.isArray(ketQua) ? ketQua : ketQua.data;
+    // Báo lỗi rõ ràng nếu cấu trúc cấp cao nhất không phải danh sách lĩnh vực.
+    if (!Array.isArray(danhSachLinhVuc)) {
+      throw new Error("Dữ liệu lĩnh vực không hợp lệ.");
+    }
+    // Kiểm tra mỗi lĩnh vực có mảng procedures trước khi xử lý.
+    danhSachLinhVuc.forEach((linhVuc) => {
+      if (!Array.isArray(linhVuc.procedures)) {
+        throw new Error("Danh sách thủ tục không hợp lệ.");
       }
-      // Kiểm tra mỗi lĩnh vực có mảng procedures trước khi xử lý.
-      danhSachLinhVuc.forEach((linhVuc) => {
-        if (!Array.isArray(linhVuc.procedures)) {
-          throw new Error("Danh sách thủ tục không hợp lệ.");
-        }
-      });
-
-      // Chuyển danh sách lồng lĩnh vực/thủ tục thành một mảng thủ tục phẳng.
-      // Mã và tên lĩnh vực được bổ sung vào mỗi thủ tục để lọc và hiển thị.
-      danhSachThuTuc = danhSachLinhVuc.flatMap((linhVuc) =>
-        linhVuc.procedures.map((thuTuc) => ({
-          ...thuTuc,
-          category_id: linhVuc.category_id,
-          category_name: linhVuc.category_name
-        }))
-      );
-
-      // Tạo nút lọc và hiển thị các thủ tục ban đầu.
-      hienThiBoLoc(danhSachLinhVuc);
-      hienThiKetQua();
-    })
-    .catch((loi) => {
-      // Ghi chi tiết lỗi cho nhà phát triển trong console.
-      console.error("Không thể tải dữ liệu tra cứu pháp lý:", loi);
-      // Báo trạng thái lỗi trực tiếp trên trang.
-      trangThaiKetQua.textContent = "Không thể tải dữ liệu thủ tục.";
-      const thongBao = taoPhanTu("p", loi.message);
-      thongBao.className = "tra-cuu-phap-ly__loi-tai-du-lieu";
-      // Thay kết quả cũ bằng thông báo lỗi.
-      ketQuaTraCuu.replaceChildren(thongBao);
     });
+
+    // Chuyển danh sách lồng lĩnh vực/thủ tục thành một mảng thủ tục phẳng.
+    // Mã và tên lĩnh vực được bổ sung vào mỗi thủ tục để lọc và hiển thị.
+    danhSachThuTuc = danhSachLinhVuc.flatMap((linhVuc) =>
+      linhVuc.procedures.map((thuTuc) => ({
+        ...thuTuc,
+        category_id: linhVuc.category_id,
+        category_name: linhVuc.category_name
+      }))
+    );
+
+    // Tạo nút lọc và hiển thị các thủ tục ban đầu.
+    hienThiBoLoc(danhSachLinhVuc);
+    hienThiKetQua();
+  } catch (loi) {
+    console.error("Không thể tải dữ liệu tra cứu pháp lý:", loi);
+    trangThaiKetQua.textContent = "Không thể tải dữ liệu thủ tục.";
+    const thongBao = taoPhanTu("p", loi.message);
+    thongBao.className = "tra-cuu-phap-ly__loi-tai-du-lieu";
+    ketQuaTraCuu.replaceChildren(thongBao, nutThuLai);
+  } finally {
+    ketQuaTraCuu.removeAttribute("aria-busy");
+  }
 }
 
 // Bắt đầu tải dữ liệu ngay khi file JavaScript được thực thi.

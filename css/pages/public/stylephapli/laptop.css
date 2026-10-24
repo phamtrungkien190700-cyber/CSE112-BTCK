@@ -96,6 +96,44 @@ input {
   background: #203e8b;
 }
 
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.search-filters label {
+  color: #53637d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-filters select {
+  min-height: 38px;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #dfe5ed;
+  border-radius: 6px;
+  background: #fff;
+  color: #26364f;
+}
+
+.procedure-sample-notice {
+  padding: 12px;
+  border-left: 3px solid #e3a328;
+  background: #fff8e7;
+  color: #684b12;
+  line-height: 1.5;
+}
+
+.procedure-card__sample {
+  color: #684b12;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .hero {
   display: grid;
   min-height: 240px;

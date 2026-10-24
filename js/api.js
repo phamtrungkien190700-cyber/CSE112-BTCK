@@ -51,7 +51,9 @@
     deleteLegalCategory: (id) => request("DELETE", `legal-categories/${encodeURIComponent(id)}`),
     getExperts: () => request("GET", "experts-directory"),
     getNotifications: () => request("GET", "notifications"),
-    updateNotification: (id, data) => request("PATCH", `notifications/${encodeURIComponent(id)}`, data)
+    updateNotification: (id, data) => request("PATCH", `notifications/${encodeURIComponent(id)}`, data),
+    getUserWorkspace: () => request("GET", "user-workspace"),
+    saveUserWorkspace: (data) => request("PUT", "user-workspace", data)
   };
 
   const expertPortalApi = {

@@ -134,6 +134,71 @@
       "action": "Khám phá chủ đề",
       "detail": "Cảm ơn bạn đã tham gia LegalPath. Hãy theo dõi các chủ đề quan tâm để nhận cập nhật và lưu các hướng dẫn hữu ích.",
       "userId": "2bdd0ba7-385f-44ed-b3c7-cef4b6007fb2"
+    },
+    {
+      "id": "5ae99103-087d-4ac8-a452-3d1deb8b5f64",
+      "group": "today",
+      "title": "Câu hỏi của bạn có phản hồi mới",
+      "description": "Câu hỏi “Cần giấy tờ gì để đăng ký tạm trú?” đã có phản hồi. Xem hướng dẫn và các lưu ý cần thiết.",
+      "time": "09:15",
+      "date": "03/10/2026",
+      "status": "unread",
+      "category": "reply",
+      "action": "Xem phản hồi",
+      "detail": "Chuyên gia đã gửi phản hồi cho câu hỏi về thủ tục đăng ký tạm trú. Mở nội dung để xem các giấy tờ cần chuẩn bị và lưu ý khi nộp hồ sơ.",
+      "userId": "00049be2-ac69-4a7f-b823-eb8c0b923c78"
+    },
+    {
+      "id": "318e270f-0cb2-48d2-b85f-cc7ec4709217",
+      "group": "today",
+      "title": "Nội dung mới về thủ tục cư trú",
+      "description": "Hướng dẫn đăng ký tạm trú trực tuyến: điều kiện, hồ sơ và các bước thực hiện.",
+      "time": "08:30",
+      "date": "03/10/2026",
+      "status": "unread",
+      "category": "guide",
+      "action": "Đọc hướng dẫn",
+      "detail": "Hướng dẫn mới tổng hợp điều kiện đăng ký tạm trú, thành phần hồ sơ và các bước nộp trực tuyến.",
+      "userId": "00049be2-ac69-4a7f-b823-eb8c0b923c78"
+    },
+    {
+      "id": "62af0d42-d72f-4401-81a1-5907e984d067",
+      "group": "earlier",
+      "title": "Chủ đề bạn theo dõi đã được cập nhật",
+      "description": "Chủ đề “Hợp đồng lao động” có thêm nội dung về quyền và nghĩa vụ khi chấm dứt hợp đồng.",
+      "time": "16:40",
+      "date": "02/10/2026",
+      "status": "unread",
+      "category": "topic",
+      "action": "Xem chủ đề",
+      "detail": "Chủ đề Hợp đồng lao động vừa được bổ sung nội dung về quyền và nghĩa vụ của các bên khi chấm dứt hợp đồng.",
+      "userId": "00049be2-ac69-4a7f-b823-eb8c0b923c78"
+    },
+    {
+      "id": "46e0d95a-f282-4f93-af4d-dd4e930c5646",
+      "group": "earlier",
+      "title": "Bản tin pháp lý tuần này",
+      "description": "Những điều cần biết về bảo hiểm xã hội, cư trú và các thủ tục hành chính thường gặp.",
+      "time": "10:00",
+      "date": "01/10/2026",
+      "status": "read",
+      "category": "news",
+      "action": "Đọc bản tin",
+      "detail": "Bản tin tuần này điểm lại các cập nhật đáng chú ý về bảo hiểm xã hội, cư trú và thủ tục hành chính.",
+      "userId": "00049be2-ac69-4a7f-b823-eb8c0b923c78"
+    },
+    {
+      "id": "11ace88e-51ef-4994-b807-6bddd3de1bda",
+      "group": "earlier",
+      "title": "Chào mừng bạn đến với LegalPath",
+      "description": "Bắt đầu bằng cách theo dõi chủ đề bạn quan tâm và lưu lại những hướng dẫn hữu ích.",
+      "time": "14:20",
+      "date": "29/09/2026",
+      "status": "read",
+      "category": "welcome",
+      "action": "Khám phá chủ đề",
+      "detail": "Cảm ơn bạn đã tham gia LegalPath. Hãy theo dõi các chủ đề quan tâm để nhận cập nhật và lưu các hướng dẫn hữu ích.",
+      "userId": "00049be2-ac69-4a7f-b823-eb8c0b923c78"
     }
   ]
 }

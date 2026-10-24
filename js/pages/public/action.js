@@ -5,6 +5,9 @@
   const procedureStatus = document.querySelector("#procedures-status");
   const searchForm = document.querySelector("#search-form");
   const searchInput = document.querySelector("#search-input");
+  const categoryFilter = document.querySelector("#category-filter");
+  const feeFilter = document.querySelector("#fee-filter");
+  const procedureSort = document.querySelector("#procedure-sort");
   const procedureDialog = document.querySelector("#procedure-dialog");
   const dialogTitle = document.querySelector("#dialog-title");
   const dialogContent = document.querySelector("#dialog-content");
@@ -96,7 +99,8 @@
 
       card.append(icon, title, description, count);
       card.addEventListener("click", () => {
-        searchInput.value = category.category_name;
+        searchInput.value = "";
+        categoryFilter.value = category.category_id;
         render();
         document.querySelector("#procedures").scrollIntoView({ behavior: "smooth" });
       });
@@ -123,6 +127,15 @@
       details.append(createElement("dt", "", label));
       details.append(createElement("dd", "", value || "Chưa có thông tin"));
     });
+    if (procedure.is_sample) {
+      dialogContent.append(
+        createElement(
+          "p",
+          "procedure-sample-notice",
+          "Dữ liệu minh họa để kiểm thử giao diện; cần xác minh quy định, hồ sơ, cơ quan, thời hạn và lệ phí từ nguồn chính thức."
+        )
+      );
+    }
 
     const documentsTitle = createElement("h3", "", "Hồ sơ cần chuẩn bị");
     const documents = createElement("ul", "document-list");
@@ -141,7 +154,19 @@
   }
 
   function renderProcedures(query) {
-    const visibleProcedures = procedures.filter((procedure) => procedureMatches(procedure, query));
+    const visibleProcedures = procedures.filter((procedure) => {
+      const matchesCategory = categoryFilter.value === "all" || procedure.category_id === categoryFilter.value;
+      const feeText = normalize(procedure.fee);
+      const feeCategory = !procedure.fee || feeText.includes("can xac minh") || feeText.includes("du lieu minh hoa")
+        ? "unknown"
+        : feeText.includes("mien phi") ? "free" : "paid";
+      return matchesCategory
+        && (feeFilter.value === "all" || feeCategory === feeFilter.value)
+        && procedureMatches(procedure, query);
+    });
+    if (procedureSort.value === "name") {
+      visibleProcedures.sort((left, right) => left.name.localeCompare(right.name, "vi"));
+    }
     procedureList.replaceChildren();
 
     visibleProcedures.forEach((procedure, index) => {
@@ -158,6 +183,9 @@
         procedure.processing_time || "Chọn để xem chi tiết thủ tục."
       );
       card.append(icon, category, title, description);
+      if (procedure.is_sample) {
+        card.append(createElement("span", "procedure-card__sample", "Dữ liệu minh họa"));
+      }
       card.addEventListener("click", () => showProcedure(procedure));
       procedureList.append(card);
     });
@@ -165,6 +193,12 @@
     procedureStatus.textContent = visibleProcedures.length
       ? `${visibleProcedures.length} thủ tục phù hợp`
       : "Không tìm thấy thủ tục phù hợp. Hãy thử từ khóa khác.";
+    if (!visibleProcedures.length) {
+      const resetButton = createElement("button", "button button--quiet", "Xóa bộ lọc");
+      resetButton.type = "button";
+      resetButton.addEventListener("click", resetFilters);
+      procedureList.append(resetButton);
+    }
   }
 
   function render() {
@@ -183,12 +217,33 @@
           category_name: category.category_name
         }))
       );
+      categoryFilter.replaceChildren();
+      const allOption = createElement("option", "", "Tất cả lĩnh vực");
+      allOption.value = "all";
+      categoryFilter.append(allOption);
+      categories.forEach((category) => {
+        const option = createElement("option", "", category.category_name);
+        option.value = category.category_id;
+        categoryFilter.append(option);
+      });
       render();
     } catch (error) {
       console.error("Không thể tải dữ liệu LegalPath:", error);
       categoryStatus.textContent = `Không thể tải dữ liệu. ${error.message}`;
       procedureStatus.textContent = "Danh sách thủ tục hiện chưa khả dụng.";
+      const retryButton = createElement("button", "button button--quiet", "Thử tải lại");
+      retryButton.type = "button";
+      retryButton.addEventListener("click", loadData);
+      categoryList.replaceChildren(retryButton);
     }
+  }
+
+  function resetFilters() {
+    searchInput.value = "";
+    categoryFilter.value = "all";
+    feeFilter.value = "all";
+    procedureSort.value = "relevance";
+    render();
   }
 
   searchForm.addEventListener("submit", (event) => {
@@ -196,6 +251,10 @@
     render();
   });
   searchInput.addEventListener("input", render);
+  categoryFilter.addEventListener("change", render);
+  feeFilter.addEventListener("change", render);
+  procedureSort.addEventListener("change", render);
+  document.querySelector("#reset-search").addEventListener("click", resetFilters);
   document.querySelector("#dialog-close").addEventListener("click", () => {
     procedureDialog.close();
   });

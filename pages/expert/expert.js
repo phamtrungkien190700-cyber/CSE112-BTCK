@@ -830,6 +830,7 @@ const portal = {
   checklist: { query: "", status: "all", page: 1 },
   modal: null
 };
+let articleCopilotDraft = null;
 
 function portalData() {
   if (!portal.data) portal.data = Store.get();
@@ -1029,7 +1030,8 @@ function renderArticleForm() {
   const checklistOptions = [{ value: "", label: "Không gắn checklist" }].concat((data.checklists || []).map((item) => ({ value: item.id, label: item.name })));
   const tagText = (article.tags || []).join(", ");
   const bodyText = Array.isArray(article.content) ? article.content.map((block) => block.x).join("\n\n") : (article.body || "");
-  mountOverlay(`<div class="modal-backdrop open"><form class="modal modal-wide" id="articleForm" role="dialog" aria-modal="true" aria-labelledby="articleFormTitle"><header class="modal-head"><h2 id="articleFormTitle">${existing ? "Chỉnh sửa bài viết" : "Tạo bài viết mới"}</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="modal-grid"><div class="form-field"><label for="articleTitle">Tiêu đề bài viết <span aria-hidden="true">*</span></label><input class="input" id="articleTitle" name="title" value="${esc(article.title)}" maxlength="180" required></div><div class="form-field"><label for="articleCategory">Chuyên mục</label><select class="input" id="articleCategory" name="category">${CATEGORIES.map((category) => `<option value="${esc(category)}" ${article.category === category ? "selected" : ""}>${esc(category)}</option>`).join("")}</select></div><div class="form-field"><label for="articleStatus">Trạng thái</label><select class="input" id="articleStatus" name="status"><option value="draft" ${article.status === "draft" ? "selected" : ""}>Bản nháp</option><option value="pending" ${article.status === "pending" ? "selected" : ""}>Chờ duyệt</option><option value="published" ${article.status === "published" ? "selected" : ""}>Đã xuất bản</option></select></div><div class="form-field"><label for="articleChecklist">Checklist đính kèm</label><select class="input" id="articleChecklist" name="checklistId"><option value="">Không gắn checklist</option>${checklistOptions.filter((item) => item.value !== "").map((option) => `<option value="${esc(option.value)}" ${article.checklistId === option.value ? "selected" : ""}>${esc(option.label)}</option>`).join("")}</select></div><div class="form-field full"><label for="articleDesc">Mô tả ngắn</label><textarea class="input" id="articleDesc" name="desc" rows="2" maxlength="300">${esc(article.desc || "")}</textarea></div><div class="form-field full"><label for="articleTags">Tags</label><input class="input" id="articleTags" name="tags" value="${esc(tagText)}" placeholder="Nhập tag, cách nhau bởi dấu phẩy"></div><div class="form-field full"><label for="articleBody">Nội dung bài viết <span aria-hidden="true">*</span></label><textarea class="input" id="articleBody" name="body" rows="12" required>${esc(bodyText)}</textarea></div></div></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Hủy</button><button class="btn btn-primary" type="submit">${icon("check")} Lưu bài viết</button></footer></form></div>`);
+  articleCopilotDraft = null;
+  mountOverlay(`<div class="modal-backdrop open"><form class="modal modal-wide" id="articleForm" role="dialog" aria-modal="true" aria-labelledby="articleFormTitle"><header class="modal-head"><h2 id="articleFormTitle">${existing ? "Chỉnh sửa bài viết" : "Tạo bài viết mới"}</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="modal-grid"><div class="form-field"><label for="articleTitle">Tiêu đề bài viết <span aria-hidden="true">*</span></label><input class="input" id="articleTitle" name="title" value="${esc(article.title)}" maxlength="180" required></div><div class="form-field"><label for="articleCategory">Chuyên mục</label><select class="input" id="articleCategory" name="category">${CATEGORIES.map((category) => `<option value="${esc(category)}" ${article.category === category ? "selected" : ""}>${esc(category)}</option>`).join("")}</select></div><div class="form-field"><label for="articleStatus">Trạng thái</label><select class="input" id="articleStatus" name="status"><option value="draft" ${article.status === "draft" ? "selected" : ""}>Bản nháp</option><option value="pending" ${article.status === "pending" ? "selected" : ""}>Chờ duyệt</option><option value="published" ${article.status === "published" ? "selected" : ""}>Đã xuất bản</option></select></div><div class="form-field"><label for="articleChecklist">Checklist đính kèm</label><select class="input" id="articleChecklist" name="checklistId"><option value="">Không gắn checklist</option>${checklistOptions.filter((item) => item.value !== "").map((option) => `<option value="${esc(option.value)}" ${article.checklistId === option.value ? "selected" : ""}>${esc(option.label)}</option>`).join("")}</select></div><div class="form-field full"><label for="articleDesc">Mô tả ngắn</label><textarea class="input" id="articleDesc" name="desc" rows="2" maxlength="300">${esc(article.desc || "")}</textarea></div><section class="form-field full article-copilot"><h3>Trợ lý biên tập theo dữ liệu LegalPath</h3><p>Gợi ý dàn ý quy tắc tại chỗ từ chủ đề và checklist; không gửi nội dung ra ngoài và không tự thêm điều luật.</p><label for="articleCopilotPrompt">Chủ đề cần xây dựng dàn ý</label><input class="input" id="articleCopilotPrompt" maxlength="180" value="${esc(article.title || "")}" placeholder="Ví dụ: Các bước rà soát hợp đồng lao động"><div class="article-copilot__actions"><button class="btn" type="button" data-action="article-copilot-generate">Tạo gợi ý</button><span id="articleCopilotStatus" role="status" aria-live="polite"></span></div><div id="articleCopilotResult" hidden><p id="articleCopilotExplanation"></p><label for="articleCopilotDraft">Xem lại và chỉnh sửa dàn ý</label><textarea class="input" id="articleCopilotDraft" rows="9"></textarea><div class="article-copilot__actions"><button class="btn btn-primary" type="button" data-action="article-copilot-accept">Chấp nhận dàn ý</button><button class="btn" type="button" data-action="article-copilot-retry">Tạo lại</button><button class="btn btn-danger" type="button" data-action="article-copilot-reject">Từ chối</button></div></div></section><div class="form-field full"><label for="articleTags">Tags</label><input class="input" id="articleTags" name="tags" value="${esc(tagText)}" placeholder="Nhập tag, cách nhau bởi dấu phẩy"></div><div class="form-field full"><label for="articleBody">Nội dung bài viết <span aria-hidden="true">*</span></label><textarea class="input" id="articleBody" name="body" rows="12" required>${esc(bodyText)}</textarea></div></div></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Hủy</button><button class="btn btn-primary" type="submit">${icon("check")} Lưu bài viết</button></footer></form></div>`);
 }
 
 function renderChecklists() {
@@ -1111,8 +1113,81 @@ function renderPublicPreview() {
   mountOverlay(`<div class="modal-backdrop open"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="publicPreviewTitle"><header class="modal-head"><h2 id="publicPreviewTitle">Hồ sơ công khai</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="identity-top"><span class="avatar">${esc(p.initials || "TM")}</span><h2>${esc(p.name)}</h2><p>${esc(p.title)} · ${esc(p.role)}</p><span class="badge badge-success">Đã xác minh chuyên môn</span></div><p>${esc(p.bio)}</p><div class="article-meta"><span>${icon("pin")}${esc(p.city)}</span><span>${icon("briefcase")}${esc(p.yearsExperience)} năm kinh nghiệm</span><span>${icon("mail")}${esc(p.email)}</span></div></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Đóng</button></footer></section></div>`);
 }
 
+async function generateArticleCopilotDraft() {
+  const prompt = document.getElementById("articleCopilotPrompt");
+  const status = document.getElementById("articleCopilotStatus");
+  const result = document.getElementById("articleCopilotResult");
+  const explanation = document.getElementById("articleCopilotExplanation");
+  const draftField = document.getElementById("articleCopilotDraft");
+  const bodyField = document.getElementById("articleBody");
+  const title = prompt?.value.trim() || "";
+  const words = title.split(/\s+/).filter(Boolean);
+
+  if (words.length < 3) {
+    status.textContent = "Hãy nhập chủ đề cụ thể bằng ít nhất 3 từ trước khi tạo dàn ý.";
+    prompt?.focus();
+    return;
+  }
+
+  const category = document.getElementById("articleCategory")?.value || "Khác";
+  const selectedChecklist = document.getElementById("articleChecklist")?.value || "";
+  const relatedChecklist = portalData().checklists.find((item) => item.id === selectedChecklist);
+  status.textContent = "Đang đối chiếu chủ đề với chuyên mục và checklist...";
+  result.hidden = true;
+  await new Promise((resolve) => window.setTimeout(resolve, 160));
+
+  const checklistGuidance = relatedChecklist?.questions?.length
+    ? relatedChecklist.questions.slice(0, 5).map((question) => `- ${question.text}`).join("\n")
+    : "- Xác định giấy tờ, chủ thể và mục tiêu cần làm rõ.";
+  const draft = [
+    `# Mục tiêu và phạm vi`,
+    `Làm rõ câu hỏi thực tế cần giải đáp về "${title}" trong chuyên mục ${category}. Xác định chủ thể, thời điểm và dữ kiện còn thiếu trước khi đưa ra nhận định.`,
+    `# Thông tin cần thu thập`,
+    checklistGuidance,
+    `# Các bước tham khảo`,
+    `1. Kiểm tra tình huống và tài liệu thực tế, không suy diễn khi chưa đủ dữ kiện.`,
+    `2. Đối chiếu quy định và biểu mẫu hiện hành trên nguồn chính thức phù hợp.`,
+    `3. Nêu rõ phương án, cơ quan cần liên hệ và giới hạn của nội dung hướng dẫn.`,
+    `# Điểm cần chuyên gia xác minh`,
+    `Kiểm tra căn cứ pháp lý, hiệu lực văn bản, thời hạn, thẩm quyền và hồ sơ áp dụng cho "${title}" trước khi xuất bản.`,
+    `# Lưu ý`,
+    `Dàn ý này chỉ là khung biên tập tự động, không trích dẫn hoặc xác nhận điều luật. Chuyên gia cần kiểm chứng, chỉnh sửa và bổ sung nguồn chính thức.`
+  ].join("\n\n");
+
+  const confidence = Math.min(86, 50 + Math.min(words.length, 7) * 4 + (relatedChecklist ? 8 : 0));
+  articleCopilotDraft = { body: draft, category, relatedChecklist: relatedChecklist?.name || "" };
+  draftField.value = draft;
+  explanation.textContent = `Dàn ý theo quy tắc cục bộ · mức phù hợp của chủ đề ${confidence}%. Căn cứ: chuyên mục "${category}"${relatedChecklist ? ` và ${relatedChecklist.questions.length} câu hỏi trong checklist "${relatedChecklist.name}"` : ""}. Không gửi dữ liệu ra ngoài; mọi nội dung pháp lý phải được kiểm chứng.`;
+  result.hidden = false;
+  status.textContent = "Đã tạo bản nháp để bạn rà soát. Chưa có nội dung nào được lưu.";
+  draftField.focus();
+}
+
 async function dispatchPortalAction(action, id) {
   if (action === "modal-close") { closePortalModal(); return; }
+  if (action === "article-copilot-generate" || action === "article-copilot-retry") {
+    await generateArticleCopilotDraft();
+    return;
+  }
+  if (action === "article-copilot-accept") {
+    const draftField = document.getElementById("articleCopilotDraft");
+    const bodyField = document.getElementById("articleBody");
+    if (!articleCopilotDraft || !draftField?.value.trim() || !bodyField) {
+      portalToast("Hãy tạo và kiểm tra dàn ý trước khi chấp nhận.", "error");
+      return;
+    }
+    bodyField.value = draftField.value.trim();
+    document.getElementById("articleCopilotResult").hidden = true;
+    document.getElementById("articleCopilotStatus").textContent = "Đã đưa dàn ý vào nội dung bài viết. Hãy biên tập và chọn Lưu bài viết để lưu lên máy chủ.";
+    bodyField.focus();
+    return;
+  }
+  if (action === "article-copilot-reject") {
+    articleCopilotDraft = null;
+    document.getElementById("articleCopilotResult").hidden = true;
+    document.getElementById("articleCopilotStatus").textContent = "Đã từ chối dàn ý. Nội dung chưa được lưu.";
+    return;
+  }
   if (action === "article-view") { showArticle(id); return; }
   if (action === "article-create") {
     portal.modal = { type: "article-form", id: "", title: "", desc: "", category: CATEGORIES[0], status: "draft", checklistId: "", tags: [], body: "" };

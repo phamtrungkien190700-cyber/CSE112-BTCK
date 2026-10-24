@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fb">
+  <title>Trợ lý thông minh | LegalPath</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="ai-assistant.css">
+  <script src="/js/api.js" defer></script>
+  <script src="ai-assistant.js" defer></script>
+</head>
+<body>
+  <main class="ai-page">
+    <header class="ai-heading">
+      <p class="ai-eyebrow">LEGALPATH · HỖ TRỢ CÓ GIẢI THÍCH</p>
+      <h1>Trợ lý thông minh</h1>
+      <p>Khám phá thủ tục phù hợp và nhận cảnh báo sơ bộ về hồ sơ trước khi trao đổi với chuyên gia.</p>
+    </header>
+
+    <aside class="ai-disclosure" aria-label="Giới hạn của trợ lý">
+      <strong>Minh bạch và riêng tư</strong>
+      <p>Gợi ý được tạo tại trình duyệt từ bộ quy tắc và dữ liệu LegalPath. Không gửi nội dung bạn nhập đến dịch vụ AI bên ngoài. Kết quả chỉ để tham khảo, không thay thế tư vấn pháp lý; dữ liệu minh họa cần được kiểm tra với cơ quan có thẩm quyền.</p>
+    </aside>
+
+    <p class="ai-page-status" id="workspace-status" role="status" aria-live="polite"></p>
+
+    <section class="ai-card" aria-labelledby="recommendation-title">
+      <div class="ai-card__heading">
+        <span class="ai-step">01</span>
+        <div>
+          <p class="ai-eyebrow">GỢI Ý THỦ TỤC</p>
+          <h2 id="recommendation-title">Tìm hướng xử lý phù hợp</h2>
+          <p>Nhập nhu cầu của bạn. Trợ lý đối chiếu tên thủ tục, lĩnh vực và hồ sơ mẫu.</p>
+        </div>
+      </div>
+      <form id="recommendation-form" class="ai-form">
+        <label for="recommendation-query">Bạn đang cần tìm hiểu việc gì?</label>
+        <textarea id="recommendation-query" name="query" rows="3" maxlength="500" required minlength="8" placeholder="Ví dụ: Tôi muốn sang tên quyền sử dụng đất sau khi nhận chuyển nhượng"></textarea>
+        <small>Chỉ nhập mô tả khái quát; không cung cấp số giấy tờ hoặc thông tin riêng tư.</small>
+        <button class="btn" type="submit">Phân tích và gợi ý</button>
+      </form>
+      <div class="ai-progress" id="recommendation-progress" hidden aria-live="polite"></div>
+      <section class="ai-result" id="recommendation-result" aria-live="polite" aria-atomic="true"></section>
+      <div class="ai-actions" id="recommendation-actions" hidden>
+        <button class="btn btn--primary" type="button" data-recommendation-action="save">Chấp nhận và lưu</button>
+        <button class="btn" type="button" data-recommendation-action="edit">Chỉnh sửa nhu cầu</button>
+        <button class="btn" type="button" data-recommendation-action="retry">Thử lại</button>
+        <button class="btn btn--quiet" type="button" data-recommendation-action="reject">Từ chối</button>
+      </div>
+      <section class="ai-saved">
+        <h3>Thủ tục đã lưu</h3>
+        <p class="ai-empty" id="saved-procedures-empty">Chưa có gợi ý nào được lưu.</p>
+        <ul id="saved-procedures" class="ai-saved__list"></ul>
+      </section>
+    </section>
+
+    <section class="ai-card" aria-labelledby="risk-title">
+      <div class="ai-card__heading">
+        <span class="ai-step">02</span>
+        <div>
+          <p class="ai-eyebrow">RÀ SOÁT SƠ BỘ</p>
+          <h2 id="risk-title">Tìm dấu hiệu cần lưu ý</h2>
+          <p>Trợ lý tìm thông tin về thời hạn, giấy tờ và mức độ khẩn cấp trong mô tả của bạn.</p>
+        </div>
+      </div>
+      <form id="risk-form" class="ai-form">
+        <label for="risk-procedure">Thủ tục liên quan (không bắt buộc)</label>
+        <select id="risk-procedure" name="procedureId">
+          <option value="">Chưa xác định thủ tục</option>
+        </select>
+        <label for="risk-situation">Mô tả tình huống, thời hạn hoặc giấy tờ đang thiếu</label>
+        <textarea id="risk-situation" name="situation" rows="4" maxlength="1000" required minlength="12" placeholder="Ví dụ: Tôi chưa rõ còn thiếu giấy tờ gì và đang cần kiểm tra thời hạn nộp hồ sơ"></textarea>
+        <small>Không nhập họ tên, số định danh, địa chỉ hoặc nội dung hồ sơ nhạy cảm.</small>
+        <button class="btn" type="submit">Rà soát dấu hiệu</button>
+      </form>
+      <div class="ai-progress" id="risk-progress" hidden aria-live="polite"></div>
+      <section class="ai-result" id="risk-result" aria-live="polite" aria-atomic="true"></section>
+      <div class="ai-actions" id="risk-actions" hidden>
+        <button class="btn btn--primary" type="button" data-risk-action="save">Chấp nhận và lưu kết quả</button>
+        <button class="btn" type="button" data-risk-action="edit">Bổ sung thông tin</button>
+        <button class="btn" type="button" data-risk-action="retry">Thử lại</button>
+        <button class="btn btn--quiet" type="button" data-risk-action="reject">Từ chối</button>
+      </div>
+      <section class="ai-saved">
+        <div class="ai-saved__heading">
+          <h3>Lịch sử rà soát</h3>
+          <button class="btn btn--quiet" id="clear-risk-reviews" type="button">Xóa lịch sử</button>
+        </div>
+        <p class="ai-empty" id="risk-reviews-empty">Chưa có kết quả rà soát nào được lưu.</p>
+        <ul id="risk-reviews" class="ai-saved__list"></ul>
+        <small>Lịch sử chỉ lưu mức độ, lý do và thủ tục liên quan; nội dung tình huống không được lưu.</small>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

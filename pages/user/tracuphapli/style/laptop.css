@@ -175,6 +175,36 @@ input {
   cursor: pointer;
 }
 
+.tra-cuu-phap-ly__bo-loc-mo-rong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.tra-cuu-phap-ly__bo-loc-mo-rong label {
+  color: #53637d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tra-cuu-phap-ly__bo-loc-mo-rong select,
+.nut-xoa-bo-loc {
+  min-height: 34px;
+  padding: 5px 9px;
+  border: 1px solid #dfe5ed;
+  border-radius: 6px;
+  background: #fff;
+  color: #26364f;
+  font: inherit;
+}
+
+.tra-cuu-phap-ly__bo-loc-mo-rong button,
+.tra-cuu-phap-ly__ket-qua > button {
+  cursor: pointer;
+}
+
 /* Trạng thái rê chuột của nút lọc chưa/đang chọn. */
 .nut-loc-linh-vuc:hover {
   border-color: #a8b8df;
@@ -336,6 +366,14 @@ input {
 .tra-cuu-phap-ly__loi-tai-du-lieu {
   border-color: #f0caca;
   color: #9a3030;
+}
+
+.tra-cuu-phap-ly__minh-hoa {
+  padding: 12px;
+  border-left: 3px solid #e3a328;
+  background: #fff8e7;
+  color: #684b12;
+  line-height: 1.5;
 }
 
 /* Dialog có chiều rộng linh hoạt, chiều cao tối đa và cuộn nếu nội dung dài. */

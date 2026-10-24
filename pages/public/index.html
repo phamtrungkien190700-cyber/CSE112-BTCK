@@ -51,6 +51,25 @@
         </div>
         <p class="status" id="categories-status" aria-live="polite">Đang tải dữ liệu...</p>
         <div class="card-grid" id="category-list"></div>
+        <div class="search-filters" aria-label="Lọc và sắp xếp thủ tục">
+          <label for="category-filter">Lĩnh vực</label>
+          <select id="category-filter">
+            <option value="all">Tất cả lĩnh vực</option>
+          </select>
+          <label for="fee-filter">Lệ phí</label>
+          <select id="fee-filter">
+            <option value="all">Tất cả mức lệ phí</option>
+            <option value="free">Miễn phí</option>
+            <option value="paid">Có lệ phí</option>
+            <option value="unknown">Chưa xác minh</option>
+          </select>
+          <label for="procedure-sort">Sắp xếp</label>
+          <select id="procedure-sort">
+            <option value="relevance">Mặc định</option>
+            <option value="name">Tên thủ tục A–Z</option>
+          </select>
+          <button id="reset-search" class="button button--quiet" type="button">Xóa bộ lọc</button>
+        </div>
       </section>
 
       <section class="content-section" id="procedures" aria-labelledby="procedures-title">
@@ -90,7 +109,7 @@
 
   <footer class="site-footer">
     <strong>LegalPath — Hỗ trợ pháp lý cho mọi người</strong>
-    <p>Thông tin trên trang chỉ mang tính tham khảo. Vui lòng liên hệ cơ quan có thẩm quyền để được hướng dẫn cụ thể.</p>
+    <p>Thông tin trên trang chỉ mang tính tham khảo. Dữ liệu minh họa được đánh dấu riêng; vui lòng kiểm tra thông tin hiện hành với cơ quan có thẩm quyền.</p>
     <nav aria-label="Liên kết cuối trang">
       <a href="#page-title">Chính sách bảo mật</a>
       <a href="#page-title">Điều khoản sử dụng</a>

@@ -20,15 +20,18 @@ const DATABASE_GROUPS = {
   legal: ["legalCategories", "expertsDirectory"],
   expertContent: ["articles", "checklists", "experts"],
   notifications: ["notifications"],
-  settings: ["settings"]
+  settings: ["settings"],
+  userWorkspaces: ["userWorkspaces"]
 };
 const DATABASE_FILES = {
   users: path.join(DATA_DIR, "users.json"),
   legal: path.join(DATA_DIR, "legal.json"),
   expertContent: path.join(DATA_DIR, "expert-content.json"),
   notifications: path.join(DATA_DIR, "notifications.json"),
-  settings: path.join(DATA_DIR, "settings.json")
+  settings: path.join(DATA_DIR, "settings.json"),
+  userWorkspaces: path.join(DATA_DIR, "user-workspaces.json")
 };
+const LEGAL_SAMPLE_FILE = path.join(ROOT_DIR, "data", "legal-supplement.json");
 const PORT = Number(process.env.PORT || 3001);
 const MAX_BODY_SIZE = 10 * 1024 * 1024;
 const SESSION_MAX_AGE = 8 * 60 * 60 * 1000;
@@ -90,12 +93,34 @@ async function readDatabase() {
       if (error.code !== "ENOENT") throw error;
       groupData = Object.fromEntries(collections.map((collection) => [
         collection,
-        legacyDatabase[collection] ?? (collection === "settings" ? {} : [])
+        legacyDatabase[collection] ?? (["settings", "userWorkspaces"].includes(collection) ? {} : [])
       ]));
       await writeJsonFile(DATABASE_FILES[group], groupData);
     }
     Object.assign(database, groupData);
   }
+  const sampleData = JSON.parse(await fs.readFile(LEGAL_SAMPLE_FILE, "utf8"));
+  if (!Array.isArray(sampleData.procedures)) {
+    throw new Error("The legal sample file must contain a procedures array.");
+  }
+  sampleData.procedures.forEach((sample) => {
+    if (
+      !sample ||
+      typeof sample.category_id !== "string" ||
+      !sample.procedure ||
+      typeof sample.procedure.id !== "string" ||
+      typeof sample.procedure.name !== "string"
+    ) {
+      throw new Error("A legal sample procedure is invalid.");
+    }
+    const category = database.legalCategories.find((item) => item.category_id === sample.category_id);
+    if (!category || !Array.isArray(category.procedures)) {
+      throw new Error(`Legal sample category "${sample.category_id}" is missing.`);
+    }
+    if (!category.procedures.some((procedure) => procedure.id === sample.procedure.id)) {
+      category.procedures.push(sample.procedure);
+    }
+  });
   return database;
 }
 
@@ -298,6 +323,9 @@ function normalizeDatabase(database) {
   if (!database.settings || typeof database.settings !== "object" || Array.isArray(database.settings)) {
     database.settings = {};
   }
+  if (!database.userWorkspaces || typeof database.userWorkspaces !== "object" || Array.isArray(database.userWorkspaces)) {
+    database.userWorkspaces = {};
+  }
 }
 
 async function handleAuthentication(request, response, route, database) {
@@ -392,6 +420,97 @@ async function handlePortal(request, response, database, user) {
     }
   });
   sendJson(response, 200, { ok: true });
+  return true;
+}
+
+async function handleUserWorkspace(request, response, database, user) {
+  requireRole(user, ["user"]);
+  if (request.method === "GET") {
+    sendJson(response, 200, database.userWorkspaces[user.id] || { savedProcedures: [], riskReviews: [] });
+    return true;
+  }
+  if (request.method !== "PUT") return false;
+
+  const payload = await readRequestBody(request);
+  if (
+    !payload ||
+    !Array.isArray(payload.savedProcedures) ||
+    !Array.isArray(payload.riskReviews) ||
+    payload.savedProcedures.length > 100 ||
+    payload.riskReviews.length > 25
+  ) {
+    throw new HttpError(400, "Dữ liệu không gian cá nhân không hợp lệ.");
+  }
+
+  const knownProcedures = new Set(database.legalCategories.flatMap((category) =>
+    (category.procedures || []).map((procedure) => procedure.id)
+  ));
+  const savedProcedures = [];
+  for (const item of payload.savedProcedures) {
+    if (
+      !item ||
+      typeof item.procedureId !== "string" ||
+      !knownProcedures.has(item.procedureId) ||
+      typeof item.reason !== "string" ||
+      item.reason.length > 180 ||
+      !Number.isFinite(item.score) ||
+      item.score < 0 ||
+      item.score > 100
+    ) {
+      throw new HttpError(400, "Một gợi ý thủ tục đã lưu không hợp lệ.");
+    }
+    if (savedProcedures.some((saved) => saved.procedureId === item.procedureId)) continue;
+    const previous = database.userWorkspaces[user.id]?.savedProcedures
+      ?.find((saved) => saved.procedureId === item.procedureId);
+    savedProcedures.push({
+      procedureId: item.procedureId,
+      reason: item.reason,
+      score: Math.round(item.score),
+      savedAt: previous?.savedAt || new Date().toISOString()
+    });
+  }
+
+  const allowedRiskCodes = new Set([
+    "urgent_deadline",
+    "missing_documents",
+    "high_stakes",
+    "unclear_scope"
+  ]);
+  const riskReviews = payload.riskReviews.map((item) => {
+    if (
+      !item ||
+      !["high", "medium", "low", "needs-review"].includes(item.level) ||
+      !Number.isFinite(item.score) ||
+      item.score < 0 ||
+      item.score > 100 ||
+      !Array.isArray(item.reasonCodes) ||
+      item.reasonCodes.length > allowedRiskCodes.size ||
+      item.reasonCodes.some((code) => !allowedRiskCodes.has(code)) ||
+      (item.procedureId !== null && item.procedureId !== undefined &&
+        (typeof item.procedureId !== "string" || !knownProcedures.has(item.procedureId)))
+    ) {
+      throw new HttpError(400, "Một bản đánh giá rủi ro đã lưu không hợp lệ.");
+    }
+    return {
+      id: typeof item.id === "string" && /^[\w-]{1,80}$/.test(item.id) ? item.id : randomUUID(),
+      level: item.level,
+      score: Math.round(item.score),
+      reasonCodes: [...new Set(item.reasonCodes)],
+      procedureId: item.procedureId || null,
+      createdAt: typeof item.createdAt === "string" ? item.createdAt : new Date().toISOString()
+    };
+  });
+
+  const savedWorkspace = await updateDatabase((current) => {
+    current.userWorkspaces = current.userWorkspaces || {};
+    current.userWorkspaces[user.id] = {
+      savedProcedures,
+      riskReviews,
+      updatedAt: new Date().toISOString()
+    };
+    return current.userWorkspaces[user.id];
+  });
+  sendJson(response, 200, savedWorkspace);
   return true;
 }
 
@@ -594,6 +713,8 @@ const server = http.createServer(async (request, response) => {
       const user = await getCurrentUser(request, database);
       if (requestUrl.pathname === "/api/portal") {
         if (await handlePortal(request, response, database, user)) return;
+      } else if (requestUrl.pathname === "/api/user-workspace") {
+        if (await handleUserWorkspace(request, response, database, user)) return;
       } else if (await handleCollection(request, response, database, user, requestUrl.pathname.slice(5))) {
         return;
       }

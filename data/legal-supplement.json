@@ -1,0 +1,132 @@
+{
+  "procedures": [
+    {
+      "category_id": "dat_dai",
+      "procedure": {
+        "id": "DEMO-DD-03",
+        "name": "Tìm hiểu thủ tục cấp lại Giấy chứng nhận quyền sử dụng đất",
+        "code": "DEMO-DD-03",
+        "processing_time": "Dữ liệu minh họa; cần xác minh với cơ quan tiếp nhận",
+        "fee": "Dữ liệu minh họa; cần xác minh mức thu tại địa phương",
+        "competent_authority": "Cần xác minh cơ quan tiếp nhận tại địa phương",
+        "required_documents": [
+          "Liên hệ cơ quan tiếp nhận để hỏi hồ sơ áp dụng cho trường hợp cụ thể.",
+          "Đối chiếu thành phần hồ sơ với hướng dẫn chính thức trước khi nộp."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "dat_dai",
+      "procedure": {
+        "id": "DEMO-DD-04",
+        "name": "Tìm hiểu đăng ký giao dịch bảo đảm bằng quyền sử dụng đất",
+        "code": "DEMO-DD-04",
+        "processing_time": "Dữ liệu minh họa; cần xác minh với cơ quan tiếp nhận",
+        "fee": "Dữ liệu minh họa; cần xác minh mức thu tại địa phương",
+        "competent_authority": "Cần xác minh cơ quan tiếp nhận tại địa phương",
+        "required_documents": [
+          "Xác định loại giao dịch và chủ thể liên quan trước khi tra cứu.",
+          "Đối chiếu thành phần hồ sơ với hướng dẫn chính thức trước khi nộp."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "hon_nhan_gia_dinh",
+      "procedure": {
+        "id": "DEMO-HNGD-03",
+        "name": "Tìm hiểu thủ tục trích lục hộ tịch",
+        "code": "DEMO-HNGD-03",
+        "processing_time": "Dữ liệu minh họa; cần xác minh với cơ quan tiếp nhận",
+        "fee": "Dữ liệu minh họa; cần xác minh mức thu tại địa phương",
+        "competent_authority": "Cần xác minh cơ quan tiếp nhận tại địa phương",
+        "required_documents": [
+          "Xác định loại sự kiện hộ tịch cần trích lục.",
+          "Đối chiếu giấy tờ nhận dạng và thành phần hồ sơ với hướng dẫn chính thức."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "hon_nhan_gia_dinh",
+      "procedure": {
+        "id": "DEMO-HNGD-04",
+        "name": "Tìm hiểu thủ tục ghi chú thay đổi hộ tịch",
+        "code": "DEMO-HNGD-04",
+        "processing_time": "Dữ liệu minh họa; cần xác minh với cơ quan tiếp nhận",
+        "fee": "Dữ liệu minh họa; cần xác minh mức thu tại địa phương",
+        "competent_authority": "Cần xác minh cơ quan tiếp nhận tại địa phương",
+        "required_documents": [
+          "Làm rõ nội dung thay đổi và nơi đăng ký sự kiện hộ tịch.",
+          "Đối chiếu điều kiện, hồ sơ và thẩm quyền trong hướng dẫn chính thức."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "lao_dong",
+      "procedure": {
+        "id": "DEMO-LD-03",
+        "name": "Tìm hiểu quy trình tiếp nhận phản ánh về quan hệ lao động",
+        "code": "DEMO-LD-03",
+        "processing_time": "Dữ liệu minh họa; phụ thuộc nội dung và cơ quan tiếp nhận",
+        "fee": "Dữ liệu minh họa; cần xác minh",
+        "competent_authority": "Cần xác định theo nội dung và địa phương",
+        "required_documents": [
+          "Ghi lại nội dung, thời điểm và các bên liên quan.",
+          "Tra cứu cơ quan tiếp nhận phù hợp trên nguồn thông tin chính thức."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "lao_dong",
+      "procedure": {
+        "id": "DEMO-LD-04",
+        "name": "Tìm hiểu quy trình hòa giải tranh chấp lao động",
+        "code": "DEMO-LD-04",
+        "processing_time": "Dữ liệu minh họa; phụ thuộc loại tranh chấp",
+        "fee": "Dữ liệu minh họa; cần xác minh",
+        "competent_authority": "Cần xác định theo loại tranh chấp và quy định hiện hành",
+        "required_documents": [
+          "Tóm tắt yêu cầu và các mốc thời gian liên quan.",
+          "Xin hướng dẫn từ cơ quan hoặc người hành nghề có chuyên môn."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "doanh_nghiep",
+      "procedure": {
+        "id": "DEMO-DN-03",
+        "name": "Tìm hiểu thủ tục thay đổi thông tin đăng ký doanh nghiệp",
+        "code": "DEMO-DN-03",
+        "processing_time": "Dữ liệu minh họa; cần tra cứu quy định hiện hành",
+        "fee": "Dữ liệu minh họa; cần xác minh",
+        "competent_authority": "Tra cứu cơ quan đăng ký có thẩm quyền tại thời điểm nộp",
+        "required_documents": [
+          "Xác định thông tin doanh nghiệp dự kiến thay đổi.",
+          "Đối chiếu biểu mẫu và hồ sơ trên cổng thông tin chính thức."
+        ],
+        "is_sample": true
+      }
+    },
+    {
+      "category_id": "doanh_nghiep",
+      "procedure": {
+        "id": "DEMO-DN-04",
+        "name": "Tìm hiểu thủ tục chấm dứt hoạt động doanh nghiệp",
+        "code": "DEMO-DN-04",
+        "processing_time": "Dữ liệu minh họa; phụ thuộc tình trạng doanh nghiệp",
+        "fee": "Dữ liệu minh họa; cần xác minh",
+        "competent_authority": "Cần xác định cơ quan tiếp nhận theo hồ sơ cụ thể",
+        "required_documents": [
+          "Kiểm tra tình trạng nghĩa vụ và thông tin đăng ký doanh nghiệp.",
+          "Đối chiếu trình tự, hồ sơ và nghĩa vụ liên quan với hướng dẫn chính thức."
+        ],
+        "is_sample": true
+      }
+    }
+  ]
+}

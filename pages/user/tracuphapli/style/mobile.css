@@ -52,6 +52,15 @@
   margin-bottom: 14px;
 }
 
+.tra-cuu-phap-ly__bo-loc-mo-rong {
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.tra-cuu-phap-ly__bo-loc-mo-rong select {
+  max-width: 100%;
+}
+
 /* Căn nhãn với nhóm nút lọc và giảm cỡ chữ. */
 .tra-cuu-phap-ly__nhan-bo-loc {
   padding-top: 6px;

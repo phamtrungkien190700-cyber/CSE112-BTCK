@@ -39,9 +39,11 @@ pages/
 data/
   users.json             # Registered accounts (passwords are hashed)
   legal.json             # Legal categories and expert directory
+  legal-supplement.json  # Clearly labeled illustrative procedure records
   expert-content.json    # Articles, checklists, and expert profiles
   notifications.json     # Notification templates and user notifications
   settings.json          # System settings
+  user-workspaces.json   # Per-user saved suggestions and redacted reviews
   db.json                # Legacy seed data, imported on first run
 server.js                # Static site and same-origin API
 docs/
@@ -54,3 +56,9 @@ The Node server stores each data group in its own JSON file under `data/`. On fi
 Public registration supports `user` and `legal_expert`; administrator accounts must be bootstrapped using the environment variables above. Passwords are stored as salted scrypt hashes. Login sessions are HttpOnly cookies held in server memory and expire after eight hours; restarting the local server signs users out.
 
 The imported user and admin pages retain their page-specific styles and scripts to preserve their existing layouts. Shared tokens, controls, API access, and role checks live in the root `css/` and `js/` directories.
+
+## Local assistance and sample data
+
+The public search and signed-in user search support combined keyword, category, and fee filters, plus alphabetical sorting. The user workspace includes an explainable, local rule-based procedure recommender and preliminary checklist-risk review. The expert article editor can draft a generic outline from a topic and an existing checklist. These helpers do not call an external LLM or send case text outside the app; they are not legal advice and must not invent or verify legal rules. A user must review and explicitly save a suggestion or draft.
+
+Accepted procedure suggestions and risk-review summaries are stored per signed-in user in `data/user-workspaces.json`. Risk-review history stores only the selected procedure, a rule-based level, and reason codes—not the text entered for analysis. Additional procedure records in `data/legal-supplement.json` are marked as illustrative; verify all current requirements with an official source before relying on them.

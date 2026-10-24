@@ -31,6 +31,21 @@
           <span class="tra-cuu-phap-ly__nhan-bo-loc">Lĩnh vực:</span>
           <div class="tra-cuu-phap-ly__danh-sach-linh-vuc" id="category-filters" aria-label="Lọc theo lĩnh vực"></div>
         </div>  
+        <div class="tra-cuu-phap-ly__bo-loc-mo-rong">
+          <label for="fee-filter">Lệ phí</label>
+          <select id="fee-filter">
+            <option value="all">Tất cả mức lệ phí</option>
+            <option value="free">Miễn phí</option>
+            <option value="paid">Có lệ phí</option>
+            <option value="unknown">Chưa xác minh</option>
+          </select>
+          <label for="procedure-sort">Sắp xếp</label>
+          <select id="procedure-sort">
+            <option value="relevance">Mặc định</option>
+            <option value="name">Tên thủ tục A–Z</option>
+          </select>
+          <button class="nut-xoa-bo-loc" id="reset-filters" type="button">Xóa bộ lọc</button>
+        </div>
         <p class="tra-cuu-phap-ly__trang-thai-ket-qua" id="results-status" aria-live="polite">Đang tải dữ liệu...</p>
         <section class="tra-cuu-phap-ly__ket-qua" id="search-results" aria-label="Kết quả tra cứu" aria-live="polite"></section>
     </div>

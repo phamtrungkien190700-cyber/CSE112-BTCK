@@ -8,6 +8,15 @@
       "passwordHash": "e84d99a15edcf51500f0f46e6fa276bf:c6223a261901284aa42ef46ffc3b1e33a2e93b00d8070c113169691073ad8ceed49c35f043fff30b8f8adb9cf01ffde8bf8da1c50213e6e4bf4041e8f13bba61",
       "createdAt": "2026-10-24T04:17:19.100Z",
       "locked": false
+    },
+    {
+      "id": "00049be2-ac69-4a7f-b823-eb8c0b923c78",
+      "name": "deptrai",
+      "identity": "kien@gmail.com",
+      "role": "user",
+      "passwordHash": "4fdad00365123c4a7af0c280de8d97a0:58f32ef8fbeebcef80ad7525b9f5efda05e7b78a44ba62cf01da20bf1b6d541854862213dc12416e1eda1ca2721282bf9f9bf1eba8b3f67da3a63efa6dd382a0",
+      "createdAt": "2026-10-24T14:51:23.694Z",
+      "locked": false
     }
   ]
 }

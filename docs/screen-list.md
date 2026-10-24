@@ -9,6 +9,7 @@
 | Không gian người dùng | `/pages/user/mainnguoidung/mainnguoidung.html` | `user` |
 | Tra cứu trong không gian người dùng | `/pages/user/tracuphapli/tracuu.html` | `user` |
 | Checklist thủ tục | `/pages/user/check list thu tuc/index.html` | `user` |
+| Trợ lý thông minh và lịch sử gợi ý | `/pages/user/ai-assistant.html` | `user` |
 | Danh bạ chuyên gia | `/pages/user/chuyengiaphapli/chuyengiaphapli.html` | `user` |
 | Thông báo | `/pages/user/notifications/notifications.html` | `user` |
 | Cài đặt | `/pages/user/settings/settings.html` | `user` |
