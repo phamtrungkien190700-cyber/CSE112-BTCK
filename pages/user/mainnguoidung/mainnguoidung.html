@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegalPath | Không gian người dùng</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="style/laptop.css" media="(min-width: 1025px)">
+  <link rel="stylesheet" href="style/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="style/mobile.css" media="(max-width: 600px)">
+  <link rel="stylesheet" href="../tuvan/style/laptop.css" media="(min-width: 1025px)">
+  <link rel="stylesheet" href="../tuvan/style/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="../tuvan/style/mobile.css" media="(max-width: 600px)">
+</head>
+<body data-required-role="user">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng chính">
+      <a class="brand" href="../tracuphapli/tracuu.html" target="content-frame" aria-label="LegalPath - Trang tra cứu">
+        <img class="brand__icon" src="image/Screenshot%202026-10-10%20204712.png" alt="LegalPath - Pháp luật gần bạn hơn">
+      </a>
+
+      <nav class="primary-nav">
+        <h1 class="primary-nav__heading">Điều hướng</h1>
+        <a class="nav-link is-active" href="../tracuphapli/tracuu.html" target="content-frame" aria-current="page">
+          <span class="nav-link__icon" aria-hidden="true">
+            <img src="image/Screenshot%202026-10-10%20224412.png" alt="">
+          </span>
+          <span>Tra cứu pháp lý</span>
+        </a>
+        <a class="nav-link" href="../check%20list%20thu%20tuc/index.html" target="content-frame">
+          <span class="nav-link__icon" aria-hidden="true">
+            <img src="image/Screenshot%202026-10-10%20224426.png" alt="">
+          </span>
+          <span>Checklist thủ tục</span>
+        </a>
+        <a class="nav-link" href="../chuyengiaphapli/chuyengiaphapli.html" target="content-frame">
+          <span class="nav-link__icon" aria-hidden="true">
+            <img src="image/Screenshot%202026-10-10%20224419.png" alt="">
+          </span>
+          <span>Chuyên gia pháp lý</span>
+        </a>
+        <a class="nav-link" href="../notifications/notifications.html" target="content-frame" data-user-nav>
+          <span>Thông báo</span>
+        </a>
+        <a class="nav-link" href="../settings/settings.html" target="content-frame" data-user-nav>
+          <span>Cài đặt</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumbs" aria-label="Vị trí hiện tại">
+          <span>Không gian tra cứu</span>
+          <span class="breadcrumbs__separator" aria-hidden="true">/</span>
+          <span id="current-page-label" aria-current="page">Tra cứu pháp lý</span>
+        </div>
+        <div class="user-profile" aria-label="Tài khoản người dùng">
+          <span class="user-profile__avatar" aria-hidden="true">ND</span>
+          <span class="user-profile__name" data-account-name>Người dùng</span>
+          <button class="user-profile__chevron" type="button" data-logout aria-label="Đăng xuất">Đăng xuất</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <iframe
+          class="content-frame"
+          id="content-frame"
+          name="content-frame"
+          src="../tracuphapli/tracuu.html"
+          title="Tra cứu pháp lý"
+          loading="eager">
+        </iframe>
+      </main>
+    </div>
+  </div>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/pages/user.js" defer></script>
+  <script src="../tuvan/script/action.js" defer></script>
+  <script src="mainnguoidung.js"></script>
+</body>
+</html>

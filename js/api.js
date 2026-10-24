@@ -1,152 +1,86 @@
-// api.js - API cho cổng chuyên gia, lưu dữ liệu qua backend Node.js
+"use strict";
+
 (function () {
-  const API_BASE_URL = "http://[::1]:3001/api/portal";
+  const API_PREFIX = "/api/";
+  const API_ORIGIN = window.location.port === "3001"
+    ? ""
+    : `http://${window.location.hostname || "localhost"}:3001`;
 
-  function cloneData(data) {
-    return data == null ? data : JSON.parse(JSON.stringify(data));
+  async function request(method, endpoint, payload) {
+    const normalizedEndpoint = String(endpoint || "").replace(/^\/+/, "");
+    const options = {
+      method: String(method || "GET").toUpperCase(),
+      credentials: "include",
+      headers: {}
+    };
+    if (payload !== undefined) {
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(payload);
+    }
+
+    let response;
+    try {
+      response = await fetch(`${API_ORIGIN}${API_PREFIX}${normalizedEndpoint}`, options);
+    } catch (error) {
+      throw new Error("Không kết nối được API. Hãy chạy `node server.js` trong thư mục dự án rồi thử lại.");
+    }
+    const contentType = response.headers.get("content-type") || "";
+    const result = contentType.includes("application/json")
+      ? await response.json()
+      : await response.text();
+    if (!response.ok) {
+      const message = result && typeof result === "object" && result.error
+        ? result.error
+        : `API request failed (HTTP ${response.status}).`;
+      throw new Error(message);
+    }
+    return result;
   }
 
-  async function readPortalData() {
-    const saved = await MockAPI.getPortalData();
-    if (saved) return saved;
-    const storeRef = globalThis.Store || window.Store;
-    return storeRef && typeof storeRef.get === "function"
-      ? cloneData(storeRef.get())
-      : { articles: [], checklists: [], profile: null };
-  }
+  const api = {
+    request,
+    getCurrentUser: () => request("GET", "auth/me"),
+    login: (credentials) => request("POST", "auth/login", credentials),
+    register: (details) => request("POST", "auth/register", details),
+    logout: () => request("POST", "auth/logout", {}),
+    getUsers: () => request("GET", "users"),
+    updateUser: (id, data) => request("PATCH", `users/${encodeURIComponent(id)}`, data),
+    getLegalCategories: () => request("GET", "legal-categories"),
+    createLegalCategory: (data) => request("POST", "legal-categories", data),
+    updateLegalCategory: (id, data) => request("PATCH", `legal-categories/${encodeURIComponent(id)}`, data),
+    deleteLegalCategory: (id) => request("DELETE", `legal-categories/${encodeURIComponent(id)}`),
+    getExperts: () => request("GET", "experts-directory"),
+    getNotifications: () => request("GET", "notifications"),
+    updateNotification: (id, data) => request("PATCH", `notifications/${encodeURIComponent(id)}`, data)
+  };
 
-  function createId(prefix) {
-    return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
-  }
-
-  const MockAPI = {
-    baseURL: API_BASE_URL,
-
-    async getPortalData() {
-      const response = await fetch(API_BASE_URL);
-      if (!response.ok) {
-        throw new Error(`Không tải được dữ liệu từ API (HTTP ${response.status}).`);
-      }
-      return response.json();
-    },
-
-    async savePortalData(data) {
-      const response = await fetch(API_BASE_URL, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      const result = await response.json().catch(() => null);
-      if (!response.ok) {
-        if (response.status === 405) {
-          throw new Error("API backend không hỗ trợ lưu dữ liệu. Hãy chạy `node server.js` ở cổng 3001; Live Server chỉ dùng để mở trang HTML.");
-        }
-        throw new Error(result?.error || `Không lưu được dữ liệu qua API (HTTP ${response.status}).`);
-      }
-      return result;
-    },
-
-    async request(method, endpoint, payload) {
-      const parts = String(endpoint || "").replace(/^\/+/, "").split("/").filter(Boolean);
-      const data = await readPortalData();
-      const collection = parts[0];
-      const id = parts[1];
-
-      if (method === "GET") {
-        if (!collection) return cloneData(data);
-        if (collection === "articles") {
-          return cloneData(id ? data.articles.find((item) => item.id === id) || null : data.articles);
-        }
-        if (collection === "checklists") {
-          return cloneData(id ? data.checklists.find((item) => item.id === id) || null : data.checklists);
-        }
-        if (collection === "profile") return cloneData(data.profile);
-      }
-
-      if (method === "POST" && ["articles", "checklists"].includes(collection)) {
-        const item = { ...payload, id: payload.id || createId(collection === "articles" ? "art" : "cl") };
-        data[collection].unshift(item);
-        await this.savePortalData(data);
-        return cloneData(item);
-      }
-
-      if (method === "PUT" && collection === "profile") {
-        data.profile = { ...(data.profile || {}), ...payload };
-        await this.savePortalData(data);
-        return cloneData(data.profile);
-      }
-
-      if (method === "PUT" && ["articles", "checklists"].includes(collection) && id) {
-        const index = data[collection].findIndex((item) => item.id === id);
-        if (index < 0) return null;
-        data[collection][index] = { ...data[collection][index], ...payload, id };
-        await this.savePortalData(data);
-        return cloneData(data[collection][index]);
-      }
-
-      if (method === "DELETE" && ["articles", "checklists"].includes(collection) && id) {
-        const index = data[collection].findIndex((item) => item.id === id);
-        if (index < 0) return null;
-        const [removed] = data[collection].splice(index, 1);
-        await this.savePortalData(data);
-        return cloneData(removed);
-      }
-
-      throw new Error(`Unsupported mock API route: ${method} ${endpoint}`);
-    },
-
-    async getArticles() {
-      return this.request("GET", "articles");
-    },
-    async getArticle(id) {
-      return this.request("GET", `articles/${id}`);
-    },
-    async createArticle(data) {
-      return this.request("POST", "articles", data);
-    },
-    async updateArticle(id, data) {
-      return this.request("PUT", `articles/${id}`, data);
-    },
-    async deleteArticle(id) {
-      return this.request("DELETE", `articles/${id}`);
-    },
-
-    async getChecklists() {
-      return this.request("GET", "checklists");
-    },
-    async getChecklist(id) {
-      return this.request("GET", `checklists/${id}`);
-    },
-    async createChecklist(data) {
-      return this.request("POST", "checklists", data);
-    },
-    async updateChecklist(id, data) {
-      return this.request("PUT", `checklists/${id}`, data);
-    },
-    async deleteChecklist(id) {
-      return this.request("DELETE", `checklists/${id}`);
-    },
-
-    async getProfile() {
-      return this.request("GET", "profile");
-    },
-    async updateProfile(data) {
-      return this.request("PUT", "profile", data);
+  const expertPortalApi = {
+    baseURL: `${API_ORIGIN}${API_PREFIX}portal`,
+    request,
+    getPortalData: () => request("GET", "portal"),
+    savePortalData: (data) => request("PUT", "portal", data),
+    getArticles: () => request("GET", "articles"),
+    getArticle: (id) => request("GET", `articles/${encodeURIComponent(id)}`),
+    createArticle: (data) => request("POST", "articles", data),
+    updateArticle: (id, data) => request("PUT", `articles/${encodeURIComponent(id)}`, data),
+    deleteArticle: (id) => request("DELETE", `articles/${encodeURIComponent(id)}`),
+    getChecklists: () => request("GET", "checklists"),
+    getChecklist: (id) => request("GET", `checklists/${encodeURIComponent(id)}`),
+    createChecklist: (data) => request("POST", "checklists", data),
+    updateChecklist: (id, data) => request("PUT", `checklists/${encodeURIComponent(id)}`, data),
+    deleteChecklist: (id) => request("DELETE", `checklists/${encodeURIComponent(id)}`),
+    getProfile: async () => (await request("GET", "portal")).profile,
+    updateProfile: async (profile) => {
+      const data = await request("GET", "portal");
+      data.profile = profile;
+      await request("PUT", "portal", data);
+      return data.profile;
     }
   };
 
-  window.MindCareMockAPI = MockAPI;
-  window.mockApi = MockAPI;
-
-  window.loadArticles = async function loadArticles() {
-    const articles = await MockAPI.getArticles();
-    console.log("[MockAPI] articles:", articles);
-    return articles;
-  };
-
-  window.loadProfile = async function loadProfile() {
-    const profile = await MockAPI.getProfile();
-    console.log("[MockAPI] profile:", profile);
-    return profile;
-  };
+  window.LegalPathAPI = api;
+  window.MindCareMockAPI = expertPortalApi;
+  window.mockApi = expertPortalApi;
+  window.loadArticles = () => expertPortalApi.getArticles();
+  window.loadProfile = () => expertPortalApi.getProfile();
 })();

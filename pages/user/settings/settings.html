@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f8fa">
   <title>Cài đặt | LegalPath</title>
-  <link rel="stylesheet" href="../../css/page-header.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="../../../css/page-header.css">
   <link rel="stylesheet" href="settings.css">
   <link rel="stylesheet" href="settings-responsive.css">
-  <script src="../../css/page-header.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/pages/user.js" defer></script>
+  <script src="../../../css/page-header.js" defer></script>
   <script src="settings.js" defer></script>
 </head>
-<body data-page="settings" data-page-group="editor">
+<body data-page="settings" data-page-group="user" data-required-role="user">
   <div class="app-shell">
     <aside class="sidebar" aria-label="Điều hướng">
-      <a class="brand" href="#" aria-label="LegalPath - Trang chủ">
+      <a class="brand" href="/" aria-label="LegalPath - Trang chủ">
         <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 7.1 12 3l9 4.1v11.8L12 23l-9-4.1V7.1Z" fill="#1555c8"/>
           <path d="M3 7.1h18M12 3v20" stroke="#fff" stroke-width="1.5"/>
@@ -27,13 +32,13 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
           <span>Cài đặt</span>
         </a>
-        <a class="nav-link" href="../notification/notifications.html">
+        <a class="nav-link" href="../notifications/notifications.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
           <span>Thông báo</span><span class="nav-count">3</span>
         </a>
       </nav>
 
-      <button class="logout-button" id="logoutButton" type="button">
+      <button class="logout-button" id="logoutButton" data-logout type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg>
         <span>Đăng xuất</span>
       </button>
@@ -41,9 +46,9 @@
 
     <div class="workspace">
       <header class="topbar">
-        <div class="breadcrumbs"><span data-page-context>Không gian biên tập</span><span aria-hidden="true">/</span><strong data-page-label>Cài đặt</strong></div>
-        <button class="profile-menu" type="button" aria-label="Tài khoản Editor">
-          <span class="profile-avatar" data-initials>MA</span><span>Editor</span>
+        <div class="breadcrumbs"><span data-page-context>Không gian người dùng</span><span aria-hidden="true">/</span><strong data-page-label>Cài đặt</strong></div>
+        <button class="profile-menu" type="button" aria-label="Tài khoản người dùng">
+          <span class="profile-avatar" data-account-initial>ND</span><span data-account-name>Người dùng</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
         </button>
       </header>
@@ -106,7 +111,7 @@
               <section class="panel identity-panel">
                 <span class="identity-avatar" data-initials>MA</span>
                 <strong data-summary-name>Nguyễn Minh Anh</strong>
-                <span class="identity-role">Editor</span>
+                <span class="identity-role" data-account-role>Người dùng</span>
                 <small>Tài khoản cá nhân · Tham gia từ tháng 08/2026</small>
               </section>
 

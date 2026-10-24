@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "2bdd0ba7-385f-44ed-b3c7-cef4b6007fb2",
+      "name": "Phạm Trung Kiên",
+      "identity": "anhdatrang3100@gmail.com",
+      "role": "legal_expert",
+      "passwordHash": "e84d99a15edcf51500f0f46e6fa276bf:c6223a261901284aa42ef46ffc3b1e33a2e93b00d8070c113169691073ad8ceed49c35f043fff30b8f8adb9cf01ffde8bf8da1c50213e6e4bf4041e8f13bba61",
+      "createdAt": "2026-10-24T04:17:19.100Z",
+      "locked": false
+    }
+  ]
+}

@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f8fa">
   <title>Thông báo | LegalPath</title>
-  <link rel="stylesheet" href="../../css/page-header.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="../../../css/page-header.css">
   <link rel="stylesheet" href="notifications.css">
   <link rel="stylesheet" href="notifications-responsive.css">
-  <script src="../../css/page-header.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/pages/user.js" defer></script>
+  <script src="../../../css/page-header.js" defer></script>
   <script src="notifications.js" defer></script>
 </head>
-<body data-page="notifications" data-page-group="editor">
+<body data-page="notifications" data-page-group="user" data-required-role="user">
   <div class="app-shell">
     <aside class="sidebar" aria-label="Điều hướng">
-      <a class="brand" href="#" aria-label="LegalPath - Trang chủ">
+      <a class="brand" href="/" aria-label="LegalPath - Trang chủ">
         <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 7.1 12 3l9 4.1v11.8L12 23l-9-4.1V7.1Z" fill="#1555c8"/>
           <path d="M3 7.1h18M12 3v20" stroke="#fff" stroke-width="1.5"/>
@@ -23,7 +28,7 @@
       </a>
 
       <nav class="side-nav" aria-label="Menu cài đặt">
-        <a class="nav-link" href="../setting/settings.html">
+        <a class="nav-link" href="../settings/settings.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
           <span>Cài đặt</span>
         </a>
@@ -36,9 +41,9 @@
 
     <div class="workspace">
       <header class="topbar">
-        <div class="breadcrumbs"><span data-page-context>Không gian biên tập</span><span aria-hidden="true">/</span><strong data-page-label>Thông báo</strong></div>
-        <button class="profile-menu" type="button" aria-label="Tài khoản Editor">
-          <span class="profile-avatar">E</span><span>Editor</span>
+        <div class="breadcrumbs"><span data-page-context>Không gian người dùng</span><span aria-hidden="true">/</span><strong data-page-label>Thông báo</strong></div>
+        <button class="profile-menu" type="button" aria-label="Tài khoản người dùng">
+          <span class="profile-avatar" data-account-initial>ND</span><span data-account-name>Người dùng</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
         </button>
       </header>
@@ -92,7 +97,7 @@
           </nav>
         </div>
 
-        <a class="notification-settings" href="../setting/settings.html">
+        <a class="notification-settings" href="../settings/settings.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
           <span>Cài đặt thông báo</span>
         </a>

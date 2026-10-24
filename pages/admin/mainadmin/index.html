@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Không gian quản trị | LegalPath</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="css/laptop.css">
+  <link rel="stylesheet" href="css/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px)">
+</head>
+<body data-required-role="admin">
+  <div class="admin-shell">
+    <aside class="sidebar" aria-label="Điều hướng quản trị">
+      <a class="brand" href="../dieukhuyennentang/dknentang.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-label="LegalPath - Bảng điều khiển">
+        <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 2 29 8v3H3V8l13-6ZM5 13h5v12H5zm8 0h6v12h-6zm9 0h5v12h-5zM3 27h26v3H3z" fill="currentColor"/>
+        </svg>
+        <span class="brand__text"><strong>LegalPath</strong><small>Pháp luật gần bạn hơn</small></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Các trang quản trị">
+        <a class="nav-link is-active" href="../dieukhuyennentang/dknentang.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">◷</span><span>Tổng quan nền tảng</span>
+        </a>
+        <a class="nav-link" href="../quanliluat/quanliluat.html" target="admin-content" data-page-name="Quản lý Taxonomy">
+          <span class="nav-icon" aria-hidden="true">▥</span><span>Quản lý Taxonomy</span>
+        </a>
+        <a class="nav-link" href="../quanlitaikhoan/quanlitk.html" target="admin-content" data-page-name="Quản lý tài khoản">
+          <span class="nav-icon" aria-hidden="true">♣</span><span>Quản lý tài khoản</span>
+        </a>
+      </nav>
+
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <p class="breadcrumbs">
+          <span>Không gian quản trị</span>
+          <span class="breadcrumbs__separator" aria-hidden="true">/</span>
+          <span id="current-page-label">Bảng điều khiển nền tảng</span>
+        </p>
+        <button class="admin-profile" type="button" aria-label="Tài khoản quản trị viên">
+          <span class="avatar" aria-hidden="true">A</span>
+          <span class="admin-profile__name">Quản trị viên</span>
+          <span aria-hidden="true">⌄</span>
+        </button>
+        <button type="button" data-logout>Đăng xuất</button>
+      </header>
+
+      <main class="content-area">
+        <iframe
+          class="content-frame"
+          id="admin-content"
+          name="admin-content"
+          src="../dieukhuyennentang/dknentang.html"
+          title="Nội dung quản trị LegalPath">
+        </iframe>
+      </main>
+    </div>
+  </div>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/pages/admin.js" defer></script>
+  <script src="js/mainadmin.js" defer></script>
+</body>
+</html>

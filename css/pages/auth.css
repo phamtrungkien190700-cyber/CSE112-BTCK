@@ -1,0 +1,25 @@
+.auth-form[hidden],
+[data-show-login][hidden],
+[data-show-register][hidden] {
+  display: none;
+}
+
+.field select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 15px;
+  color: #142e4f;
+  background: #f4f7fc;
+  border: 1px solid #cad7e8;
+  border-radius: 10px;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 6px;
+  color: #687d99;
+}
+
+.agreement {
+  margin: 1rem 0;
+}

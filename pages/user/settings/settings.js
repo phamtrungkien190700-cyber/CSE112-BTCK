@@ -123,8 +123,4 @@ passwordForm.addEventListener("submit", (event) => {
   showToast("Chức năng đổi mật khẩu cần được kết nối với dịch vụ tài khoản.");
 });
 
-document.querySelector("#logoutButton").addEventListener("click", () => {
-  showToast("Chức năng đăng xuất cần được kết nối với dịch vụ tài khoản.");
-});
-
 setFormSettings(readSavedSettings());

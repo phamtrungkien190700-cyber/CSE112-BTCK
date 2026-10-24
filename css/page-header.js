@@ -17,12 +17,12 @@ const pageHeaderContent = {
     description: "Quản lý thông tin cá nhân, chuyên môn và hồ sơ hành nghề của bạn."
   },
   settings: {
-    group: "Không gian biên tập",
+    group: "Không gian người dùng",
     title: "Cài đặt",
     description: "Quản lý tài khoản và tùy chỉnh trải nghiệm của bạn."
   },
   notifications: {
-    group: "Không gian biên tập",
+    group: "Không gian người dùng",
     title: "Thông báo",
     description: "Theo dõi phản hồi và cập nhật pháp lý dành cho bạn."
   }
@@ -46,7 +46,7 @@ if (!pageContent) {
       || currentPage === "checklists"
       || currentPage === "profile"
       ? "expert"
-      : "editor";
+      : "user";
     breadcrumbGroup.textContent = pageContent.group;
     breadcrumbTitle.textContent = pageContent.title;
     pageTitle.textContent = pageContent.title;

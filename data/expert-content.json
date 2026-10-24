@@ -1,0 +1,88 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "B?i vi?t m?u",
+      "category": "Ph?p lu?t",
+      "status": "published"
+    },
+    {
+      "id": "2",
+      "title": "B?o v? th?ng tin c? nh?n",
+      "category": "An to?n th?ng tin",
+      "status": "draft"
+    },
+    {
+      "id": "art-mv4vdg73bc32a",
+      "title": "Xzasdas",
+      "desc": "dsadas",
+      "category": "Ph?p lu?t lao d?ng",
+      "status": "draft",
+      "checklistId": null,
+      "views": 0,
+      "date": "2026-10-12",
+      "author": "Lu?t su",
+      "tags": [],
+      "content": [
+        {
+          "t": "p",
+          "x": "dsadas"
+        }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "id": "cl-mv51e0cmczi41",
+      "name": "213123",
+      "desc": "",
+      "category": "Pháp luật lao động",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "q-mv51e0cmdn18d",
+          "text": "231312321321",
+          "type": "yesno",
+          "required": true
+        }
+      ],
+      "updatedAt": "2026-10-12",
+      "createdAt": "2026-10-12"
+    },
+    {
+      "id": "cl-mv50yzy27lir8",
+      "name": "ddeprrai",
+      "desc": "",
+      "category": "Pháp luật lao động",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "q-mv50yzy2b1uqu",
+          "text": "dđ",
+          "type": "yesno",
+          "required": true
+        }
+      ],
+      "updatedAt": "2026-10-12",
+      "createdAt": "2026-10-12"
+    },
+    {
+      "id": "cl-mv50rrpzziuar",
+      "name": "de;trak",
+      "desc": "",
+      "category": "Ph�p lu?t lao d?ng",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "q-mv50rrpzfo8gc",
+          "text": "321312312312",
+          "type": "yesno",
+          "required": true
+        }
+      ],
+      "updatedAt": "2026-10-12",
+      "createdAt": "2026-10-12"
+    }
+  ],
+  "experts": []
+}

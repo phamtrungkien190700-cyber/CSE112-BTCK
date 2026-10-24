@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tra cứu pháp lý | LegalPath</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="style/laptop.css">
+  <link rel="stylesheet" href="style/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="style/mobile.css" media="(max-width: 600px)">
+</head>
+<body>
+  <main class="tra-cuu-phap-ly" id="legal-search">
+    <div class="tra-cuu-phap-ly__noi-dung">
+        <section class="tra-cuu-phap-ly__gioi-thieu" aria-labelledby="page-title">
+          <h1 id="page-title">Tra cứu Pháp lý</h1>
+          <p>Tìm kiếm thông tin pháp luật và hướng dẫn thủ tục để hiểu cùng LegalPath.</p>
+        </section>
+        <form class="tra-cuu-phap-ly__bieu-mau" id="search-form" role="search">
+          <label class="tra-cuu-phap-ly__khung-o-nhap" for="search-input">
+            <input id="search-input" name="q" type="search" placeholder="Thủ tục cấp Sổ đỏ lần đầu" autocomplete="off">
+          </label>
+          <button class="tra-cuu-phap-ly__nut-tim-kiem" type="submit">
+            <span>Tìm kiếm</span>
+          </button>
+        </form>
+
+        <div class="tra-cuu-phap-ly__bo-loc">
+          <span class="tra-cuu-phap-ly__nhan-bo-loc">Lĩnh vực:</span>
+          <div class="tra-cuu-phap-ly__danh-sach-linh-vuc" id="category-filters" aria-label="Lọc theo lĩnh vực"></div>
+        </div>  
+        <p class="tra-cuu-phap-ly__trang-thai-ket-qua" id="results-status" aria-live="polite">Đang tải dữ liệu...</p>
+        <section class="tra-cuu-phap-ly__ket-qua" id="search-results" aria-label="Kết quả tra cứu" aria-live="polite"></section>
+    </div>
+
+    <dialog class="hop-thoai-thu-tuc" id="procedure-dialog" aria-labelledby="dialog-title">
+
+      <div class="hop-thoai-thu-tuc__dau">
+        <h2 id="dialog-title"></h2>
+        <button class="hop-thoai-thu-tuc__dong" id="dialog-close" type="button" aria-label="Đóng">x</button>
+      </div>
+      <div class="hop-thoai-thu-tuc__than" id="dialog-content"></div>
+    </dialog>
+  </main>
+  <script src="/js/api.js" defer></script>
+  <script src="script/action.js" defer></script>
+</body>
+</html>

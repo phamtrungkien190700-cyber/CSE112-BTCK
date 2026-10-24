@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fb">
+  <title>LegalPath | Pháp luật gần bạn hơn</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    body { min-height: 100vh; background: var(--page-background); color: var(--text-color); }
+    main { width: min(900px, calc(100% - 2rem)); margin: 10vh auto; }
+    h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+    .navigation { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .navigation a { padding: 1.25rem; color: inherit; text-decoration: none; }
+    .navigation a:hover { border-color: var(--primary-color); }
+    .navigation h2 { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <p>LEGALPATH</p>
+    <h1>Pháp luật gần bạn hơn</h1>
+    <p>Tra cứu thông tin pháp lý, chuẩn bị hồ sơ và kết nối với chuyên gia.</p>
+    <nav class="navigation" aria-label="Điều hướng LegalPath">
+      <a class="card" href="/pages/public/index.html">
+        <h2>Tra cứu pháp lý</h2>
+        <p>Tìm hiểu lĩnh vực và thủ tục pháp lý phổ biến.</p>
+      </a>
+      <a class="card" href="/pages/auth/login.html">
+        <h2>Đăng nhập hoặc đăng ký</h2>
+        <p>Chọn vai trò và truy cập không gian phù hợp.</p>
+      </a>
+      <a class="card" href="/pages/expert/expert-article-management.html">
+        <h2>Cổng chuyên gia</h2>
+        <p>Quản lý bài viết, checklist và hồ sơ chuyên gia.</p>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
