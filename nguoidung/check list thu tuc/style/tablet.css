@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f7f8fa;
+  color: #263754;
+  font: 14px/1.5 Arial, sans-serif;
+}
+
+.checklist {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 22px;
+}
+
+.checklist__intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.checklist__intro h1 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.checklist__intro p,
+.checklist__status {
+  color: #7888a4;
+}
+
+.checklist__intro p {
+  margin: 0;
+}
+
+.checklist__save {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 4px;
+  background: #293fa0;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.checklist__save:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.checklist__status.is-error {
+  color: #b42318;
+}
+
+.checklist-category {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid #e5eaf1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.checklist-category__title {
+  margin: 0 0 10px;
+  color: #293fa0;
+  font-size: 16px;
+}
+
+.procedure-card + .procedure-card {
+  margin-top: 10px;
+}
+
+.procedure-card__header {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5eaf1;
+}
+
+.procedure-card__name {
+  margin: 0;
+  color: #293fa0;
+  font-size: 15px;
+}
+
+.procedure-card__progress-label {
+  color: #7888a4;
+  font-size: 12px;
+}
+
+.procedure-card__progress {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #e4eaf2;
+}
+
+.procedure-card__progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #3852b5;
+}
+
+.procedure-card__steps {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.procedure-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 9px;
+  border: 1px solid #e5eaf1;
+  border-radius: 4px;
+  background: #f8f9fb;
+  cursor: pointer;
+}
+
+.procedure-step input {
+  margin: 2px 0 0;
+  accent-color: #293fa0;
+}
+
+.procedure-step__title {
+  font-weight: 600;
+}
+
+.checklist__empty {
+  padding: 16px;
+  background: #fff;
+  color: #7888a4;
+}

@@ -1,0 +1,4 @@
+.page { width: min(900px, calc(100% - 48px)); padding-top: 42px; }
+.auth-card { padding: 36px 34px 28px; }
+.brand-name { font-size: 32px; }
+.intro h1 { font-size: 28px; }

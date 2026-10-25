@@ -1,0 +1,232 @@
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+
+body {
+  padding: 16px;
+  background: #f7f8fa;
+  color: #29364b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+
+.danh-ba-chuyen-gia {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.danh-ba-chuyen-gia__gioi-thieu {
+  margin-bottom: 16px;
+}
+
+
+.danh-ba-chuyen-gia__gioi-thieu h1 {
+  margin: 0 0 2px;
+  color: #26364f;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+
+.danh-ba-chuyen-gia__gioi-thieu p {
+  margin: 0;
+  color: #8290a5;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+
+.danh-ba-chuyen-gia__khung-tim-kiem {
+  display: flex;
+  width: min(100%, 350px);
+  height: 30px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 10px;
+  border: 1px solid #e1e6ed;
+  border-radius: 5px;
+  background: #fff;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+
+.danh-ba-chuyen-gia__khung-tim-kiem:focus-within {
+  border-color: #8ca3e3;
+  box-shadow: 0 0 0 3px rgb(41 73 166 / 8%);
+}
+
+
+.danh-ba-chuyen-gia__khung-tim-kiem input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #29364b;
+  font: inherit;
+  font-size: 10px;
+}
+
+
+.danh-ba-chuyen-gia__khung-tim-kiem input::placeholder {
+  color: #99a5b7;
+}
+
+
+.danh-ba-chuyen-gia__trang-thai {
+  margin: 0 0 10px;
+  color: #34445d;
+  font-size: 10px;
+}
+
+
+.danh-ba-chuyen-gia__danh-sach {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* Thẻ của một chuyên gia: xếp dọc và căn giữa nội dung. */
+.the-chuyen-gia {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 14px 14px;
+  border: 1px solid #e1e6ed;
+  border-radius: 7px;
+  background: #fff;
+  text-align: center;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+/* Nhấc nhẹ thẻ và đổi viền/đổ bóng khi rê chuột hoặc đang focus. */
+.the-chuyen-gia:hover,
+.the-chuyen-gia:focus-within {
+  transform: translateY(-3px);
+  border-color: #6384ff;
+  box-shadow: 0 7px 18px rgb(41 73 166 / 12%);
+}
+
+/* Vòng tròn chứa chữ viết tắt của tên chuyên gia. */
+.the-chuyen-gia__anh-dai-dien {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: #e1f3ff;
+  color: #2949a6;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+/* Tên chuyên gia. */
+.the-chuyen-gia__ten {
+  margin: 0 0 2px;
+  color: #34445d;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Chức danh/lĩnh vực của chuyên gia. */
+.the-chuyen-gia__chuc-danh {
+  margin: 0 0 9px;
+  color: #2949a6;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Mô tả ngắn về chuyên gia; flex:1 giúp nút trong thẻ luôn thẳng hàng. */
+.the-chuyen-gia__mo-ta {
+  flex: 1;
+  margin: 0 0 10px;
+  color: #8a98ad;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Nút gửi yêu cầu tư vấn ở chân thẻ. */
+.the-chuyen-gia__nut-tu-van {
+  display: inline-flex;
+  width: 100%;
+  min-height: 29px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #526fca;
+  border-radius: 5px;
+  background: #fff;
+  color: #2949a6;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+/* Đổi nền/chữ của nút khi rê chuột vào thẻ hoặc focus bàn phím. */
+.the-chuyen-gia:hover .the-chuyen-gia__nut-tu-van,
+.the-chuyen-gia__nut-tu-van:hover,
+.the-chuyen-gia__nut-tu-van:focus-visible {
+  border-color: #2949a6;
+  background: #2949a6;
+  color: #fff;
+}
+
+/* Kiểu chung cho thông báo (không có kết quả hoặc lỗi tải dữ liệu). */
+.danh-ba-chuyen-gia__thong-bao {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 15px;
+  border: 1px solid #e1e6ed;
+  border-radius: 7px;
+  background: #fff;
+  color: #718099;
+  font-size: 11px;
+}
+
+/* Màu viền/chữ riêng để nhận biết thông báo lỗi. */
+.danh-ba-chuyen-gia__thong-bao--loi {
+  border-color: #f0caca;
+  color: #9a3030;
+}
+
+.thong-bao-gui-yeu-cau {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border: 1px solid #b9e6d2;
+  border-radius: 8px;
+  background: #ecfdf3;
+  color: #087443;
+  box-shadow: 0 8px 24px rgb(26 42 68 / 16%);
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.thong-bao-gui-yeu-cau--hien {
+  opacity: 1;
+  transform: translateY(0);
+}

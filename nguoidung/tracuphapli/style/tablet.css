@@ -1,0 +1,6 @@
+/* Điều chỉnh phần nội dung dành riêng cho tablet (601–1024px). */
+.tra-cuu-phap-ly__noi-dung {
+  /* Tăng khoảng đệm hai bên để bố cục tablet thoáng hơn. */
+  padding-right: 24px;
+  padding-left: 24px;
+}
