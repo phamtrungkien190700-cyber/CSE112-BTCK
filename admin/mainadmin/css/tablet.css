@@ -1,5 +1,0 @@
-.admin-shell { grid-template-columns: 175px minmax(0, 1fr); }
-.sidebar { padding-right: 9px; padding-left: 9px; }
-.nav-link { gap: 8px; padding: 0 8px; font-size: 11px; }
-.topbar { min-height: 46px; padding: 0 16px; }
-.breadcrumbs, .admin-profile { font-size: 10px; }

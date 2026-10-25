@@ -1,3 +1,0 @@
-# Project Cuối Kỳ
-
-Mô tả dự án...

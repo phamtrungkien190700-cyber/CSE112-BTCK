@@ -1,1 +1,0 @@
-// main.js - JavaScript chính của dự án
