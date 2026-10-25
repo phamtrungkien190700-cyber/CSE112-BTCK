@@ -1,6 +1,5 @@
-// URL của API trả về lĩnh vực và các thủ tục pháp lý; cấu hình đặt trong JavaScript, không đặt trong HTML.
 const DUONG_DAN_API = "http://localhost:3000/list-luat";
-// Lấy các phần tử HTML cần cập nhật; các selector này phụ thuộc vào id trong tracuu.html.
+
 const oNhapTimKiem = document.querySelector("#search-input");
 const bieuMauTimKiem = document.querySelector("#search-form");
 const boLocLinhVuc = document.querySelector("#category-filters");
@@ -12,44 +11,34 @@ const noiDungHopThoai = document.querySelector("#dialog-content");
 
 // Danh sách thủ tục đã làm phẳng từ dữ liệu các lĩnh vực do API trả về.
 let danhSachThuTuc = [];
-// Lĩnh vực đang chọn; "all" nghĩa là không giới hạn theo lĩnh vực.
+
 let linhVucDangChon = "all";
 
 // Chuẩn hóa văn bản để tìm kiếm không phân biệt dấu tiếng Việt và chữ hoa/thường.
 function chuanHoa(vanBan) {
-  // Chuyển giá trị bất kỳ thành chuỗi; giá trị null/undefined được xem như chuỗi rỗng.
   return String(vanBan || "")
     // Tách chữ có dấu thành ký tự cơ sở và dấu kết hợp để xóa dấu ở bước sau.
     .normalize("NFD")
-    // Xóa các dấu kết hợp Unicode trong khoảng mã này.
     .replace(/[\u0300-\u036f]/g, "")
-    // Chữ đ/Đ không bị NFD chuyển thành d nên được thay riêng.
     .replace(/[đĐ]/g, "d")
-    // Chuyển về chữ thường để phép so khớp không phân biệt hoa/thường.
     .toLowerCase();
 }
 
 // Tạo phần tử HTML mới và tùy chọn thêm nội dung dạng văn bản an toàn.
 function taoPhanTu(tenThe, vanBan) {
-  // Tạo thẻ theo tên được truyền vào, ví dụ "p", "button" hoặc "li".
   const phanTu = document.createElement(tenThe);
-  // textContent đặt văn bản, không diễn giải chuỗi đầu vào thành HTML.
   if (vanBan) phanTu.textContent = vanBan;
-  // Trả phần tử để hàm gọi tiếp tục gắn thuộc tính, class hoặc con.
   return phanTu;
 }
 
 // Điền thông tin của một thủ tục vào dialog rồi mở hộp thoại.
 function hienThiChiTiet(thuTuc) {
-  // Đặt tên thủ tục làm tiêu đề hộp thoại.
   tieuDeHopThoai.textContent = thuTuc.name;
-  // Xóa dữ liệu cũ trước khi hiển thị thủ tục được chọn mới.
   noiDungHopThoai.replaceChildren();
 
   // Dùng danh sách mô tả HTML (dl) để trình bày các cặp nhãn/giá trị.
   const thongTinChiTiet = taoPhanTu("dl");
   thongTinChiTiet.className = "hop-thoai-thu-tuc__thong-tin";
-  // Các trường cơ bản cần trình bày; tên trường hiển thị đi cùng thuộc tính dữ liệu tương ứng.
   const cacTruong = [
     ["Mã thủ tục", thuTuc.code],
     ["Lĩnh vực", thuTuc.category_name],
