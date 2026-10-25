@@ -1,0 +1,172 @@
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #243f9c;
+  color: white;
+  padding: 11px 15px;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px #1a2b4b2b;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: .2s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.filter-panel label, .settings-card label, .dialog-heading+label, #sourceForm>label {
+  display: grid;
+  gap: 5px;
+  color: #6f7e93;
+  font-size: 10px;
+}
+
+.filter-panel select, .settings-card input, .settings-card select, #sourceForm input, #sourceForm select {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 8px;
+  background: #fff;
+  color: #334155;
+  font: inherit;
+  min-width: 150px;
+  outline-color: #a9bff8;
+}
+
+.success {
+  color: var(--green);
+  margin: 0;
+}
+
+.dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-heading h2 {
+  font-size: 15px;
+  margin: 0 0 15px;
+}
+
+.icon-button {
+  border: 0;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #7c899b;
+}
+
+dialog {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  width: min(420px,calc(100% - 28px));
+  box-shadow: 0 20px 60px #1a2b4b33;
+}
+
+dialog::backdrop {
+  background: #17243b66;
+}
+
+#sourceForm {
+  display: grid;
+  gap: 12px;
+}
+
+#sourceForm input, #sourceForm select {
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+@media(min-width:1200px) {
+.page-view {
+    padding: 22px 24px 40px;
+  }
+
+.page-heading h1 {
+    font-size: 19px;
+  }
+
+.stat-card {
+    min-height: 60px;
+  }
+
+td {
+    padding: 9px;
+  }
+
+}
+
+@media(max-width:760px) {
+.page-view {
+    padding: 15px 10px;
+  }
+
+.stat-grid {
+    gap: 6px;
+  }
+
+.stat-card {
+    padding: 8px;
+    gap: 6px;
+  }
+
+.stat-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+.stat-card strong {
+    font-size: 14px;
+  }
+
+.stat-card small {
+    font-size: 8px;
+  }
+
+.page-heading h1 {
+    font-size: 16px;
+  }
+
+}
+
+@media(max-width:450px) {
+.stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+.stat-card {
+    min-height: 50px;
+  }
+
+.toolbar {
+    flex-wrap: wrap;
+  }
+
+.search {
+    width: 100%;
+  }
+
+.filter-panel {
+    flex-direction: column;
+  }
+
+.page-heading {
+    align-items: flex-start;
+  }
+
+.page-heading .btn {
+    padding: 7px;
+  }
+
+}

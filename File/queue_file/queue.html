@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Hàng đợi duyệt</title>
+    <link rel="stylesheet" href="queue.css">
+  </head>
+  <body data-page="queue">
+    <div class="app-shell">
+      <aside class="sidebar"> 
+        <a class="brand" href="../sources_file/sources.html" aria-label="LegalPath - Quản lý nguồn">
+          <span class="brand-mark">⚖</span>
+          <span>
+            <strong>LegalPath</strong>
+            <small>Pháp luật gần bạn hơn</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="Điều hướng chính">
+          <a class="nav-link active" href="queue.html"><span>☷</span> Hàng đợi duyệt</a>
+          <a class="nav-link" href="../sources_file/sources.html"><span>▤</span> Quản lý nguồn</a>
+          <a class="nav-link" href="../monitor_file/monitor.html"><span>◷</span> Theo dõi độ mới</a>
+          <a class="nav-link" href="../notification_file/notification.html"><span>🔔</span> Thông báo</a>
+          <a class="nav-link" href="../setting_file/setting.html"><span>⚙</span> Cài đặt</a>
+        </nav>
+        <div class="sidebar-bottom">LegalPath Admin <span>v1.0</span></div>
+      </aside>
+
+      <main class="main-area"> 
+        <header class="topbar">
+          <div class="breadcrumbs">
+            <span>Không gian biên tập</span>
+            <span>/</span>
+            <strong>Hàng đợi duyệt</strong>
+          </div>
+          <button class="profile" id="profileButton" type="button">
+            <span class="avatar">E</span>
+            <span>Editor</span>
+            <span>⌄</span>
+          </button>
+        </header>
+
+        <section class="page-view active" id="page-queue">
+          <div class="page-heading"> 
+            <div>
+              <h1>Hàng đợi duyệt nội dung</h1>
+              <p>Xem và duyệt các nội dung pháp lý được gửi lên hệ thống.</p>
+            </div>
+          </div>
+          <div class="toolbar">
+            <label class="search">
+              <span>⌕</span>
+              <input id="queueSearch" placeholder="Tìm kiếm theo tiêu đề, nguồn, người gửi...">
+            </label>
+            <button class="btn outline" id="queueFilterBtn" type="button">▽ Bộ lọc</button>
+          </div>
+          <div class="tabs">
+            <button class="tab active" data-status="Chờ duyệt" type="button">
+              Chờ duyệt <b id="pendingCount">5</b>
+            </button>
+            <button class="tab" data-status="Đã duyệt" type="button">Đã duyệt <b id="approvedCount">0</b></button>
+            <button class="tab" data-status="Từ chối" type="button">Từ chối <b id="rejectedCount">0</b></button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tiêu đề</th>
+                  <th>Nguồn</th>
+                  <th>Người gửi</th>
+                  <th>Ngày gửi</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="queueRows"></tbody>
+            </table>
+            <div class="empty hidden" id="queueEmpty">Không có nội dung phù hợp.</div>
+          </div>
+          <div class="detail-panel" id="queueDetail"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div> 
+    <script src="../api-client.js"></script>
+    <script src="queue.js"></script>
+  </body>
+</html>

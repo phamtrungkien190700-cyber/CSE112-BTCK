@@ -1,0 +1,15 @@
+{
+  "experts_directory": [
+    {
+      "expert_id": "EXP-01",
+      "full_name": "ThS. Luật sư Trần Minh",
+      "title": "Chuyên gia Luật Đất đai",
+      "category_id": "dat_dai",
+      "avatar_initials": "TM",
+      "description": "Hơn 10 năm kinh nghiệm tư vấn thủ tục nhà đất, tranh chấp tài sản và cấp giấy chứng nhận.",
+      "action_label": "Gửi yêu cầu tư vấn",
+      "id": "fk8BYQFTRJ8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

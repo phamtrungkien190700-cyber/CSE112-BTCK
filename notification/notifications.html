@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Thông báo | LegalPath</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="../../../css/page-header.css">
+  <link rel="stylesheet" href="notifications.css">
+  <link rel="stylesheet" href="notifications-responsive.css">
+  <link rel="stylesheet" href="../shared/account-menu.css">
+  <script src="/js/api.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/pages/user.js" defer></script>
+  <script src="../../../css/page-header.js" defer></script>
+  <script src="notifications.js" defer></script>
+  <script src="../shared/account-menu.js" defer></script>
+</head>
+<body data-page="notifications" data-page-group="user">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng">
+      <a class="brand" href="/" aria-label="LegalPath - Trang chủ">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 7.1 12 3l9 4.1v11.8L12 23l-9-4.1V7.1Z" fill="#1555c8"/>
+          <path d="M3 7.1h18M12 3v20" stroke="#fff" stroke-width="1.5"/>
+        </svg>
+        <span class="brand-copy"><strong>LegalPath</strong><small>Pháp luật gần bạn hơn</small></span>
+      </a>
+
+      <nav class="side-nav" aria-label="Menu cài đặt">
+        <a class="nav-link" href="../setting/settings.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
+          <span>Cài đặt</span>
+        </a>
+        <a class="nav-link active" href="notifications.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
+          <span>Thông báo</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumbs"><span data-page-context>Không gian người dùng</span><span aria-hidden="true">/</span><strong data-page-label>Thông báo</strong></div>
+        <div class="account-menu" data-account-menu>
+          <button class="profile-menu account-menu__toggle" type="button" aria-label="Mở menu tài khoản" aria-haspopup="menu" aria-expanded="false" data-account-menu-toggle>
+            <span class="profile-avatar" data-account-initial>ND</span><span data-account-name>Người dùng</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+          <nav class="account-menu__panel" role="menu" aria-label="Menu tài khoản" data-account-menu-panel hidden>
+            <a class="account-menu__link" href="../setting/settings.html" role="menuitem">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
+              Cài đặt
+            </a>
+            <a class="account-menu__link" href="notifications.html" role="menuitem" aria-current="page">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
+              Thông báo
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="page-heading">
+          <h1>Thông báo</h1>
+          <p>Theo dõi phản hồi và cập nhật pháp lý dành cho bạn.</p>
+        </section>
+
+        <section class="notification-tools" aria-label="Tìm kiếm và lọc thông báo">
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.2 4.2"/></svg>
+            <input id="searchInput" type="search" placeholder="Tìm kiếm theo tiêu đề, nguồn, người gửi..." autocomplete="off">
+          </label>
+          <div class="filter-wrap">
+            <button class="button button-filter" id="filterButton" type="button" aria-expanded="false" aria-controls="filterPanel">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16l-6.2 7.2v5.2l-3.6 1.8v-7L4 5Z"/></svg>
+              Bộ lọc
+            </button>
+            <div class="filter-panel" id="filterPanel" hidden>
+              <label for="categoryFilter">Loại thông báo</label>
+              <select id="categoryFilter">
+                <option value="all">Tất cả loại</option>
+                <option value="reply">Phản hồi</option>
+                <option value="guide">Hướng dẫn</option>
+                <option value="topic">Chủ đề theo dõi</option>
+                <option value="news">Tin pháp lý</option>
+                <option value="welcome">Cập nhật tài khoản</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="list-controls" aria-label="Trạng thái thông báo">
+          <div class="tabs" role="tablist" aria-label="Lọc theo trạng thái">
+            <button class="tab active" type="button" role="tab" aria-selected="true" data-status="all">Tất cả</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-status="unread">Chưa đọc (<span id="unreadCount">3</span>)</button>
+          </div>
+          <button class="mark-all-button" id="markAllButton" type="button">Đánh dấu tất cả đã đọc</button>
+        </section>
+
+        <section class="notification-card" id="notificationList" aria-label="Danh sách thông báo" aria-live="polite"></section>
+
+        <div class="list-footer">
+          <span id="resultCount">Hiển thị 5 thông báo gần đây</span>
+          <nav class="pagination" aria-label="Phân trang">
+            <button type="button" aria-label="Trang trước" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="current-page" type="button" aria-current="page" aria-label="Trang 1">1</button>
+            <button type="button" aria-label="Trang sau" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+          </nav>
+        </div>
+
+        <a class="notification-settings" href="../setting/settings.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
+          <span>Cài đặt thông báo</span>
+        </a>
+        <p class="privacy-note">Thông tin của bạn luôn được bảo mật tại LegalPath.</p>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="detail-dialog" id="detailDialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Đóng">×</button>
+    </form>
+    <span class="dialog-eyebrow">CHI TIẾT THÔNG BÁO</span>
+    <h2 id="dialogTitle"></h2>
+    <p class="dialog-meta" id="dialogMeta"></p>
+    <p class="dialog-description" id="dialogDescription"></p>
+    <a class="dialog-link" id="dialogAction" href="#notification">Mở nội dung liên quan</a>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

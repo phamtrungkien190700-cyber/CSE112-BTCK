@@ -1,0 +1,46 @@
+{
+  "list-user": [
+    {
+      "name": "Demo User 01",
+      "identity": "demo.user01@example.test",
+      "role": "user",
+      "password": "DemoOnly-NotARealPassword-01",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "id": "demo-user-01",
+      "khóa": false
+    },
+    {
+      "name": "Demo User 02",
+      "identity": "demo.user02@example.test",
+      "role": "manager",
+      "password": "DemoOnly-NotARealPassword-02",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "id": "demo-user-02"
+    },
+    {
+      "name": "Demo User 03",
+      "identity": "demo.user03@example.test",
+      "role": "user",
+      "password": "DemoOnly-NotARealPassword-03",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "id": "demo-user-03"
+    },
+    {
+      "name": "Demo User 04",
+      "identity": "demo.user04@example.test",
+      "role": "editor",
+      "password": "DemoOnly-NotARealPassword-04",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "id": "demo-user-04"
+    },
+    {
+      "name": "Demo User 05",
+      "identity": "demo.user05@example.test",
+      "role": "legal_expert",
+      "password": "DemoOnly-NotARealPassword-05",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "id": "demo-user-05"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

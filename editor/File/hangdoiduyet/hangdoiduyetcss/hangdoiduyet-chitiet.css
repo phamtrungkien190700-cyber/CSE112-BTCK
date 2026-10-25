@@ -1,0 +1,161 @@
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #243f9c;
+  color: white;
+  padding: 11px 15px;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px #1a2b4b2b;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: .2s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-panel {
+  display: grid;
+  grid-template-columns: 1.25fr .9fr .8fr;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 13px;
+  margin-top: 6px;
+  min-height: 120px;
+}
+
+.detail-panel h3 {
+  font-size: 11px;
+  margin: 0 0 4px;
+}
+
+.detail-panel p {
+  margin: 3px 0;
+  color: #718096;
+  font-size: 9px;
+}
+
+.detail-meta {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 5px;
+  font-size: 9px;
+}
+
+.detail-meta span:nth-child(odd) {
+  color: #8190a5;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.document-preview {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  color: #65748a;
+  font-size: 8px;
+  line-height: 1.8;
+}
+
+.document-preview strong {
+  font-size: 12px;
+  color: #29364b;
+}
+
+@media(min-width:1200px) {
+.page-view {
+    padding: 22px 24px 40px;
+  }
+
+.page-heading h1 {
+    font-size: 19px;
+  }
+
+.stat-card {
+    min-height: 60px;
+  }
+
+td {
+    padding: 9px;
+  }
+
+}
+
+@media(max-width:760px) {
+.page-view {
+    padding: 15px 10px;
+  }
+
+.stat-grid {
+    gap: 6px;
+  }
+
+.stat-card {
+    padding: 8px;
+    gap: 6px;
+  }
+
+.stat-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+.stat-card strong {
+    font-size: 14px;
+  }
+
+.stat-card small {
+    font-size: 8px;
+  }
+
+.page-heading h1 {
+    font-size: 16px;
+  }
+
+.detail-panel {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width:450px) {
+.stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+.stat-card {
+    min-height: 50px;
+  }
+
+.toolbar {
+    flex-wrap: wrap;
+  }
+
+.search {
+    width: 100%;
+  }
+
+.page-heading {
+    align-items: flex-start;
+  }
+
+.page-heading .btn {
+    padding: 7px;
+  }
+
+}

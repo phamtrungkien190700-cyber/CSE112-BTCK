@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Bảng điều khiển nền tảng | LegalPath</title>
+  <link rel="stylesheet" href="css/laptop.css">
+  <link rel="stylesheet" href="css/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px)">
+</head>
+<body>
+  <main class="dashboard">
+    <section class="page-heading" aria-labelledby="page-title">
+      <h1 id="page-title">Bảng điều khiển nền tảng (Platform Dashboard)</h1>
+      <p>Giám sát tổng quan hệ thống, thống kê lượt tra cứu và trạng thái dữ liệu pháp lý LegalPath.</p>
+    </section>
+
+    <section class="stats-grid" aria-label="Thống kê nền tảng">
+      <article class="stat-card">
+        <div class="stat-card__top">
+          <h2>Tổng số người dùng</h2>
+          <span class="stat-icon stat-icon--blue" aria-hidden="true">♟</span>
+        </div>
+        <p class="stat-value">1,482</p>
+        <p class="stat-trend stat-trend--up">↑ +12% tháng này</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-card__top">
+          <h2>Lượt tra cứu pháp luật</h2>
+          <span class="stat-icon stat-icon--blue" aria-hidden="true">⌕</span>
+        </div>
+        <p class="stat-value">8,640</p>
+        <p class="stat-trend stat-trend--up">↑ +24% tuần này</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-card__top">
+          <h2>Bài viết &amp; Checklist</h2>
+          <span class="stat-icon stat-icon--blue" aria-hidden="true">▤</span>
+        </div>
+        <p class="stat-value">156</p>
+        <p class="stat-trend">Đang hoạt động ổn định</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-card__top">
+          <h2>Cảnh báo nội dung cũ</h2>
+          <span class="stat-icon stat-icon--yellow" aria-hidden="true">⚠</span>
+        </div>
+        <p class="stat-value stat-value--warning">5</p>
+        <p class="stat-trend stat-trend--alert">Cần kiểm duyệt cập nhật</p>
+      </article>
+    </section>
+
+    <section class="dashboard-panels" aria-label="Hoạt động và cảnh báo">
+      <article class="panel activity-panel">
+        <div class="panel-heading">
+          <h2>Hoạt động hệ thống gần đây</h2>
+          <a href="#activity">Xem tất cả</a>
+        </div>
+        <div class="table-scroll">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th scope="col">Thời gian</th>
+                <th scope="col">Thực thể</th>
+                <th scope="col">Hành động</th>
+                <th scope="col">Người thực hiện</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Thời gian">10 phút trước</td>
+                <td data-label="Thực thể"><strong>Checklist</strong></td>
+                <td data-label="Hành động"><span class="action action--green">Tạo mới</span> thủ tục đất đai</td>
+                <td data-label="Người thực hiện">ThS. Luật sư Trần Minh</td>
+              </tr>
+              <tr>
+                <td data-label="Thời gian">45 phút trước</td>
+                <td data-label="Thực thể"><strong>Taxonomy</strong></td>
+                <td data-label="Hành động"><span class="action action--blue">Cập nhật</span> danh mục con</td>
+                <td data-label="Người thực hiện">Quản trị viên (Admin)</td>
+              </tr>
+              <tr>
+                <td data-label="Thời gian">2 giờ trước</td>
+                <td data-label="Thực thể"><strong>Articles</strong></td>
+                <td data-label="Hành động"><span class="action action--green">Xuất bản</span> bài viết mới</td>
+                <td data-label="Người thực hiện">Lê Thị Hồng (Editor)</td>
+              </tr>
+              <tr>
+                <td data-label="Thời gian">Hôm qua</td>
+                <td data-label="Thực thể"><strong>Users</strong></td>
+                <td data-label="Hành động"><span class="action action--red">Đã khóa</span> tài khoản vi phạm</td>
+                <td data-label="Người thực hiện">Quản trị viên (Admin)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel freshness-panel">
+        <div class="panel-heading">
+          <h2>Cảnh báo nội dung (Freshness)</h2>
+          <span class="panel-bell" aria-label="Thông báo">♟</span>
+        </div>
+        <ul class="alert-list">
+          <li class="alert-item">
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div><h3>Luật Đất đai (Sửa đổi)</h3><p>Checklist liên quan đến cấp sổ đỏ cần được cập nhật thông tư mới nhất.</p></div>
+          </li>
+          <li class="alert-item">
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div><h3>Biểu phí trước bạ ô tô</h3><p>Dữ liệu đã quá 6 tháng chưa được biên tập viên kiểm tra nguồn tham chiếu.</p></div>
+          </li>
+          <li class="alert-item">
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <div><h3>Thủ tục Bảo hiểm xã hội</h3><p>Phát hiện thay đổi mức đóng từ cơ quan nhà nước có thẩm quyền.</p></div>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
