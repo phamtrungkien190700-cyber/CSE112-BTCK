@@ -1,4 +1,4 @@
-const $ = (selector, root = document) => root.querySelector(selector); //Hàm chọn phần tử
+ //Hàm chọn phần tử
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 //Lưu trang thái hiện tại
 const state = {                                             //Khai báo biến

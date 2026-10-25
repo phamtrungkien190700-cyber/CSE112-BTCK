@@ -77,7 +77,7 @@
       "sender": "Lê Thị Hồng",
       "date": "11/03/2026",
       "time": "16:32",
-      "status": "Chờ duyệt",
+      "status": "Đã duyệt",
       "description": "Hướng dẫn thực hiện các nội dung cơ bản của hợp đồng lao động."
     },
     {
@@ -86,7 +86,7 @@
       "sender": "Trần Văn Bình",
       "date": "10/03/2026",
       "time": "14:20",
-      "status": "Chờ duyệt",
+      "status": "Từ chối",
       "description": "Thông tin về các thay đổi trong thủ tục đăng ký kinh doanh."
     },
     {
