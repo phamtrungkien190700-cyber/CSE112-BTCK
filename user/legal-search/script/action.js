@@ -17,7 +17,6 @@ let linhVucDangChon = "all";
 // Chuẩn hóa văn bản để tìm kiếm không phân biệt dấu tiếng Việt và chữ hoa/thường.
 function chuanHoa(vanBan) {
   return String(vanBan || "")
-    // Tách chữ có dấu thành ký tự cơ sở và dấu kết hợp để xóa dấu ở bước sau.
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[đĐ]/g, "d")
@@ -76,12 +75,9 @@ function hienThiChiTiet(thuTuc) {
 
 // Tạo các nút lọc: nút "Tất cả" cùng các lĩnh vực lấy từ API.
 function hienThiBoLoc(danhSachLinhVuc) {
-  // Xóa nút cũ để tránh lặp khi vẽ lại danh sách.
   boLocLinhVuc.replaceChildren();
-  // Tạo lựa chọn đặc biệt "all", sau đó nối các lĩnh vực thực tế.
   const tatCaLinhVuc = [{ category_id: "all", category_name: "Tất cả" }, ...danhSachLinhVuc];
 
-  // Dựng từng nút; nút đầu tiên là lựa chọn đang hoạt động mặc định.
   tatCaLinhVuc.forEach((linhVuc, chiSo) => {
     const nut = taoPhanTu("button", linhVuc.category_name);
     nut.type = "button";
@@ -94,14 +90,10 @@ function hienThiBoLoc(danhSachLinhVuc) {
 
 // Lọc dữ liệu hiện có theo từ khóa và lĩnh vực, sau đó dựng lại danh sách kết quả.
 function hienThiKetQua() {
-  // Bỏ khoảng trắng đầu/cuối rồi chuẩn hóa từ khóa tìm kiếm.
   const tuKhoa = chuanHoa(oNhapTimKiem.value.trim());
-  // Chỉ giữ thủ tục thỏa đồng thời điều kiện lĩnh vực và điều kiện từ khóa.
   const thuTucPhuHop = danhSachThuTuc.filter((thuTuc) => {
-    // "all" cho qua mọi lĩnh vực; nếu không thì mã lĩnh vực phải trùng lựa chọn.
     const thuocLinhVucDangChon =
       linhVucDangChon === "all" || thuTuc.category_id === linhVucDangChon;
-    // Gom các trường có thể tìm kiếm thành một chuỗi đã chuẩn hóa.
     const noiDungTimKiem = chuanHoa([
       thuTuc.name,
       thuTuc.code,
@@ -112,11 +104,9 @@ function hienThiKetQua() {
       ...(thuTuc.required_documents || [])
     ].join(" "));
 
-    // includes("") trả về true nên khi ô tìm kiếm rỗng sẽ hiện mọi thủ tục trong lĩnh vực.
     return thuocLinhVucDangChon && noiDungTimKiem.includes(tuKhoa);
   });
 
-  // Cập nhật số kết quả và dọn giao diện kết quả cũ.
   trangThaiKetQua.textContent = `${thuTucPhuHop.length} kết quả phù hợp với tìm kiếm của bạn`;
   ketQuaTraCuu.replaceChildren();
 
@@ -215,7 +205,6 @@ bieuMauTimKiem.addEventListener("submit", (suKien) => {
   hienThiKetQua();
 });
 
-// Lọc ngay khi nội dung ô tìm kiếm thay đổi.
 oNhapTimKiem.addEventListener("input", hienThiKetQua);
 
 // Nút × đóng hộp thoại.
@@ -230,10 +219,8 @@ hopThoai.addEventListener("click", (suKien) => {
 
 // Tải dữ liệu từ API, xác thực cấu trúc, chuẩn hóa danh sách và cập nhật giao diện.
 function taiDanhSachThuTuc() {
-  // Gửi yêu cầu HTTP GET tới API.
   fetch(DUONG_DAN_API)
     .then((phanHoi) => {
-      // fetch chỉ reject khi lỗi mạng; tự kiểm tra HTTP status để bắt lỗi 4xx/5xx.
       if (!phanHoi.ok) {
         throw new Error(`Không tải được dữ liệu (HTTP ${phanHoi.status}).`);
       }
@@ -269,7 +256,6 @@ function taiDanhSachThuTuc() {
       hienThiKetQua();
     })
     .catch((loi) => {
-      // Ghi chi tiết lỗi cho nhà phát triển trong console.
       console.error("Không thể tải dữ liệu tra cứu pháp lý:", loi);
       // Báo trạng thái lỗi trực tiếp trên trang.
       trangThaiKetQua.textContent = "Không thể tải dữ liệu thủ tục.";

@@ -137,9 +137,7 @@ input {
 }
 
 /* Đổi sang xanh đậm hơn khi rê chuột lên nút tìm kiếm. */
-.tra-cuu-phap-ly__nut-tim-kiem:hover {
-  background: #203b8b;
-}
+
 
 /* Đặt nhãn lĩnh vực và nhóm nút lọc nằm trên cùng một hàng. */
 .tra-cuu-phap-ly__bo-loc {
