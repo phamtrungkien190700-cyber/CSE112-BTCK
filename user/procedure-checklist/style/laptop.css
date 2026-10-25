@@ -44,7 +44,7 @@ body {
   background: #293fa0;
   color: #fff;
   font: inherit;
-  cursor: pointer;
+
 }
 
 .bang-kiem__nut-luu:disabled {
@@ -126,7 +126,7 @@ body {
   border: 1px solid #e5eaf1;
   border-radius: 4px;
   background: #f8f9fb;
-  cursor: pointer;
+
 }
 
 .buoc-thu-tuc input {
