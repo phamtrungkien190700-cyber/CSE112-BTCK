@@ -91,7 +91,10 @@
 
   function roleMatchesPath(role, path) {
     if (role === "admin") return true;
-    if (role === "legal_expert") return path.startsWith("/pages/expert/");
+    if (role === "legal_expert") {
+      return path.startsWith("/pages/expert/")
+        || path === "/pages/user/mainnguoidung/mainnguoidung.html";
+    }
     return path.startsWith("/pages/user/");
   }
 

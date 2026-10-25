@@ -1,7 +1,10 @@
 "use strict";
 
 (function () {
-  const pageRole = document.body.dataset.requiredRole;
+  const pageRoles = (document.body.dataset.allowedRoles || document.body.dataset.requiredRole || "")
+    .split(",")
+    .map((role) => role.trim())
+    .filter(Boolean);
   const loginPath = "/pages/auth/login.html";
 
   window.toggleMenu = function toggleMenu(menu, scrim) {
@@ -32,7 +35,7 @@
           .map((part) => part.charAt(0)).join("").toLocaleUpperCase("vi");
       }
 
-      if (pageRole && (!user || (user.role !== pageRole && user.role !== "admin"))) {
+      if (pageRoles.length && (!user || (!pageRoles.includes(user.role) && user.role !== "admin"))) {
         window.top.location.replace(`${loginPath}?returnUrl=${encodeURIComponent(window.location.pathname)}`);
         return;
       }
@@ -52,7 +55,7 @@
       });
     } catch (error) {
       console.error("Không thể kiểm tra trạng thái đăng nhập:", error);
-      if (pageRole) {
+      if (pageRoles.length) {
         window.top.location.replace(loginPath);
       }
     }

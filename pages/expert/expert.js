@@ -885,6 +885,7 @@ function portalToast(message, type = "success") {
   }, 2600);
 }
 
+// Shared portal UI: statistic cards, pagination, sidebar profile, and modals.
 function statCard(label, value, tone, iconName) {
   return `<div class="stat-card"><span class="stat-icon ${tone || ""}">${icon(iconName)}</span><span class="stat-copy"><span>${label}</span><b>${value}</b></span></div>`;
 }
@@ -949,6 +950,7 @@ function closePortalModal() {
   document.getElementById("portalOverlay")?.remove();
 }
 
+// ARTICLE: statistics, article list, filtering, details, export, and edit form.
 function renderArticles() {
   const data = portalData();
   const arts = data.articles || [];
@@ -1034,6 +1036,7 @@ function renderArticleForm() {
   mountOverlay(`<div class="modal-backdrop open"><form class="modal modal-wide" id="articleForm" role="dialog" aria-modal="true" aria-labelledby="articleFormTitle"><header class="modal-head"><h2 id="articleFormTitle">${existing ? "Chỉnh sửa bài viết" : "Tạo bài viết mới"}</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="modal-grid"><div class="form-field"><label for="articleTitle">Tiêu đề bài viết <span aria-hidden="true">*</span></label><input class="input" id="articleTitle" name="title" value="${esc(article.title)}" maxlength="180" required></div><div class="form-field"><label for="articleCategory">Chuyên mục</label><select class="input" id="articleCategory" name="category">${CATEGORIES.map((category) => `<option value="${esc(category)}" ${article.category === category ? "selected" : ""}>${esc(category)}</option>`).join("")}</select></div><div class="form-field"><label for="articleStatus">Trạng thái</label><select class="input" id="articleStatus" name="status"><option value="draft" ${article.status === "draft" ? "selected" : ""}>Bản nháp</option><option value="pending" ${article.status === "pending" ? "selected" : ""}>Chờ duyệt</option><option value="published" ${article.status === "published" ? "selected" : ""}>Đã xuất bản</option></select></div><div class="form-field"><label for="articleChecklist">Checklist đính kèm</label><select class="input" id="articleChecklist" name="checklistId"><option value="">Không gắn checklist</option>${checklistOptions.filter((item) => item.value !== "").map((option) => `<option value="${esc(option.value)}" ${article.checklistId === option.value ? "selected" : ""}>${esc(option.label)}</option>`).join("")}</select></div><div class="form-field full"><label for="articleDesc">Mô tả ngắn</label><textarea class="input" id="articleDesc" name="desc" rows="2" maxlength="300">${esc(article.desc || "")}</textarea></div><section class="form-field full article-copilot"><h3>Trợ lý biên tập theo dữ liệu LegalPath</h3><p>Gợi ý dàn ý quy tắc tại chỗ từ chủ đề và checklist; không gửi nội dung ra ngoài và không tự thêm điều luật.</p><label for="articleCopilotPrompt">Chủ đề cần xây dựng dàn ý</label><input class="input" id="articleCopilotPrompt" maxlength="180" value="${esc(article.title || "")}" placeholder="Ví dụ: Các bước rà soát hợp đồng lao động"><div class="article-copilot__actions"><button class="btn" type="button" data-action="article-copilot-generate">Tạo gợi ý</button><span id="articleCopilotStatus" role="status" aria-live="polite"></span></div><div id="articleCopilotResult" hidden><p id="articleCopilotExplanation"></p><label for="articleCopilotDraft">Xem lại và chỉnh sửa dàn ý</label><textarea class="input" id="articleCopilotDraft" rows="9"></textarea><div class="article-copilot__actions"><button class="btn btn-primary" type="button" data-action="article-copilot-accept">Chấp nhận dàn ý</button><button class="btn" type="button" data-action="article-copilot-retry">Tạo lại</button><button class="btn btn-danger" type="button" data-action="article-copilot-reject">Từ chối</button></div></div></section><div class="form-field full"><label for="articleTags">Tags</label><input class="input" id="articleTags" name="tags" value="${esc(tagText)}" placeholder="Nhập tag, cách nhau bởi dấu phẩy"></div><div class="form-field full"><label for="articleBody">Nội dung bài viết <span aria-hidden="true">*</span></label><textarea class="input" id="articleBody" name="body" rows="12" required>${esc(bodyText)}</textarea></div></div></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Hủy</button><button class="btn btn-primary" type="submit">${icon("check")} Lưu bài viết</button></footer></form></div>`);
 }
 
+// CHECKLIST: checklist list, filtering, question editor, and detail view.
 function renderChecklists() {
   const checklists = portalData().checklists || [];
   portal.root.innerHTML = `
@@ -1079,6 +1082,7 @@ function showChecklist(id) {
   mountOverlay(`<div class="modal-backdrop open"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="checklistViewTitle"><header class="modal-head"><h2 id="checklistViewTitle">${esc(item.name)}</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="article-meta"><span>${icon("folder")}${esc(item.category)}</span><span>${icon("calendar")}Cập nhật ${fmtDate(item.updatedAt)}</span><span>${icon("list")}${item.questions.length} tiêu chí</span><span class="badge ${STATUS_BADGE[item.status] || "badge-neutral"}">${CL_STATUS[item.status] || "Bản nháp"}</span></div><p>${esc(item.desc || "")}</p><section class="panel"><div class="panel-head"><h2>Danh sách tiêu chí</h2></div><div class="panel-body">${item.questions.map((question, index) => `<div class="question-readonly"><span class="question-index">${index + 1}</span><div><p>${esc(question.text)}</p><small>${esc(QTYPES[question.type] || "Trả lời")} · ${question.required ? "Bắt buộc" : "Tùy chọn"}</small></div></div>`).join("")}</div></section></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Đóng</button><button class="btn btn-primary" type="button" data-action="checklist-edit" data-id="${esc(item.id)}">${icon("edit")} Chỉnh sửa</button></footer></section></div>`);
 }
 
+// PROFILE: expert profile, credentials, delete confirmation, and public preview.
 function renderProfile() {
   const profile = portalData().profile;
   if (!profile) {
@@ -1113,6 +1117,7 @@ function renderPublicPreview() {
   mountOverlay(`<div class="modal-backdrop open"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="publicPreviewTitle"><header class="modal-head"><h2 id="publicPreviewTitle">Hồ sơ công khai</h2><button class="icon-button" type="button" data-action="modal-close" aria-label="Đóng">${icon("x")}</button></header><div class="modal-body"><div class="identity-top"><span class="avatar">${esc(p.initials || "TM")}</span><h2>${esc(p.name)}</h2><p>${esc(p.title)} · ${esc(p.role)}</p><span class="badge badge-success">Đã xác minh chuyên môn</span></div><p>${esc(p.bio)}</p><div class="article-meta"><span>${icon("pin")}${esc(p.city)}</span><span>${icon("briefcase")}${esc(p.yearsExperience)} năm kinh nghiệm</span><span>${icon("mail")}${esc(p.email)}</span></div></div><footer class="modal-foot"><button class="btn" type="button" data-action="modal-close">Đóng</button></footer></section></div>`);
 }
 
+// ARTICLE: create a local editorial outline for the article form.
 async function generateArticleCopilotDraft() {
   const prompt = document.getElementById("articleCopilotPrompt");
   const status = document.getElementById("articleCopilotStatus");
@@ -1165,6 +1170,7 @@ async function generateArticleCopilotDraft() {
 
 async function dispatchPortalAction(action, id) {
   if (action === "modal-close") { closePortalModal(); return; }
+  // Article actions.
   if (action === "article-copilot-generate" || action === "article-copilot-retry") {
     await generateArticleCopilotDraft();
     return;
@@ -1196,6 +1202,7 @@ async function dispatchPortalAction(action, id) {
     return;
   }
   if (action === "export") { exportArticles(); return; }
+  // Checklist actions.
   if (action === "checklist-create" || action === "checklist-edit") {
     const existing = action === "checklist-edit" ? portalData().checklists.find((item) => item.id === id) : null;
     portal.modal = { type: "checklist-form", id: existing?.id || "", name: existing?.name || "", desc: existing?.desc || "", category: existing?.category || CATEGORIES[0], status: existing?.status || "draft", questions: existing ? existing.questions.map((question) => ({ ...question })) : [{ text: "", type: "yesno", required: true }] };
@@ -1218,6 +1225,7 @@ async function dispatchPortalAction(action, id) {
     renderChecklistForm();
     return;
   }
+  // Profile and credential actions.
   if (action === "profile-create") {
     const data = portalData();
     data.profile = { ...SEED_PROFILE, licenses: [], name: "", email: "", phone: "", organization: "", specialty: "", yearsExperience: 0, bio: "" };
@@ -1260,6 +1268,7 @@ function handlePortalClick(event) {
 async function handlePortalSubmit(event) {
   const form = event.target;
   if (!form.matches("form")) return;
+  // Article form submission.
   if (form.id === "articleForm") {
     event.preventDefault();
     const fields = new FormData(form);
@@ -1298,6 +1307,7 @@ async function handlePortalSubmit(event) {
     portalToast(existing ? "Bài viết đã được cập nhật." : "Bài viết mới đã được lưu.");
     return;
   }
+  // Checklist form submission.
   if (form.id === "checklistForm") {
     event.preventDefault();
     const fields = new FormData(form);
@@ -1320,6 +1330,7 @@ async function handlePortalSubmit(event) {
     portalToast(existing ? "Checklist đã được cập nhật." : "Checklist mới đã được tạo.");
     return;
   }
+  // Profile and credential form submissions.
   if (form.id === "profileForm") {
     event.preventDefault();
     const fields = new FormData(form);

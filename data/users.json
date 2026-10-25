@@ -17,6 +17,15 @@
       "passwordHash": "4fdad00365123c4a7af0c280de8d97a0:58f32ef8fbeebcef80ad7525b9f5efda05e7b78a44ba62cf01da20bf1b6d541854862213dc12416e1eda1ca2721282bf9f9bf1eba8b3f67da3a63efa6dd382a0",
       "createdAt": "2026-10-24T14:51:23.694Z",
       "locked": false
+    },
+    {
+      "id": "7d8fe210-2921-460a-b4bd-790c097c249a",
+      "name": "trungkien",
+      "identity": "0349571410",
+      "role": "legal_expert",
+      "passwordHash": "8657f8b7b435ec92537c4992b8a96f74:d4a59854aa096961fc7887a34cb31ff04a0557c9be95e2bb9f8abd696124a84d3d564d163c94a4ec246ac2f9b79145937de165724c85269a6c660faccad95d1e",
+      "createdAt": "2026-10-25T00:29:00.916Z",
+      "locked": false
     }
   ]
 }
