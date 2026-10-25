@@ -15,7 +15,7 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="LegalPath - Trang chủ">
+    <a class="brand" href="/pages/public/index.html" aria-label="LegalPath - Trang tổng quan">
       <span class="brand__mark" aria-hidden="true">⚖</span>
       <span class="brand__copy">
         <strong>LegalPath</strong>
@@ -23,8 +23,15 @@
       </span>
     </a>
     <nav class="account-actions" aria-label="Tài khoản">
-      <a class="button button--quiet" href="/pages/auth/login.html">Đăng nhập</a>
-      <a class="button button--primary" href="/pages/auth/login.html?mode=register">Đăng ký</a>
+      <a class="button button--quiet" href="/pages/auth/login.html" data-guest-action>Đăng nhập</a>
+      <a class="button button--primary" href="/pages/auth/login.html?mode=register" data-guest-action>Đăng ký</a>
+      <a class="account-profile" href="#" aria-label="Mở trang tài khoản" data-public-account hidden>
+        <span class="account-profile__initial" aria-hidden="true" data-public-account-initial></span>
+        <span class="account-profile__identity">
+          <strong data-public-account-name></strong>
+          <small data-public-account-role></small>
+        </span>
+      </a>
     </nav>
   </header>
 

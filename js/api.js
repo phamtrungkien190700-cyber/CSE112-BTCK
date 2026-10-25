@@ -52,6 +52,8 @@
     getExperts: () => request("GET", "experts-directory"),
     getNotifications: () => request("GET", "notifications"),
     updateNotification: (id, data) => request("PATCH", `notifications/${encodeURIComponent(id)}`, data),
+    getEditorCollection: (name) => request("GET", `editor-${encodeURIComponent(name)}`),
+    saveEditorCollection: (name, data) => request("PUT", `editor-${encodeURIComponent(name)}`, data),
     getUserWorkspace: () => request("GET", "user-workspace"),
     saveUserWorkspace: (data) => request("PUT", "user-workspace", data)
   };

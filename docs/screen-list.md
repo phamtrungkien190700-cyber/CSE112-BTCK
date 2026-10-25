@@ -16,6 +16,10 @@
 | Quản lý bài viết chuyên gia | `/pages/expert/expert-article-management.html` | `legal_expert` |
 | Quản lý checklist chuyên gia | `/pages/expert/expert-checklist-management.html` | `legal_expert` |
 | Hồ sơ chuyên gia | `/pages/expert/expert-profile.html` | `legal_expert` |
+| Không gian biên tập | `/pages/editor/index.html` | `editor` |
+| Hàng đợi duyệt nội dung | `/pages/editor/editor-review-queue.html` | `editor` |
+| Quản lý nguồn | `/pages/editor/editor-source-management.html` | `editor` |
+| Theo dõi độ mới | `/pages/editor/editor-freshness-monitor.html` | `editor` |
 | Bảng điều khiển quản trị | `/pages/admin/mainadmin/index.html` | `admin` |
 | Quản lý lĩnh vực pháp luật | `/pages/admin/quanliluat/quanliluat.html` | `admin` |
 | Quản lý tài khoản | `/pages/admin/quanlitaikhoan/quanlitk.html` | `admin` |

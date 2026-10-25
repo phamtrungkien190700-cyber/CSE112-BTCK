@@ -8,6 +8,7 @@
     user: "Người dùng",
     legal_expert: "Chuyên gia pháp lý",
     expert: "Chuyên gia pháp lý",
+    editor: "Biên tập viên",
     admin: "Quản trị viên",
   };
 
@@ -22,6 +23,7 @@
 
   function roleClass(role) {
     if (role === "legal_expert" || role === "expert") return "role-badge role-badge--expert";
+    if (role === "editor") return "role-badge role-badge--editor";
     if (role === "admin") return "role-badge role-badge--manager";
     return "role-badge";
   }
@@ -93,6 +95,9 @@
       const roleCell = createElement("td");
       const role = typeof user.role === "string" ? user.role : "user";
       roleCell.append(createElement("span", roleClass(role), roleLabels[role] || "Người dùng"));
+      if (user.requestedRole && user.requestedRole !== role) {
+        roleCell.append(createElement("small", "role-request", `Yêu cầu: ${roleLabels[user.requestedRole] || user.requestedRole}`));
+      }
 
       const locked = isLocked(user);
       const statusCell = createElement(
@@ -167,6 +172,7 @@
   [
     ["user", "Người dùng"],
     ["legal_expert", "Chuyên gia pháp lý"],
+    ["editor", "Biên tập viên"],
     ["admin", "Quản trị viên"],
   ].forEach(([value, label]) => {
     const option = document.createElement("option");

@@ -85,6 +85,7 @@
 
   function destinationFor(role) {
     if (role === "admin") return "/pages/admin/mainadmin/index.html";
+    if (role === "editor") return "/pages/editor/index.html";
     if (role === "legal_expert") return "/pages/expert/expert-article-management.html";
     return "/pages/user/mainnguoidung/mainnguoidung.html";
   }
@@ -95,6 +96,7 @@
       return path.startsWith("/pages/expert/")
         || path === "/pages/user/mainnguoidung/mainnguoidung.html";
     }
+    if (role === "editor") return path.startsWith("/pages/editor/");
     return path.startsWith("/pages/user/");
   }
 
@@ -112,7 +114,14 @@
       const result = action === "login"
         ? await window.LegalPathAPI.login(details)
         : await window.LegalPathAPI.register(details);
-      showMessage(form, `Thành công. Xin chào ${result.user.name}! Đang chuyển trang...`, "success");
+      const requestedRoleLabel = {
+        editor: "Biên tập viên",
+        admin: "Quản trị viên"
+      }[result.user.requestedRole];
+      const successMessage = requestedRoleLabel
+        ? `Đã tạo tài khoản cho ${result.user.name}. Yêu cầu vai trò ${requestedRoleLabel} đang chờ quản trị viên phê duyệt; bạn sẽ được chuyển đến không gian người dùng.`
+        : `Thành công. Xin chào ${result.user.name}! Đang chuyển trang...`;
+      showMessage(form, successMessage, "success");
       redirecting = true;
       window.setTimeout(() => {
         const returnUrl = new URLSearchParams(window.location.search).get("returnUrl");

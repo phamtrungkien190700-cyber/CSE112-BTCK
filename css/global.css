@@ -61,3 +61,26 @@ textarea {
   border-radius: 0.75rem;
   background: var(--surface-color);
 }
+
+.role-overview-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--surface-color);
+}
+
+.role-overview-link {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.role-overview-link:hover {
+  text-decoration: underline;
+}

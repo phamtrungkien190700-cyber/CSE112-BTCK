@@ -26,6 +26,15 @@
       "passwordHash": "8657f8b7b435ec92537c4992b8a96f74:d4a59854aa096961fc7887a34cb31ff04a0557c9be95e2bb9f8abd696124a84d3d564d163c94a4ec246ac2f9b79145937de165724c85269a6c660faccad95d1e",
       "createdAt": "2026-10-25T00:29:00.916Z",
       "locked": false
+    },
+    {
+      "id": "9826ac9e-c77d-49d3-b49e-184bd414fa9d",
+      "name": "huong",
+      "identity": "huong3100@gmail.com",
+      "role": "user",
+      "passwordHash": "85b29738072c261c3af71a6ff8746188:96a2ce7ba55fd0e6e29447ddb82888e07b4e543302a897a3857481f4ac40263c67266c29f4804861583d690295d4f83e9476a65f6e6b5e5cdd87abcb32f043aa",
+      "createdAt": "2026-10-25T02:45:39.281Z",
+      "locked": false
     }
   ]
 }

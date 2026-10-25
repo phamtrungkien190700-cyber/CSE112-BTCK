@@ -4,6 +4,7 @@
   const roleLabels = {
     user: "Người dùng",
     legal_expert: "Chuyên gia pháp lý",
+    editor: "Biên tập viên",
     admin: "Quản trị viên"
   };
   document.querySelectorAll("[data-account-role]").forEach((element) => {

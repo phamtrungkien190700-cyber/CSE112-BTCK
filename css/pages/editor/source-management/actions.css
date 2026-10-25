@@ -1,0 +1,19 @@
+.source-actions {
+  white-space: nowrap;
+}
+
+.source-actions .icon-button {
+  min-width: 26px;
+  min-height: 26px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.source-actions .icon-button:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}

@@ -1,0 +1,195 @@
+{
+  "editorQueue": [
+    {
+      "title": "Cập nhật quy định mới về thuế thu nhập doanh nghiệp",
+      "source": "Văn bản pháp luật",
+      "sender": "Nguyễn Văn An",
+      "date": "12/03/2026",
+      "time": "10:24",
+      "status": "Từ chối",
+      "description": "Văn bản cập nhật một số quy định mới về thuế TNDN áp dụng từ năm 2026."
+    },
+    {
+      "title": "Hướng dẫn thực hiện hợp đồng lao động",
+      "source": "Công văn",
+      "sender": "Lê Thị Hồng",
+      "date": "11/03/2026",
+      "time": "16:32",
+      "status": "Chờ duyệt",
+      "description": "Hướng dẫn thực hiện các nội dung cơ bản của hợp đồng lao động."
+    },
+    {
+      "title": "Thông tư sửa đổi về đăng ký kinh doanh",
+      "source": "Văn bản pháp luật",
+      "sender": "Trần Văn Bình",
+      "date": "10/03/2026",
+      "time": "14:20",
+      "status": "Chờ duyệt",
+      "description": "Thông tin về các thay đổi trong thủ tục đăng ký kinh doanh."
+    },
+    {
+      "title": "Cập nhật biểu mẫu hành chính mới",
+      "source": "Tài liệu hướng dẫn",
+      "sender": "Phạm Thị Mai",
+      "date": "09/03/2026",
+      "time": "09:15",
+      "status": "Đã duyệt",
+      "description": "Tổng hợp biểu mẫu hành chính được cập nhật gần đây."
+    },
+    {
+      "title": "Quy định về bảo vệ dữ liệu cá nhân",
+      "source": "Văn bản pháp luật",
+      "sender": "Hoàng Đức Nam",
+      "date": "08/03/2026",
+      "time": "11:37",
+      "status": "Chờ duyệt",
+      "description": "Tóm tắt quy định và trách nhiệm liên quan đến bảo vệ dữ liệu cá nhân."
+    },
+    {
+      "title": "Hướng dẫn kê khai thuế điện tử",
+      "source": "Tài liệu hướng dẫn",
+      "sender": "Đỗ Minh Anh",
+      "date": "07/03/2026",
+      "time": "08:45",
+      "status": "Đã duyệt",
+      "description": "Hướng dẫn thao tác kê khai thuế điện tử."
+    },
+    {
+      "title": "Quy định về hóa đơn điện tử",
+      "source": "Văn bản pháp luật",
+      "sender": "Nguyễn Thu Hà",
+      "date": "06/03/2026",
+      "time": "13:10",
+      "status": "Từ chối",
+      "description": "Nội dung cần bổ sung nguồn trích dẫn chính thức."
+    }
+  ],
+  "editorSources": [
+    {
+      "name": "Bộ Công Thương",
+      "type": "Cơ quan nhà nước",
+      "url": "https://moit.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Cổng thông tin pháp luật Quốc gia",
+      "type": "Cổng thông tin",
+      "url": "https://phapluat.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Tạp chí Luật học",
+      "type": "Báo chí",
+      "url": "https://tapchiluathoc.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "VnExpress",
+      "type": "Báo chí",
+      "url": "https://vnexpress.net",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Sở Tư pháp Hà Nội",
+      "type": "Cơ quan nhà nước",
+      "url": "https://sotuphap.hanoi.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Thư viện pháp luật",
+      "type": "Tài liệu",
+      "url": "https://thuvienphapluat.vn",
+      "status": "Cần kiểm tra"
+    },
+    {
+      "name": "Báo Chính phủ",
+      "type": "Báo chí",
+      "url": "https://baochinhphu.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Luật Việt Nam",
+      "type": "Trang chuyên ngành",
+      "url": "https://luatvietnam.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Tổng cục Thuế",
+      "type": "Cơ quan nhà nước",
+      "url": "https://gdt.gov.vn",
+      "status": "Hoạt động"
+    },
+    {
+      "name": "Hội Luật gia Việt Nam",
+      "type": "Tổ chức",
+      "url": "https://hoiluatgia.vn",
+      "status": "Cần kiểm tra"
+    }
+  ],
+  "editorMonitor": [
+    {
+      "title": "Thông tư 06/2025/TT-BTC về thuế TNDN",
+      "source": "Bộ Tài chính",
+      "date": "12/03/2026",
+      "time": "09:30",
+      "age": 3,
+      "status": "Ổn định"
+    },
+    {
+      "title": "Nghị định 70/2025/NĐ-CP",
+      "source": "Chính phủ",
+      "date": "10/03/2026",
+      "time": "14:20",
+      "age": 5,
+      "status": "Ổn định"
+    },
+    {
+      "title": "Hướng dẫn đăng ký doanh nghiệp",
+      "source": "Sở KH&ĐT",
+      "date": "08/03/2026",
+      "time": "11:45",
+      "age": 7,
+      "status": "Sắp hết hạn"
+    },
+    {
+      "title": "Công văn 1234/BCT",
+      "source": "Bộ Công Thương",
+      "date": "05/03/2026",
+      "time": "16:10",
+      "age": 10,
+      "status": "Sắp hết hạn"
+    },
+    {
+      "title": "Quy định bảo vệ dữ liệu cá nhân",
+      "source": "Bộ TT&TT",
+      "date": "28/02/2026",
+      "time": "09:15",
+      "age": 15,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Thông tư 01/2024/TT-NHNN",
+      "source": "Ngân hàng NN",
+      "date": "25/02/2026",
+      "time": "13:40",
+      "age": 18,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Luật Đất đai 2024",
+      "source": "Quốc hội",
+      "date": "20/02/2026",
+      "time": "10:05",
+      "age": 23,
+      "status": "Đã cũ"
+    },
+    {
+      "title": "Nghị định 100/2024/NĐ-CP",
+      "source": "Chính phủ",
+      "date": "15/02/2026",
+      "time": "16:32",
+      "age": 28,
+      "status": "Đã cũ"
+    }
+  ]
+}

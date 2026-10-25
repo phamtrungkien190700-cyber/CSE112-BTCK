@@ -28,6 +28,7 @@ a { color: inherit; text-decoration: none; }
 .role-badge--expert { color: #16805a; background: #d9f8e9; }
 .role-badge--editor { color: #b56a00; background: #fff0c9; }
 .role-badge--manager { color: #6941a5; background: #eee4ff; }
+.role-request { display: block; margin-top: 5px; color: #9a5b00; font-size: 9px; }
 .status { color: #00a879 !important; font-size: 10px !important; font-weight: 600; white-space: nowrap; }
 .status--inactive { color: #d54d4d !important; }
 .date-cell { white-space: nowrap; }

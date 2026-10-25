@@ -29,6 +29,27 @@ body {
   gap: 6px;
 }
 
+.account-profile {
+  min-height: 36px;
+  gap: 6px;
+  padding: 3px 8px 3px 3px;
+}
+
+.account-profile__initial {
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+}
+
+.account-profile__identity strong {
+  max-width: 92px;
+  font-size: 10px;
+}
+
+.account-profile__identity small {
+  font-size: 9px;
+}
+
 .button {
   min-height: 34px;
   padding: 0 10px;

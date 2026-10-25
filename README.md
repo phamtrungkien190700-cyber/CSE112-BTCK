@@ -35,6 +35,7 @@ pages/
   public/
   user/
   expert/
+  editor/
   admin/
 data/
   users.json             # Registered accounts (passwords are hashed)
@@ -44,6 +45,7 @@ data/
   notifications.json     # Notification templates and user notifications
   settings.json          # System settings
   user-workspaces.json   # Per-user saved suggestions and redacted reviews
+  editor-content.json    # Review queue, source directory, and freshness monitor data
   db.json                # Legacy seed data, imported on first run
 server.js                # Static site and same-origin API
 docs/
@@ -53,9 +55,9 @@ docs/
 
 The Node server stores each data group in its own JSON file under `data/`. On first start, it imports the matching data from the legacy `data/db.json` if a split file does not exist. After migration, the split files are the source of truth; `db.json` is retained unchanged as legacy seed data. Browser pages access these files only through `js/api.js` and the Node server. Checklist progress and personal display preferences remain in browser storage.
 
-Public registration supports `user` and `legal_expert`; administrator accounts must be bootstrapped using the environment variables above. Passwords are stored as salted scrypt hashes. Login sessions are HttpOnly cookies held in server memory and expire after eight hours; restarting the local server signs users out.
+Public registration supports `user` and `legal_expert`; administrators assign the `editor` role from account management. Administrator accounts must be bootstrapped using the environment variables above. Passwords are stored as salted scrypt hashes. Login sessions are HttpOnly cookies held in server memory and expire after eight hours; restarting the local server signs users out.
 
-The imported user and admin pages retain their page-specific styles and scripts to preserve their existing layouts. Shared tokens, controls, API access, and role checks live in the root `css/` and `js/` directories.
+The imported user, expert, editor, and admin pages retain their page-specific styles and scripts to preserve their existing layouts. Shared tokens, controls, API access, and role checks live in the root `css/` and `js/` directories.
 
 ## Local assistance and sample data
 

@@ -72,7 +72,10 @@
           <select id="register-role" name="role" required>
             <option value="user" selected>Người dùng</option>
             <option value="legal_expert">Chuyên gia pháp lý</option>
+            <option value="editor">Biên tập viên (chờ quản trị viên duyệt)</option>
+            <option value="admin">Quản trị viên (chờ duyệt)</option>
           </select>
+          <small class="field-hint">Yêu cầu vai trò Biên tập viên hoặc Quản trị viên chỉ có hiệu lực sau khi quản trị viên phê duyệt.</small>
         </div>
         <div class="field">
           <label for="register-password">Mật khẩu</label>

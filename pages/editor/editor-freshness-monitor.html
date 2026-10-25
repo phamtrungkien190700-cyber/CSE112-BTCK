@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalPath - Theo dõi độ mới</title>
+    <link rel="stylesheet" href="/css/pages/editor/freshness-monitor/theodoichedomoi-bantomtat.css">
+    <link rel="stylesheet" href="/css/pages/editor/freshness-monitor/theodoichedomoi-bieudo.css">
+    <link rel="stylesheet" href="/css/pages/editor/freshness-monitor/thedoichedomoi-ghinhan.css">
+    <link rel="stylesheet" href="/css/pages/editor/freshness-monitor/actions.css">
+  </head>
+  <body data-page="monitor" data-required-role="editor">
+        <main class="page-view active" id="page-monitor">
+          <div class="page-heading">
+            <div>
+              <h1>Theo dõi độ mới nội dung</h1>
+              <p>Giám sát và đảm bảo nội dung pháp lý luôn được cập nhật kịp thời.</p>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card">
+              <span class="stat-icon green">✓</span>
+              <div>
+                <small>Nội dung ổn định</small>
+                <strong id="stableTotal">0 <em>(0%)</em></strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon orange">◷</span>
+              <div>
+                <small>Sắp hết hạn</small>
+                <strong id="expiringTotal">0 <em>(0%)</em></strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon red">!</span>
+              <div>
+                <small>Đã cũ</small>
+                <strong id="oldTotal">0 <em>(0%)</em></strong>
+              </div>
+            </article>
+          </div>
+          <div class="toolbar monitor-filters">
+            <select id="monitorStatus">
+              <option value="all">Tất cả trạng thái</option>
+              <option>Ổn định</option>
+              <option>Sắp hết hạn</option>
+              <option>Đã cũ</option>
+            </select>
+            <select id="monitorSource">
+              <option value="all">Tất cả nguồn</option>
+            </select>
+            <select id="monitorPeriod" aria-label="Lọc theo tuổi dữ liệu">
+              <option value="all">Tất cả thời gian</option>
+              <option value="7">7 ngày gần đây</option>
+              <option value="30">30 ngày gần đây</option>
+              <option value="90">90 ngày gần đây</option>
+            </select>
+            <button class="btn outline" id="refreshMonitor" type="button">⟳ Tải lại</button>
+            <button class="btn primary" id="addMonitorBtn" type="button">＋ Thêm theo dõi</button>
+          </div>
+          <div class="chart-grid">
+            <article class="chart-card">
+              <h3>Độ mới nội dung</h3>
+              <div class="donut-area">
+                <div class="donut">
+                  <div>
+                    <strong id="stablePercent">0%</strong>
+                    <small>Ổn định</small>
+                  </div>
+                </div>
+                <div class="legend">
+                  <span><i class="dot green-bg"></i>Ổn định <b id="stableLegend">0</b></span>
+                  <span><i class="dot orange-bg"></i>Sắp hết hạn <b id="expiringLegend">0</b></span>
+                  <span><i class="dot red-bg"></i>Đã cũ <b id="oldLegend">0</b></span>
+                </div>
+              </div>
+            </article>
+            <article class="chart-card">
+              <h3>Xu hướng độ mới</h3>
+              <div class="line-chart">
+                <div class="y-labels">
+                  <span>100</span>
+                  <span>75</span>
+                  <span>50</span>
+                  <span>25</span>
+                </div>
+                <svg viewBox="0 0 500 120" preserveAspectRatio="none" aria-label="Biểu đồ xu hướng độ mới">
+                  <path class="gridline" d="M0 10H500 M0 40H500 M0 70H500 M0 100H500"/>
+                  <polyline points="0,62 65,76 130,68 195,82 260,47 325,54 390,38 455,53 500,59"/>
+                </svg>
+                <div class="x-labels">
+                  <span>03/03</span>
+                  <span>05/03</span>
+                  <span>07/03</span>
+                  <span>09/03</span>
+                  <span>11/03</span>
+                  <span>13/03</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nội dung</th>
+                  <th>Nguồn</th>
+                  <th>Lần cập nhật</th>
+                  <th>Tuổi dữ liệu</th>
+                  <th>Độ mới</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="monitorRows"></tbody>
+            </table>
+            <div class="empty hidden" id="monitorEmpty">Không có nội dung phù hợp.</div>
+          </div>
+          <div class="table-footer">
+            <span id="monitorCount">Đang tải danh sách theo dõi...</span>
+          </div>
+        </main>
+
+    <dialog id="monitorDialog">
+      <form id="monitorForm">
+        <div class="dialog-heading">
+          <h2 id="monitorDialogTitle">Thêm nội dung theo dõi</h2>
+          <button class="icon-button" type="button" id="closeMonitorDialog" aria-label="Đóng">×</button>
+        </div>
+        <label>Tên nội dung<input name="title" required maxlength="180"></label>
+        <label>Nguồn<input name="source" required maxlength="100"></label>
+        <label>Lần cập nhật<input name="date" required placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}"></label>
+        <label>Thời gian<input name="time" required type="time"></label>
+        <label>Tuổi dữ liệu (ngày)<input name="age" type="number" min="0" max="3650" required></label>
+        <label>Độ mới
+          <select name="status" required>
+            <option>Ổn định</option>
+            <option>Sắp hết hạn</option>
+            <option>Đã cũ</option>
+          </select>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" class="btn outline" id="cancelMonitorDialog">Hủy</button>
+          <button type="submit" class="btn primary" id="saveMonitorButton">Thêm theo dõi</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="/js/api.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/pages/editor/freshness-monitor.js" defer></script>
+  </body>
+</html>

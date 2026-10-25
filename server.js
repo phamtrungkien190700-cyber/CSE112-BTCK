@@ -21,7 +21,8 @@ const DATABASE_GROUPS = {
   expertContent: ["articles", "checklists", "experts"],
   notifications: ["notifications"],
   settings: ["settings"],
-  userWorkspaces: ["userWorkspaces"]
+  userWorkspaces: ["userWorkspaces"],
+  editorContent: ["editorQueue", "editorSources", "editorMonitor"]
 };
 const DATABASE_FILES = {
   users: path.join(DATA_DIR, "users.json"),
@@ -29,7 +30,8 @@ const DATABASE_FILES = {
   expertContent: path.join(DATA_DIR, "expert-content.json"),
   notifications: path.join(DATA_DIR, "notifications.json"),
   settings: path.join(DATA_DIR, "settings.json"),
-  userWorkspaces: path.join(DATA_DIR, "user-workspaces.json")
+  userWorkspaces: path.join(DATA_DIR, "user-workspaces.json"),
+  editorContent: path.join(DATA_DIR, "editor-content.json")
 };
 const LEGAL_SAMPLE_FILE = path.join(ROOT_DIR, "data", "legal-supplement.json");
 const PORT = Number(process.env.PORT || 3001);
@@ -316,7 +318,10 @@ function normalizeDatabase(database) {
     "articles",
     "checklists",
     "experts",
-    "notifications"
+    "notifications",
+    "editorQueue",
+    "editorSources",
+    "editorMonitor"
   ]) {
     if (!Array.isArray(database[collection])) database[collection] = [];
   }
@@ -348,7 +353,7 @@ async function handleAuthentication(request, response, route, database) {
 
   if (route === "auth/register") {
     const name = typeof payload.name === "string" ? payload.name.trim().replace(/\s+/g, " ") : "";
-    const role = payload.role;
+    const requestedRole = payload.role;
     if (name.length < 2 || name.length > 100) throw new HttpError(400, "Họ tên phải có từ 2 đến 100 ký tự.");
     if (!/^(?:[^\s@]+@[^\s@]+\.[^\s@]{2,}|(?:\+84|0)(?:3|5|7|8|9)\d{8})$/.test(identity)) {
       throw new HttpError(400, "Vui lòng nhập email hợp lệ hoặc số điện thoại Việt Nam.");
@@ -356,10 +361,12 @@ async function handleAuthentication(request, response, route, database) {
     if (password.length < 8 || password.length > 128 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
       throw new HttpError(400, "Mật khẩu phải có từ 8 đến 128 ký tự và gồm chữ cái, chữ số.");
     }
-    if (!["user", "legal_expert"].includes(role)) {
+    if (!["user", "legal_expert", "editor", "admin"].includes(requestedRole)) {
       throw new HttpError(400, "Vai trò đăng ký không hợp lệ.");
     }
+    const role = ["editor", "admin"].includes(requestedRole) ? "user" : requestedRole;
     const user = newSessionUser({ name, identity, role, passwordHash: await hashPassword(password) });
+    if (role !== requestedRole) user.requestedRole = requestedRole;
     await updateDatabase((current) => {
       normalizeDatabase(current);
       if (current.users.some((item) => item.identity === identity)) {
@@ -523,16 +530,21 @@ async function handleCollection(request, response, database, user, route) {
     "experts-directory": "expertsDirectory",
     articles: "articles",
     checklists: "checklists",
-    notifications: "notifications"
+    notifications: "notifications",
+    "editor-queue": "editorQueue",
+    "editor-sources": "editorSources",
+    "editor-monitor": "editorMonitor"
   };
   const collectionKey = collectionNames[collectionName];
   if (!collectionKey) return false;
   const id = rawId ? decodeURIComponent(rawId) : null;
   const isAdminCollection = ["users", "categories", "legal-categories"].includes(collectionName);
+  const isEditorCollection = ["editorQueue", "editorSources", "editorMonitor"].includes(collectionKey);
 
   if (request.method === "GET") {
     if (collectionKey === "users") requireRole(user, ["admin"]);
     if (collectionKey === "notifications") requireRole(user, ["user", "legal_expert", "admin"]);
+    if (isEditorCollection) requireRole(user, ["editor", "admin"]);
     const items = database[collectionKey];
     const visibleItems = collectionKey === "users"
       ? items.map(publicUser)
@@ -548,7 +560,22 @@ async function handleCollection(request, response, database, user, route) {
 
   if (isAdminCollection) requireRole(user, ["admin"]);
   else if (collectionKey === "notifications") requireRole(user, ["user", "legal_expert", "admin"]);
+  else if (isEditorCollection) requireRole(user, ["editor", "admin"]);
   else requireRole(user, ["legal_expert", "admin"]);
+
+  if (isEditorCollection && request.method === "PUT" && !id) {
+    const items = await readRequestBody(request);
+    if (!Array.isArray(items) || items.some((item) => !item || typeof item !== "object" || Array.isArray(item))) {
+      throw new HttpError(400, "Dữ liệu biên tập phải là một mảng các đối tượng JSON.");
+    }
+    await updateDatabase((current) => {
+      normalizeDatabase(current);
+      current[collectionKey] = items;
+    });
+    response.writeHead(204);
+    response.end();
+    return true;
+  }
 
   if (request.method === "POST" && !id) {
     const payload = await readRequestBody(request);
@@ -592,7 +619,7 @@ async function handleCollection(request, response, database, user, route) {
         if (currentUser.id === user.id && payload.role && payload.role !== "admin") {
           throw new HttpError(400, "Không thể tự hạ quyền tài khoản quản trị đang đăng nhập.");
         }
-        const allowedRoles = ["user", "legal_expert", "admin"];
+        const allowedRoles = ["user", "legal_expert", "editor", "admin"];
         if (payload.role && !allowedRoles.includes(payload.role)) {
           throw new HttpError(400, "Vai trò không hợp lệ.");
         }
@@ -611,10 +638,13 @@ async function handleCollection(request, response, database, user, route) {
         if (payload.locked !== undefined && typeof payload.locked !== "boolean") {
           throw new HttpError(400, "Trạng thái khóa tài khoản không hợp lệ.");
         }
-        const { passwordHash, ...changes } = payload;
+        const changes = { ...payload };
+        delete changes.passwordHash;
+        delete changes.requestedRole;
+        if (payload.role !== undefined) changes.requestedRole = null;
         if (changes.identity) changes.identity = changes.identity.trim().toLowerCase();
         if (changes.name) changes.name = changes.name.trim().replace(/\s+/g, " ");
-        current.users[index] = { ...currentUser, ...changes, passwordHash };
+        current.users[index] = { ...currentUser, ...changes };
       } else {
         current[collectionKey][index] = { ...current[collectionKey][index], ...payload, id };
       }
@@ -667,6 +697,8 @@ async function serveStatic(requestPath, response, user) {
     ? "admin"
     : normalizedPath.startsWith("pages/expert/")
       ? "legal_expert"
+      : normalizedPath.startsWith("pages/editor/")
+        ? "editor"
       : normalizedPath.startsWith("pages/user/")
         ? "user"
         : null;
