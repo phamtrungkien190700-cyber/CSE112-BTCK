@@ -254,5 +254,92 @@
       "createdAt": "2026-10-12"
     }
   ],
-  "experts": []
+  "experts": [
+    {
+      "name": "ThS. Luật sư Trần Minh",
+      "initials": "TM",
+      "role": "Chuyên gia pháp lý",
+      "title": "Giáo Viên",
+      "email": "tranminh.law@example.com",
+      "phone": "090 123 4567",
+      "organization": "Công ty Luật Minh & Cộng sự",
+      "gender": "Nam",
+      "dob": "1986-04-22",
+      "city": "Hà Nội",
+      "specialty": "Doanh nghiệp, Dân sự, Lao động",
+      "yearsExperience": 12,
+      "joined": "2026-01-05",
+      "bio": "Tôi có 12 năm kinh nghiệm tư vấn pháp luật doanh nghiệp và dân sự. Tôi đồng hành cùng người dân và doanh nghiệp trong việc chuẩn bị hồ sơ, rà soát hợp đồng và thực hiện các thủ tục pháp lý.",
+      "rating": 4.8,
+      "reviews": 98,
+      "stats": {
+        "articles": 42,
+        "checklists": 18,
+        "views": "36.2K",
+        "rating": 4.8
+      },
+      "licenses": [],
+      "skills": [
+        {
+          "id": "sk-01",
+          "name": "Tư vấn pháp luật doanh nghiệp",
+          "pct": 95
+        },
+        {
+          "id": "sk-02",
+          "name": "Soạn thảo hợp đồng",
+          "pct": 92
+        },
+        {
+          "id": "sk-03",
+          "name": "Giải quyết tranh chấp lao động",
+          "pct": 88
+        },
+        {
+          "id": "sk-04",
+          "name": "Sở hữu trí tuệ",
+          "pct": 80
+        }
+      ],
+      "certs": [
+        {
+          "id": "ce-01",
+          "name": "Chứng chỉ hành nghề luật sư",
+          "issuer": "Liên đoàn Luật sư Việt Nam",
+          "year": "2012"
+        },
+        {
+          "id": "ce-02",
+          "name": "Chứng nhận Giải quyết tranh chấp thương mại",
+          "issuer": "Trung tâm Trọng tài Quốc tế Việt Nam (VIAC)",
+          "year": "2018"
+        },
+        {
+          "id": "ce-03",
+          "name": "Chứng chỉ về Sở hữu trí tuệ WIPO",
+          "issuer": "Tổ chức Sở hữu trí tuệ Thế giới",
+          "year": "2021"
+        }
+      ],
+      "links": [
+        {
+          "id": "li-01",
+          "platform": "LinkedIn",
+          "url": "https://linkedin.com/in/tranvanminh"
+        },
+        {
+          "id": "li-02",
+          "platform": "Facebook",
+          "url": "https://facebook.com/tranvanminh.law"
+        },
+        {
+          "id": "li-03",
+          "platform": "Trang cá nhân MindCare",
+          "url": "https://mindcare.vn/expert/minhtran"
+        }
+      ],
+      "userId": "8c926efd-7ec5-4510-b654-6bb9187e39e0",
+      "updatedAt": "2026-10-25"
+    }
+  ]
 }
