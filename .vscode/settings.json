@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.port": 5501,
+    "terminal.integrated.env.windows": {
+        "Path": "C:\\Program Files\\nodejs;${env:Path}"
+    }
+}

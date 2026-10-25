@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Cài đặt | LegalPath</title>
+  <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="settings-responsive.css">
+  <link rel="stylesheet" href="../shared/account-menu.css">
+  <script src="../trang-dang-nhap/CSE122-BTGK/js/auth-api.js" defer></script>
+  <script src="../shared/notifications-api.js" defer></script>
+  <script src="settings.js?v=5" defer></script>
+  <script src="../shared/account-menu.js" defer></script>
+</head>
+<body data-page="settings" data-page-group="user">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng">
+      <a class="brand" href="/" aria-label="LegalPath - Trang chủ">
+        <img class="brand__icon" src="../nguoidung/mainnguoidung/image/Screenshot%202026-10-10%20204712.png" alt="LegalPath - Pháp luật gần bạn hơn">
+      </a>
+
+      <nav class="side-nav" aria-label="Menu cài đặt">
+        <a class="nav-link active" href="settings.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
+          <span>Cài đặt</span>
+        </a>
+        <a class="nav-link" href="../notification/notifications.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
+          <span>Thông báo</span><span class="nav-count">3</span>
+        </a>
+      </nav>
+
+      <button class="logout-button" id="logoutButton" data-logout type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg>
+        <span>Đăng xuất</span>
+      </button>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumbs"><span data-page-context>Không gian người dùng</span><span aria-hidden="true">/</span><strong data-page-label>Cài đặt</strong></div>
+        <div class="account-menu" data-account-menu>
+          <button class="profile-menu account-menu__toggle" type="button" aria-label="Mở menu tài khoản" aria-haspopup="menu" aria-expanded="false" data-account-menu-toggle>
+            <span class="profile-avatar" data-account-initial>ND</span><span data-account-name>Người dùng</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+          <nav class="account-menu__panel" role="menu" aria-label="Menu tài khoản" data-account-menu-panel hidden>
+            <a class="account-menu__link" href="settings.html" role="menuitem" aria-current="page">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>
+              Cài đặt
+            </a>
+            <a class="account-menu__link" href="../notification/notifications.html" role="menuitem">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
+              Thông báo
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="page-heading">
+          <h1>Cài đặt</h1>
+          <p>Quản lý tài khoản và tùy chỉnh trải nghiệm của bạn.</p>
+        </section>
+
+        <form id="settingsForm">
+          <div class="settings-layout">
+            <div class="primary-column">
+              <section class="panel account-panel" aria-labelledby="accountTitle">
+                <div class="panel-heading">
+                  <h2 id="accountTitle">Thông tin tài khoản</h2>
+                  <p data-account-meta>Đang tải thông tin tài khoản...</p>
+                </div>
+                <div class="field-stack">
+                  <label class="field">
+                    <span>Họ và tên</span>
+                    <input name="name" type="text" autocomplete="name" required disabled>
+                  </label>
+                  <label class="field">
+                    <span>Email hoặc số điện thoại đăng nhập</span>
+                    <input name="identity" type="text" autocomplete="username" required disabled>
+                  </label>
+                  <p class="account-status" id="accountStatus" role="status" aria-live="polite">Đang kết nối tài khoản...</p>
+                </div>
+              </section>
+
+              <section class="panel notifications-panel" aria-labelledby="notificationsTitle">
+                <div class="panel-heading">
+                  <h2 id="notificationsTitle">Thông báo</h2>
+                </div>
+                <div class="preferences">
+                  <label class="preference-row">
+                    <span class="preference-copy"><strong>Cập nhật nội dung pháp lý</strong><small>Nhận tin mới về các chủ đề bạn theo dõi.</small></span>
+                    <input class="switch-input" type="checkbox" name="legalUpdates" checked>
+                    <span class="switch" aria-hidden="true"></span>
+                  </label>
+                  <label class="preference-row">
+                    <span class="preference-copy"><strong>Phản hồi câu hỏi của bạn</strong><small>Thông báo khi câu hỏi có phản hồi mới.</small></span>
+                    <input class="switch-input" type="checkbox" name="questionReplies" checked>
+                    <span class="switch" aria-hidden="true"></span>
+                  </label>
+                  <label class="preference-row">
+                    <span class="preference-copy"><strong>Bản tin qua email</strong><small>Tổng hợp thông tin hữu ích mỗi tuần.</small></span>
+                    <input class="switch-input" type="checkbox" name="emailDigest">
+                    <span class="switch" aria-hidden="true"></span>
+                  </label>
+                </div>
+              </section>
+            </div>
+
+            <aside class="secondary-column" aria-label="Thông tin và tùy chọn khác">
+              <section class="panel identity-panel">
+                <span class="identity-avatar" data-initials>MA</span>
+                <strong data-summary-name>Đang tải...</strong>
+                <span class="identity-role" data-account-role>Người dùng</span>
+                <small data-account-created>Tài khoản cá nhân</small>
+              </section>
+
+              <section class="panel notification-summary">
+                <h2>Thông báo</h2>
+                <ul>
+                  <li>Cập nhật nội dung pháp lý: <strong data-pref="legalUpdates">Bật</strong></li>
+                  <li>Phản hồi câu hỏi của bạn: <strong data-pref="questionReplies">Bật</strong></li>
+                  <li>Bản tin qua email: <strong data-pref="emailDigest">Tắt</strong></li>
+                </ul>
+              </section>
+
+              <section class="panel password-panel">
+                <h2>Mật khẩu và bảo mật</h2>
+                <p>Đổi mật khẩu để bảo vệ tài khoản của bạn.</p>
+                <button class="button button-outline" id="changePasswordButton" type="button">Đổi mật khẩu</button>
+              </section>
+
+              <section class="panel language-panel">
+                <h2>Ngôn ngữ</h2>
+                <p>Ngôn ngữ hiển thị trên LegalPath.</p>
+                <label class="field">
+                  <span>Ngôn ngữ hiển thị</span>
+                  <select name="language">
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="en">English</option>
+                  </select>
+                </label>
+              </section>
+            </aside>
+          </div>
+
+          <div class="privacy-banner">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>
+            <span>Thông tin của bạn luôn được bảo mật tại LegalPath.</span>
+          </div>
+
+          <div class="form-footer">
+            <p>Thay đổi được áp dụng sau khi lưu.</p>
+            <div class="form-actions">
+              <button class="button button-outline" id="cancelButton" type="button">Hủy</button>
+              <button class="button button-primary" type="submit">Lưu thay đổi</button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="password-dialog" id="passwordDialog">
+    <form id="passwordForm">
+      <div class="dialog-heading">
+        <div><h2>Đổi mật khẩu</h2><p>Nhập mật khẩu mới cho tài khoản của bạn.</p></div>
+        <button class="dialog-close" id="closePasswordDialog" type="button" aria-label="Đóng">×</button>
+      </div>
+      <label class="field"><span>Mật khẩu hiện tại</span><input name="currentPassword" type="password" autocomplete="current-password" required minlength="8"></label>
+      <label class="field"><span>Mật khẩu mới</span><input name="newPassword" type="password" autocomplete="new-password" required minlength="8"></label>
+      <label class="field"><span>Nhập lại mật khẩu mới</span><input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8"></label>
+      <p class="password-note">Mật khẩu cần có ít nhất 8 ký tự. Thay đổi này chỉ được lưu sau khi kết nối với dịch vụ tài khoản.</p>
+      <div class="form-actions">
+        <button class="button button-outline" id="cancelPasswordButton" type="button">Hủy</button>
+        <button class="button button-primary" type="submit">Xác nhận</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.dashboard { padding: 16px; }
+.page-heading h1 { font-size: 19px; }
+.stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.dashboard-panels { grid-template-columns: minmax(0, 1fr); }
+.freshness-panel { min-width: 0; }
+.panel-heading { min-height: 42px; }
+.alert-item { padding: 10px 0; }
+.alert-item h3 { font-size: 10px; }
+.alert-item p { font-size: 9px; }

@@ -1,0 +1,436 @@
+/* Biến thể mặc định cho trang: màu chữ/nền, font và cách dựng chữ toàn cục. */
+:root {
+  color: #24344d;
+  background: #f7f8fa;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tính cả padding và border trong kích thước khai báo để bố cục dễ kiểm soát. */
+* {
+  box-sizing: border-box;
+}
+
+/* Kích thước tối thiểu cho trang và bỏ lề mặc định của trình duyệt. */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Giữ kiểu chữ button/input đồng nhất với font đang dùng trên trang. */
+button,
+input {
+  font: inherit;
+}
+
+/* Khung toàn trang tra cứu: nền sáng, màu chữ và chiều cao tối thiểu bằng viewport. */
+.tra-cuu-phap-ly {
+  display: block;
+  min-height: 100vh;
+  color: #26364f;
+  background: #f7f8fa;
+}
+
+/* Nội dung tối đa 1400px, căn giữa; clamp thay đổi padding theo độ rộng màn hình. */
+.tra-cuu-phap-ly__noi-dung {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px clamp(18px, 5vw, 64px) 32px;
+}
+
+/* Khoảng cách dưới khu vực giới thiệu. */
+.tra-cuu-phap-ly__gioi-thieu {
+  margin-bottom: 18px;
+}
+
+/* Kiểu tiêu đề chính: sát lề trái, cỡ chữ và độ đậm rõ ràng. */
+.tra-cuu-phap-ly__gioi-thieu h1 {
+  margin: 0 0 2px;
+  color: #27374f;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Kiểu mô tả dưới tiêu đề với màu nhẹ và chiều cao dòng dễ đọc. */
+.tra-cuu-phap-ly__gioi-thieu p {
+  margin: 0;
+  color: #78869b;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Biểu mẫu nằm ngang; gap tạo khoảng cách giữa ô nhập và nút. */
+.tra-cuu-phap-ly__bieu-mau {
+  display: flex;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+
+/* Ô nhập dùng flex để input co giãn; viền, nền và bo góc tạo kiểu hộp tìm kiếm. */
+.tra-cuu-phap-ly__khung-o-nhap {
+  display: flex;
+  height: 34px;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #dfe5ed;
+  border-radius: 6px;
+  background: #fff;
+  color: #8090a8;
+}
+
+/* Làm nổi viền và thêm vòng sáng khi input bên trong đang được focus. */
+.tra-cuu-phap-ly__khung-o-nhap:focus-within {
+  border-color: #8298d5;
+  box-shadow: 0 0 0 2px rgb(40 75 172 / 8%);
+}
+
+/* Kích thước và nét chung cho biểu tượng SVG nếu được đặt trong input/nút. */
+.tra-cuu-phap-ly__khung-o-nhap svg,
+.tra-cuu-phap-ly__nut-tim-kiem svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+/* Input chiếm phần chiều ngang còn lại và không vẽ viền/nền riêng. */
+.tra-cuu-phap-ly__khung-o-nhap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #26364f;
+  font-size: 10px;
+}
+
+/* Màu chữ gợi ý trong ô tìm kiếm. */
+.tra-cuu-phap-ly__khung-o-nhap input::placeholder {
+  color: #90a0b8;
+}
+
+/* Nút tìm kiếm: căn giữa nội dung, nền xanh và con trỏ dạng bàn tay. */
+.tra-cuu-phap-ly__nut-tim-kiem {
+  display: inline-flex;
+  min-width: 82px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 5px;
+  background: #2949a6;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* Đổi sang xanh đậm hơn khi rê chuột lên nút tìm kiếm. */
+.tra-cuu-phap-ly__nut-tim-kiem:hover {
+  background: #203b8b;
+}
+
+/* Đặt nhãn lĩnh vực và nhóm nút lọc nằm trên cùng một hàng. */
+.tra-cuu-phap-ly__bo-loc {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 16px;
+}
+
+/* Không cho nhãn "Lĩnh vực" co lại, giữ màu và kích thước chữ phụ. */
+.tra-cuu-phap-ly__nhan-bo-loc {
+  flex: 0 0 auto;
+  color: #718099;
+  font-size: 10px;
+}
+
+/* Các nút lĩnh vực tự xuống dòng khi không đủ chiều ngang. */
+.tra-cuu-phap-ly__danh-sach-linh-vuc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Hình dạng mặc định của từng nút lọc. */
+.nut-loc-linh-vuc {
+  min-height: 25px;
+  padding: 0 11px;
+  border: 1px solid #e1e6ed;
+  border-radius: 4px;
+  background: #fff;
+  color: #72819a;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* Trạng thái rê chuột của nút lọc chưa/đang chọn. */
+.nut-loc-linh-vuc:hover {
+  border-color: #a8b8df;
+  color: #2949a6;
+}
+
+/* Nút lọc đang chọn có nền xanh và chữ trắng. */
+.nut-loc-linh-vuc.dang-chon {
+  border-color: #2949a6;
+  background: #2949a6;
+  color: #fff;
+}
+
+/* Kiểu dòng trạng thái tải dữ liệu, số kết quả hoặc lỗi. */
+.tra-cuu-phap-ly__trang-thai-ket-qua {
+  margin: 0 0 9px;
+  color: #34445d;
+  font-size: 10px;
+}
+
+/* Xếp các thẻ kết quả thành lưới một cột với khoảng cách dọc. */
+.tra-cuu-phap-ly__ket-qua {
+  display: grid;
+  gap: 10px;
+}
+
+/* Mỗi thủ tục là một thẻ ngang, căn giữa theo chiều dọc và có viền/nền riêng. */
+.the-thu-tuc {
+  display: flex;
+  min-height: 110px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 15px;
+  border: 1px solid #e1e6ed;
+  border-radius: 7px;
+  background: #fff;
+}
+
+/* Phần chính của thẻ được phép co lại để nhường chỗ cho vùng bên cạnh. */
+.the-thu-tuc__noi-dung {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Biểu tượng và tiêu đề xếp ngang; margin tạo khoảng với mô tả bên dưới. */
+.the-thu-tuc__tieu-de {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* Kích thước vùng chứa biểu tượng và ngăn biểu tượng bị co. */
+.the-thu-tuc__bieu-tuong {
+  display: inline-flex;
+  width: 13px;
+  height: 15px;
+  flex: 0 0 auto;
+  color: #3155b2;
+}
+
+/* Ảnh biểu tượng vừa khít vùng chứa mà không méo tỷ lệ. */
+.the-thu-tuc__bieu-tuong img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Kiểu tiêu đề thủ tục trong thẻ kết quả. */
+.the-thu-tuc__tieu-de h2 {
+  margin: 0;
+  color: #2949a6;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Kiểu đoạn tóm tắt thủ tục. */
+.the-thu-tuc__tom-tat {
+  margin: 0 0 8px;
+  color: #34445d;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Mã và thời gian trình bày thành các hàng nhỏ, màu chữ phụ. */
+.the-thu-tuc__thong-tin {
+  display: grid;
+  gap: 2px;
+  color: #8a98ad;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+/* Vùng bên phải giữ nhãn lĩnh vực và nút chi tiết tách nhau theo chiều dọc. */
+.the-thu-tuc__cot-ben {
+  display: flex;
+  min-width: 94px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 8px;
+}
+
+/* Nhãn lĩnh vực dạng pill; nội dung dài bị cắt bằng dấu ba chấm. */
+.the-thu-tuc__linh-vuc {
+  max-width: 155px;
+  overflow: hidden;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #e4f2ff;
+  color: #3972a7;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Nút mở hộp thoại chi tiết. */
+.the-thu-tuc__chi-tiet {
+  min-height: 29px;
+  padding: 0 11px;
+  border: 1px solid #536fca;
+  border-radius: 5px;
+  background: #fff;
+  color: #2949a6;
+  font-size: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Thêm mũi tên trang trí trước chữ nút mà không cần thêm ký tự vào HTML. */
+.the-thu-tuc__chi-tiet::before {
+  content: "→";
+  margin-right: 6px;
+}
+
+/* Nền nút chi tiết đổi nhẹ khi rê chuột. */
+.the-thu-tuc__chi-tiet:hover {
+  background: #f4f7ff;
+}
+
+/* Kiểu chung cho trạng thái không có kết quả và thông báo lỗi. */
+.tra-cuu-phap-ly__khong-co-ket-qua,
+.tra-cuu-phap-ly__loi-tai-du-lieu {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #e1e6ed;
+  border-radius: 7px;
+  background: #fff;
+  color: #718099;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+/* Màu viền/chữ riêng để nhận biết lỗi. */
+.tra-cuu-phap-ly__loi-tai-du-lieu {
+  border-color: #f0caca;
+  color: #9a3030;
+}
+
+/* Dialog có chiều rộng linh hoạt, chiều cao tối đa và cuộn nếu nội dung dài. */
+.hop-thoai-thu-tuc {
+  width: min(620px, calc(100% - 28px));
+  max-height: min(82vh, 720px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid #e1e6ed;
+  border-radius: 10px;
+  color: #26364f;
+  box-shadow: 0 18px 60px rgb(25 40 80 / 25%);
+}
+
+/* Lớp phủ tối phía sau dialog khi hộp thoại mở dạng modal. */
+.hop-thoai-thu-tuc::backdrop {
+  background: rgb(22 32 55 / 48%);
+}
+
+/* Đầu dialog xếp tiêu đề và nút đóng về hai phía, nút đóng căn giữa theo chiều dọc. */
+.hop-thoai-thu-tuc__dau {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 22px 15px;
+  border-bottom: 1px solid #e6eaf1;
+}
+
+/* Kiểu tên thủ tục trong tiêu đề dialog. */
+.hop-thoai-thu-tuc__dau h2 {
+  margin: 0;
+  color: #2949a6;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Nút đóng hình tròn ở góc hộp thoại; dấu x căn chính giữa trong nút. */
+.hop-thoai-thu-tuc__dong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 50%;
+  background: #f1f3f8;
+  color: #53627b;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Khoảng đệm nội dung bên trong hộp thoại. */
+.hop-thoai-thu-tuc__than {
+  padding: 17px 22px 22px;
+}
+
+/* Các cặp thông tin chi tiết hiển thị dạng lưới hai cột. */
+.hop-thoai-thu-tuc__thong-tin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px 20px;
+  margin: 0;
+}
+
+/* dt và dd dùng chung class: nhãn nhỏ, giá trị có lề và cỡ chữ dễ đọc. */
+.thong-tin-thu-tuc dt {
+  margin-bottom: 4px;
+  color: #7888a4;
+  font-size: 11px;
+}
+
+/* Bỏ lề mặc định của dd; đặt khoảng cách dòng cho giá trị. */
+.thong-tin-thu-tuc dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Tiêu đề phụ cho danh sách hồ sơ. */
+.hop-thoai-thu-tuc__tieu-de-phu {
+  margin: 20px 0 9px;
+  color: #2949a6;
+  font-size: 14px;
+}
+
+/* Danh sách hồ sơ xếp dọc, có khoảng cách và thụt lề cho dấu đầu dòng. */
+.hop-thoai-thu-tuc__ho-so {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 19px;
+  font-size: 13px;
+  line-height: 1.5;
+}

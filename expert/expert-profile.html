@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f9fc">
+  <title>Hồ sơ chuyên gia | LegalPath</title>
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../css/page-header.css">
+  <link rel="stylesheet" href="expert.css">
+  <link rel="stylesheet" href="../shared/account-menu.css">
+  <script src="../../js/api.js" defer></script>
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/pages/expert.js" defer></script>
+  <script src="../../css/page-header.js" defer></script>
+  <script src="expert.js" defer></script>
+  <script src="../shared/account-menu.js" defer></script>
+</head>
+<body data-page="profile" data-page-group="expert" data-required-role="legal_expert">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="expert-article-management.html" aria-label="LegalPath, trang chủ">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 6v2h20V6L12 2ZM4 9v8H2v2h20v-2h-2V9h-2v8h-4V9h-2v8H8V9H6v8H4V9Zm-2 12h20v2H2v-2Z"/></svg></span>
+        <span class="brand-copy"><strong>LegalPath</strong><small>Pháp luật gần bạn hơn</small></span>
+      </a>
+      <div class="side-label">Không gian chuyên gia</div>
+      <nav class="side-nav" aria-label="Điều hướng chính">
+        <a class="nav-link" href="expert-article-management.html"><span class="nav-icon">▤</span><span>Quản lý bài viết</span></a>
+        <a class="nav-link" href="expert-checklist-management.html"><span class="nav-icon">☷</span><span>Quản lý checklist</span></a>
+        <a class="nav-link active" href="expert-profile.html" aria-current="page"><span class="nav-icon">♙</span><span>Hồ sơ chuyên gia</span></a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <a class="nav-link help-link" href="#help"><span class="nav-icon">ⓘ</span><span>Trung tâm trợ giúp</span></a>
+    </aside>
+    <div class="sidebar-scrim" id="scrim"></div>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuBtn" type="button" aria-label="Mở điều hướng">☰</button>
+        <div class="breadcrumbs"><span data-page-context>Không gian chuyên gia</span><span aria-hidden="true">/</span><b data-page-label>Hồ sơ chuyên gia</b></div>
+        <div class="account-menu" data-account-menu>
+          <button class="topbar-actions account-menu__toggle" type="button" aria-label="Mở menu tài khoản" aria-haspopup="menu" aria-expanded="false" data-account-menu-toggle>
+            <span class="avatar avatar-small expert-header-avatar" data-side-initials>TM</span>
+            <span class="expert-header-account"><span data-topbar-name>Trần Minh</span><span aria-hidden="true">·</span><span data-side-role>Chuyên gia pháp lý</span></span>
+            <svg class="expert-header-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <nav class="account-menu__panel" role="menu" aria-label="Menu tài khoản" data-account-menu-panel hidden>
+            <a class="account-menu__link" href="../setting/settings.html" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.5 2.6-1.3-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.4h-3l-.3-1.4a7.9 7.9 0 0 1-1.4-.8l-1.3.5-1.5-2.6 1.1-.8a7.4 7.4 0 0 1 0-1.6l-1.1-.8 1.5-2.6 1.3.5a7.9 7.9 0 0 1 1.4-.8l.3-1.4h3l.2 1.4a7.9 7.9 0 0 1 1.4.8l1.3-.5 1.5 2.6-1.1.8a7.4 7.4 0 0 1 0 1.6Z"/></svg>Cài đặt</a>
+            <a class="account-menu__link" href="../notification/notifications.html" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>Thông báo</a>
+          </nav>
+        </div>
+      </header>
+      <main class="main-content">
+        <section class="page-heading">
+          <div><h1 id="pageTitle">Hồ sơ chuyên gia</h1><p id="pageDescription">Cập nhật thông tin chuyên môn hiển thị trên danh bạ chuyên gia.</p></div>
+          <div class="page-actions" id="pageActions"></div>
+        </section>
+        <div id="pageContent" class="page-content" aria-live="polite"></div>
+        <footer class="page-footer"><span>© 2026 LegalPath · Cổng chuyên gia pháp lý</span><span><a href="#privacy">Bảo mật thông tin</a><a href="#terms">Điều khoản sử dụng</a></span></footer>
+      </main>
+    </div>
+  </div>
+  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

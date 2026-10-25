@@ -1,0 +1,251 @@
+{
+  "expert_content": [
+    {
+      "id": "portal",
+      "articles": [
+        {
+          "id": "1",
+          "title": "Bài viết mẫu",
+          "category": "Pháp luật",
+          "status": "published"
+        },
+        {
+          "id": "2",
+          "title": "Bảo vệ thông tin cá nhân",
+          "category": "An toàn thông tin",
+          "status": "draft"
+        },
+        {
+          "id": "art-mv4vdg73bc32a",
+          "title": "Xzasdas",
+          "desc": "dsadas",
+          "category": "Pháp luật lao động",
+          "status": "draft",
+          "checklistId": null,
+          "views": 0,
+          "date": "2026-10-12",
+          "author": "Luật sư",
+          "tags": [],
+          "content": [
+            {
+              "t": "p",
+              "x": "dsadas"
+            }
+          ]
+        }
+      ],
+      "checklists": [
+        {
+          "id": "cl-mvnhw475y1rep",
+          "name": "Đệ",
+          "desc": "oke",
+          "category": "Pháp luật lao động",
+          "status": "published",
+          "questions": [
+            {
+              "id": "q-mvnhw4754yzvt",
+              "text": "oke",
+              "type": "yesno",
+              "required": true
+            }
+          ],
+          "updatedAt": "2026-10-25",
+          "createdAt": "2026-10-25"
+        },
+        {
+          "id": "cl-mv51e0cmczi41",
+          "name": "213123",
+          "desc": "",
+          "category": "Pháp luật lao động",
+          "status": "published",
+          "questions": [
+            {
+              "id": "q-mv51e0cmdn18d",
+              "text": "231312321321",
+              "type": "yesno",
+              "required": true
+            }
+          ],
+          "updatedAt": "2026-10-12",
+          "createdAt": "2026-10-12",
+          "reviewStatus": "approved",
+          "reviewedAt": "2026-10-25T07:39:09.701Z"
+        },
+        {
+          "id": "cl-mv50yzy27lir8",
+          "name": "ddeprrai",
+          "desc": "",
+          "category": "Pháp luật lao động",
+          "status": "published",
+          "questions": [
+            {
+              "id": "q-mv50yzy2b1uqu",
+              "text": "dđ",
+              "type": "yesno",
+              "required": true
+            }
+          ],
+          "updatedAt": "2026-10-12",
+          "createdAt": "2026-10-12",
+          "reviewStatus": "approved",
+          "reviewedAt": "2026-10-25T07:40:54.942Z"
+        },
+        {
+          "id": "cl-mv50rrpzziuar",
+          "name": "de;trak",
+          "desc": "",
+          "category": "Pháp luật lao động",
+          "status": "draft",
+          "questions": [
+            {
+              "id": "q-mv50rrpzfo8gc",
+              "text": "321312312312",
+              "type": "yesno",
+              "required": true
+            }
+          ],
+          "updatedAt": "2026-10-12",
+          "createdAt": "2026-10-12",
+          "reviewStatus": "rejected",
+          "reviewedAt": "2026-10-25T07:39:17.392Z"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Bộ Công Thương",
+      "type": "Cơ quan nhà nước",
+      "url": "https://moit.gov.vn",
+      "status": "Hoạt động",
+      "id": "N1yTybPT1Bw"
+    },
+    {
+      "name": "Cổng thông tin pháp luật Quốc gia",
+      "type": "Cổng thông tin",
+      "url": "https://phapluat.gov.vn",
+      "status": "Hoạt động",
+      "id": "DqX8mY85cYY"
+    },
+    {
+      "name": "Tạp chí Luật học",
+      "type": "Báo chí",
+      "url": "https://tapchiluathoc.vn",
+      "status": "Hoạt động",
+      "id": "YMT5YKVpd5A"
+    },
+    {
+      "name": "VnExpress",
+      "type": "Báo chí",
+      "url": "https://vnexpress.net",
+      "status": "Hoạt động",
+      "id": "X0eNOC89G64"
+    },
+    {
+      "name": "Sở Tư pháp Hà Nội",
+      "type": "Cơ quan nhà nước",
+      "url": "https://sotuphap.hanoi.gov.vn",
+      "status": "Hoạt động",
+      "id": "6RJmtg4Q33E"
+    },
+    {
+      "name": "Thư viện pháp luật",
+      "type": "Tài liệu",
+      "url": "https://thuvienphapluat.vn",
+      "status": "Cần kiểm tra",
+      "id": "3d4u-1VKLMY"
+    },
+    {
+      "name": "Báo Chính phủ",
+      "type": "Báo chí",
+      "url": "https://baochinhphu.vn",
+      "status": "Hoạt động",
+      "id": "9d55cCRd-Ns"
+    },
+    {
+      "name": "Luật Việt Nam",
+      "type": "Trang chuyên ngành",
+      "url": "https://luatvietnam.vn",
+      "status": "Hoạt động",
+      "id": "zD3yXD1A0BU"
+    },
+    {
+      "name": "Tổng cục Thuế",
+      "type": "Cơ quan nhà nước",
+      "url": "https://gdt.gov.vn",
+      "status": "Hoạt động",
+      "id": "y5nbZUMf7Mk"
+    },
+    {
+      "name": "Hội Luật gia Việt Nam",
+      "type": "Tổ chức",
+      "url": "https://hoiluatgia.vn",
+      "status": "Cần kiểm tra",
+      "id": "ygRKFHmWpWU"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "question-reply",
+      "title": "Câu hỏi của bạn có phản hồi mới",
+      "description": "Câu hỏi “Cần giấy tờ gì để đăng ký tạm trú?” đã có phản hồi. Xem hướng dẫn và các lưu ý cần thiết.",
+      "date": "03/10/2026",
+      "time": "09:15",
+      "isToday": true,
+      "isRead": true,
+      "role": "user",
+      "category": "Phản hồi",
+      "action": "Xem phản hồi"
+    },
+    {
+      "id": "residency-guide",
+      "title": "Nội dung mới về thủ tục cư trú",
+      "description": "Hướng dẫn đăng ký tạm trú trực tuyến: điều kiện, hồ sơ và các bước thực hiện.",
+      "date": "03/10/2026",
+      "time": "08:30",
+      "isToday": true,
+      "isRead": true,
+      "role": "user",
+      "category": "Hướng dẫn",
+      "action": "Đọc hướng dẫn"
+    },
+    {
+      "id": "followed-topic",
+      "title": "Chủ đề bạn theo dõi đã được cập nhật",
+      "description": "Chủ đề “Hợp đồng lao động” có thêm nội dung về quyền và nghĩa vụ khi chấm dứt hợp đồng.",
+      "date": "02/10/2026",
+      "time": "16:40",
+      "isToday": false,
+      "isRead": true,
+      "role": "user",
+      "category": "Chủ đề",
+      "action": "Xem chủ đề"
+    },
+    {
+      "id": "legal-news",
+      "title": "Bản tin pháp lý tuần này",
+      "description": "Những điều cần biết về bảo hiểm xã hội, cư trú và các thủ tục hành chính thường gặp.",
+      "date": "01/10/2026",
+      "time": "10:00",
+      "isToday": false,
+      "isRead": true,
+      "role": "user",
+      "category": "Bản tin",
+      "action": "Đọc bản tin"
+    },
+    {
+      "id": "welcome",
+      "title": "Chào mừng bạn đến với LegalPath",
+      "description": "Bắt đầu bằng cách theo dõi chủ đề quan tâm và lưu lại những hướng dẫn hữu ích.",
+      "date": "28/09/2026",
+      "time": "14:20",
+      "isToday": false,
+      "isRead": true,
+      "role": "user",
+      "category": "Chủ đề",
+      "action": "Khám phá chủ đề"
+    }
+  ],
+  "settings": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

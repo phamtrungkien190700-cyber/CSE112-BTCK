@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fb">
+  <title>Quản lý tài khoản | LegalPath</title>
+  <link rel="stylesheet" href="css/laptop.css">
+  <link rel="stylesheet" href="css/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px)">
+</head>
+<body>
+  <main class="page-content">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Quản lý tài khoản người dùng</h1>
+        <p>Kiểm soát tài khoản, phân quyền vai trò và trạng thái hoạt động trên hệ thống.</p>
+      </div>
+      <a class="add-button" href="../../trang-dang-nhap/CSE122-BTGK/loginhtml/register.html">
+        <span aria-hidden="true">♟</span> Thêm tài khoản mới
+      </a>
+    </section>
+
+    <div class="table-toolbar">
+      <label class="search-box">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
+        <span class="visually-hidden">Tìm theo tên hoặc email</span>
+        <input id="user-search" type="search" placeholder="Tìm kiếm theo tên hoặc email..." autocomplete="off">
+      </label>
+      <p id="user-count" class="user-count" aria-live="polite">Đang tải tài khoản...</p>
+    </div>
+
+    <div class="table-frame">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th scope="col">Họ tên &amp; Email</th>
+            <th scope="col">Vai trò</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Ngày tham gia</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="user-list">
+          <tr><td class="table-message" colspan="5">Đang tải danh sách tài khoản...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p id="load-error" class="load-error" role="alert" hidden></p>
+  </main>
+  <script src="js/action.js" defer></script>
+</body>
+</html>
