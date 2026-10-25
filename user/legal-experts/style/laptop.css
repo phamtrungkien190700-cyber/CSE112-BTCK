@@ -114,7 +114,7 @@ body {
 }
 
 /* Nhấc nhẹ thẻ và đổi viền/đổ bóng khi rê chuột hoặc đang focus. */
-.the-chuyen-gia:hover,
+/* .the-chuyen-gia:hover, */
 .the-chuyen-gia:focus-within {
   transform: translateY(-3px);
   border-color: #6384ff;
