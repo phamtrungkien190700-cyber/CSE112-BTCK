@@ -1,13 +1,16 @@
 (() => {
+  // Giữ các biến và hàm của checklist trong phạm vi riêng, tránh trùng tên với script khác.
   const root = document.querySelector("#checklist");
   const categoriesContainer = document.querySelector("#checklist-categories");
   const status = document.querySelector("#checklist-status");
   const saveButton = document.querySelector("#save-progress");
   const storageKey = "legalpath-checklist-progress";
 
+  // `procedures` chứa danh sách thủ tục từ API; `savedProgress` chứa trạng thái đã lưu.
   let procedures = [];
   let savedProgress = {};
 
+  // Tạo phần tử HTML và chỉ chèn nội dung dạng text để tránh diễn giải dữ liệu thành HTML.
   function createElement(tag, className, text) {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -15,11 +18,13 @@
     return element;
   }
 
+  // Hiển thị thông báo cho người dùng; bật kiểu lỗi khi isError là true.
   function showStatus(message, isError = false) {
     status.textContent = message;
-    status.classList.toggle("is-error", isError);
+    status.classList.toggle("la-loi", isError);
   }
 
+  // Kiểm tra cấu trúc dữ liệu API trước khi dùng để dựng checklist.
   function getCategories(data) {
     const categories = Array.isArray(data) ? data : data?.data;
 
@@ -52,6 +57,7 @@
     return categories;
   }
 
+  // Đọc tiến độ dạng JSON từ localStorage; nếu chưa lưu thì bắt đầu với dữ liệu rỗng.
   function loadSavedProgress() {
     const data = localStorage.getItem(storageKey);
     if (!data) return {};
@@ -64,40 +70,42 @@
     return progress;
   }
 
+  // Tính số bước đã tích, rồi đồng bộ nhãn và thanh tiến độ của một thẻ thủ tục.
   function updateProgress(card) {
     const checkboxes = Array.from(card.querySelectorAll("input[type='checkbox']"));
     const completed = checkboxes.filter((checkbox) => checkbox.checked).length;
     const total = checkboxes.length;
     const percent = total ? Math.round((completed / total) * 100) : 0;
 
-    card.querySelector(".procedure-card__progress-label").textContent =
+    card.querySelector(".the-thu-tuc__nhan-tien-do").textContent =
       `Đã hoàn thành ${completed}/${total} bước`;
-    card.querySelector(".procedure-card__progress-fill").style.width = `${percent}%`;
-    card.querySelector(".procedure-card__progress").setAttribute("aria-valuenow", String(percent));
+    card.querySelector(".the-thu-tuc__muc-tien-do").style.width = `${percent}%`;
+    card.querySelector(".the-thu-tuc__thanh-tien-do").setAttribute("aria-valuenow", String(percent));
   }
 
+  // Dựng một thẻ thủ tục gồm tên, thanh tiến độ và các bước cần hoàn thành.
   function renderProcedure(procedure) {
-    const card = createElement("article", "procedure-card");
+    const card = createElement("article", "the-thu-tuc");
     card.dataset.procedureId = procedure.id;
 
-    const header = createElement("header", "procedure-card__header");
-    header.append(createElement("h3", "procedure-card__name", procedure.name));
+    const header = createElement("header", "the-thu-tuc__dau");
+    header.append(createElement("h3", "the-thu-tuc__ten", procedure.name));
 
-    const progressRow = createElement("div", "procedure-card__progress-row");
-    const progressLabel = createElement("span", "procedure-card__progress-label");
-    const progressBar = createElement("div", "procedure-card__progress");
+    const progressRow = createElement("div", "the-thu-tuc__hang-tien-do");
+    const progressLabel = createElement("span", "the-thu-tuc__nhan-tien-do");
+    const progressBar = createElement("div", "the-thu-tuc__thanh-tien-do");
     progressBar.setAttribute("role", "progressbar");
     progressBar.setAttribute("aria-label", `Tiến độ: ${procedure.name}`);
     progressBar.setAttribute("aria-valuemin", "0");
     progressBar.setAttribute("aria-valuemax", "100");
-    progressBar.append(createElement("span", "procedure-card__progress-fill"));
+    progressBar.append(createElement("span", "the-thu-tuc__muc-tien-do"));
     progressRow.append(progressLabel, progressBar);
     header.append(progressRow);
 
-    const steps = createElement("ol", "procedure-card__steps");
+    const steps = createElement("ol", "the-thu-tuc__cac-buoc");
     procedure.required_documents.forEach((documentName, index) => {
       const item = createElement("li");
-      const label = createElement("label", "procedure-step");
+      const label = createElement("label", "buoc-thu-tuc");
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.checked = savedProgress[procedure.id]?.[index] === true;
@@ -105,7 +113,7 @@
 
       const title = createElement(
         "span",
-        "procedure-step__title",
+        "buoc-thu-tuc__ten",
         `Bước ${index + 1}: ${documentName}`
       );
       label.append(checkbox, title);
@@ -118,36 +126,39 @@
     return card;
   }
 
+  // Dựng các nhóm lĩnh vực; mỗi nhóm chứa những thẻ thủ tục tương ứng.
   function renderCategories(categories) {
     categoriesContainer.replaceChildren();
 
     categories.forEach((category) => {
-      const section = createElement("section", "checklist-category");
-      section.append(createElement("h2", "checklist-category__title", category.category_name));
+      const section = createElement("section", "nhom-linh-vuc");
+      section.append(createElement("h2", "nhom-linh-vuc__tieu-de", category.category_name));
       category.procedures.forEach((procedure) => section.append(renderProcedure(procedure)));
       categoriesContainer.append(section);
     });
 
     if (procedures.length === 0) {
       categoriesContainer.append(
-        createElement("p", "checklist__empty", "Chưa có thủ tục nào trong danh sách.")
+        createElement("p", "bang-kiem__trong", "Chưa có thủ tục nào trong danh sách.")
       );
     }
   }
 
+  // Lắng nghe sự kiện ở phần tử cha để xử lý checkbox, kể cả các checkbox được tạo động.
   categoriesContainer.addEventListener("change", (event) => {
     if (!(event.target instanceof HTMLInputElement) || event.target.type !== "checkbox") return;
 
-    const card = event.target.closest(".procedure-card");
+    const card = event.target.closest(".the-thu-tuc");
     updateProgress(card);
     showStatus("Có thay đổi chưa được lưu.");
   });
 
+  // Thu thập lựa chọn hiện tại và lưu xuống trình duyệt của thiết bị này.
   saveButton.addEventListener("click", () => {
     const progress = {};
 
     procedures.forEach((procedure) => {
-      const card = Array.from(categoriesContainer.querySelectorAll(".procedure-card"))
+      const card = Array.from(categoriesContainer.querySelectorAll(".the-thu-tuc"))
         .find((item) => item.dataset.procedureId === procedure.id);
       progress[procedure.id] = Array.from(card.querySelectorAll("input[type='checkbox']"))
         .map((checkbox) => checkbox.checked);
@@ -163,6 +174,7 @@
     }
   });
 
+  // Tải dữ liệu thủ tục từ API, khôi phục tiến độ đã lưu và hiển thị checklist.
   async function loadChecklist() {
     try {
       const response = await fetch(root.dataset.apiUrl);
@@ -171,8 +183,10 @@
       }
 
       const categories = getCategories(await response.json());
+      // Làm phẳng danh sách để dễ lưu tiến độ theo từng mã thủ tục.
       procedures = categories.flatMap((category) => category.procedures);
 
+      // Lỗi đọc tiến độ không ngăn người dùng xem checklist hoặc tạo tiến độ mới.
       let progressError = false;
       try {
         savedProgress = loadSavedProgress();
@@ -196,7 +210,7 @@
         true
       );
       categoriesContainer.replaceChildren(
-        createElement("p", "checklist__empty", "Không có dữ liệu để hiển thị.")
+        createElement("p", "bang-kiem__trong", "Không có dữ liệu để hiển thị.")
       );
     }
   }

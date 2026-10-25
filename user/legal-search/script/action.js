@@ -241,8 +241,6 @@ function taiDanhSachThuTuc() {
         }
       });
 
-      // Chuyển danh sách lồng lĩnh vực/thủ tục thành một mảng thủ tục phẳng.
-      // Mã và tên lĩnh vực được bổ sung vào mỗi thủ tục để lọc và hiển thị.
       danhSachThuTuc = danhSachLinhVuc.flatMap((linhVuc) =>
         linhVuc.procedures.map((thuTuc) => ({
           ...thuTuc,
@@ -251,7 +249,6 @@ function taiDanhSachThuTuc() {
         }))
       );
 
-      // Tạo nút lọc và hiển thị các thủ tục ban đầu.
       hienThiBoLoc(danhSachLinhVuc);
       hienThiKetQua();
     })
@@ -270,5 +267,4 @@ function taiDanhSachThuTuc() {
     });
 }
 
-// Bắt đầu tải dữ liệu ngay khi file JavaScript được thực thi.
 taiDanhSachThuTuc();

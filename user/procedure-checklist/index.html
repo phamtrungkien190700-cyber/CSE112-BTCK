@@ -9,19 +9,19 @@
   <link rel="stylesheet" href="style/mobile.css" media="(max-width: 600px)">
 </head>
 <body>
-  <main class="checklist" id="checklist" data-api-url="http://localhost:3000/list-luat">
-    <header class="checklist__intro">
+  <main class="bang-kiem" id="checklist" data-api-url="http://localhost:3000/list-luat">
+    <header class="bang-kiem__gioi-thieu">
       <div>
         <h1>Checklist Thủ tục Cá nhân</h1>
         <p>Theo dõi tiến độ thực hiện các bước thủ tục pháp lý của bạn.</p>
       </div>
-      <button class="checklist__save" id="save-progress" type="button" disabled>
+      <button class="bang-kiem__nut-luu" id="save-progress" type="button" disabled>
         Lưu tiến độ
       </button>
     </header>
 
-    <p class="checklist__status" id="checklist-status" role="status" aria-live="polite">Đang tải dữ liệu...</p>
-    <div class="checklist__categories" id="checklist-categories"></div>
+    <p class="bang-kiem__trang-thai" id="checklist-status" role="status" aria-live="polite">Đang tải dữ liệu...</p>
+    <div class="bang-kiem__danh-sach-linh-vuc" id="checklist-categories"></div>
   </main>
   <script src="script/checklist.js" defer></script>
 </body>

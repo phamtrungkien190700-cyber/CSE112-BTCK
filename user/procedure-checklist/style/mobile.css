@@ -9,29 +9,29 @@ body {
   font: 14px/1.5 Arial, sans-serif;
 }
 
-.checklist {
+.bang-kiem {
   padding: 18px 14px;
 }
 
-.checklist__intro {
+.bang-kiem__gioi-thieu {
   margin-bottom: 16px;
 }
 
-.checklist__intro h1 {
+.bang-kiem__gioi-thieu h1 {
   margin: 0 0 4px;
   font-size: 20px;
 }
 
-.checklist__intro p,
-.checklist__status {
+.bang-kiem__gioi-thieu p,
+.bang-kiem__trang-thai {
   color: #7888a4;
 }
 
-.checklist__intro p {
+.bang-kiem__gioi-thieu p {
   margin: 0;
 }
 
-.checklist__save {
+.bang-kiem__nut-luu {
   width: 100%;
   margin-top: 12px;
   padding: 10px;
@@ -43,16 +43,16 @@ body {
   cursor: pointer;
 }
 
-.checklist__save:disabled {
+.bang-kiem__nut-luu:disabled {
   opacity: .55;
   cursor: not-allowed;
 }
 
-.checklist__status.is-error {
+.bang-kiem__trang-thai.la-loi {
   color: #b42318;
 }
 
-.checklist-category {
+.nhom-linh-vuc {
   margin-bottom: 12px;
   padding: 12px;
   border: 1px solid #e5eaf1;
@@ -60,42 +60,42 @@ body {
   background: #fff;
 }
 
-.checklist-category__title {
+.nhom-linh-vuc__tieu-de {
   margin: 0 0 10px;
   color: #293fa0;
   font-size: 15px;
 }
 
-.procedure-card + .procedure-card {
+.the-thu-tuc + .the-thu-tuc {
   margin-top: 10px;
 }
 
-.procedure-card__header {
+.the-thu-tuc__dau {
   display: grid;
   gap: 5px;
   padding-bottom: 9px;
   border-bottom: 1px solid #e5eaf1;
 }
 
-.procedure-card__name {
+.the-thu-tuc__ten {
   margin: 0;
   color: #293fa0;
   font-size: 14px;
 }
 
-.procedure-card__progress-row {
+.the-thu-tuc__hang-tien-do {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.procedure-card__progress-label {
+.the-thu-tuc__nhan-tien-do {
   color: #7888a4;
   font-size: 11px;
 }
 
-.procedure-card__progress {
+.the-thu-tuc__thanh-tien-do {
   width: 75px;
   height: 6px;
   overflow: hidden;
@@ -103,14 +103,14 @@ body {
   background: #e4eaf2;
 }
 
-.procedure-card__progress-fill {
+.the-thu-tuc__muc-tien-do {
   display: block;
   width: 0;
   height: 100%;
   background: #3852b5;
 }
 
-.procedure-card__steps {
+.the-thu-tuc__cac-buoc {
   display: grid;
   gap: 7px;
   margin: 9px 0 0;
@@ -118,7 +118,7 @@ body {
   list-style: none;
 }
 
-.procedure-step {
+.buoc-thu-tuc {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -129,17 +129,17 @@ body {
   cursor: pointer;
 }
 
-.procedure-step input {
+.buoc-thu-tuc input {
   margin: 2px 0 0;
   accent-color: #293fa0;
 }
 
-.procedure-step__title {
+.buoc-thu-tuc__ten {
   font-size: 12px;
   font-weight: 600;
 }
 
-.checklist__empty {
+.bang-kiem__trong {
   padding: 14px;
   background: #fff;
   color: #7888a4;
