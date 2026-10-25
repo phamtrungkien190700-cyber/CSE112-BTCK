@@ -150,7 +150,6 @@ async function initPage() {
     toast('Không tải được dữ liệu nguồn. Hãy chạy trang bằng Live Server.');
   }
   bindSourceControls();
-  bindSourceControls();
   renderSources();
 }
 
