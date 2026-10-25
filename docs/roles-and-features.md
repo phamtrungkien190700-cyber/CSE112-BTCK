@@ -10,7 +10,7 @@
 
 Tài khoản người dùng và chuyên gia có thể tự đăng ký tại màn hình đăng nhập/đăng ký hợp nhất. Người đăng ký có thể gửi yêu cầu vai trò `editor` hoặc `admin`, nhưng tài khoản chỉ được tạo với quyền `user` cho đến khi quản trị viên phê duyệt và đổi vai trò tại màn hình quản lý tài khoản. Tài khoản quản trị đầu tiên được khởi tạo qua `BOOTSTRAP_ADMIN_IDENTITY` và `BOOTSTRAP_ADMIN_PASSWORD` khi chạy server.
 
-Các khu vực theo vai trò đều có liên kết **Tổng quan chung** tới `/pages/public/index.html`.
+Các khu vực theo vai trò đều có liên kết **Tổng quan chung** tới `/`.
 
 Quyền truy cập được kiểm tra ở server cho các API ghi dữ liệu và các trang theo vai trò. Giao diện phía trình duyệt chỉ hỗ trợ điều hướng, không thay thế kiểm tra quyền phía server.
 

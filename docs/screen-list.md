@@ -3,7 +3,7 @@
 | Màn hình | Đường dẫn | Quyền |
 |---|---|---|
 | Trang chào và điều hướng | `/` | Công khai |
-| Tra cứu pháp lý | `/pages/public/index.html` | Công khai |
+| Tra cứu pháp lý / Tổng quan chung | `/` | Công khai |
 | Đăng nhập / đăng ký | `/pages/auth/login.html` | Công khai |
 | Khôi phục mật khẩu | `/pages/auth/forgot-password.html` | Công khai; gửi email/SMS chưa tích hợp |
 | Không gian người dùng | `/pages/user/mainnguoidung/mainnguoidung.html` | `user` |

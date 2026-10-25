@@ -39,7 +39,7 @@
     if (!pageRoles.length || document.querySelector(".role-overview-link, .overview-link")) return;
     const nav = document.querySelector(".side-nav, .primary-nav");
     const link = document.createElement("a");
-    link.href = "/pages/public/index.html";
+    link.href = "/";
     link.target = "_top";
     link.className = nav ? "nav-link overview-link" : "role-overview-link";
     link.textContent = "Tổng quan chung";
