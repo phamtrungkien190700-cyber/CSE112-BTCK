@@ -1,6 +1,68 @@
 {
   "articles": [
     {
+      "id": "art-mvnn5yyqeiyj2",
+      "title": "quản lý đất",
+      "desc": "jokjlkjlk",
+      "category": "Hợp đồng & Giao dịch",
+      "status": "published",
+      "checklistId": null,
+      "views": 0,
+      "date": "2026-10-25",
+      "author": "Luật sư",
+      "tags": [],
+      "content": [
+        {
+          "t": "h",
+          "x": "Mục tiêu và phạm vi"
+        },
+        {
+          "t": "p",
+          "x": "Làm rõ câu hỏi thực tế cần giải đáp về \"các bước lấy sổ đỏ\" trong chuyên mục all. Xác định chủ thể, thời điểm và dữ kiện còn thiếu trước khi đưa ra nhận định."
+        },
+        {
+          "t": "h",
+          "x": "Thông tin cần thu thập"
+        },
+        {
+          "t": "p",
+          "x": "- Xác định giấy tờ, chủ thể và mục tiêu cần làm rõ."
+        },
+        {
+          "t": "h",
+          "x": "Các bước tham khảo"
+        },
+        {
+          "t": "p",
+          "x": "1. Kiểm tra tình huống và tài liệu thực tế, không suy diễn khi chưa đủ dữ kiện."
+        },
+        {
+          "t": "p",
+          "x": "2. Đối chiếu quy định và biểu mẫu hiện hành trên nguồn chính thức phù hợp."
+        },
+        {
+          "t": "p",
+          "x": "3. Nêu rõ phương án, cơ quan cần liên hệ và giới hạn của nội dung hướng dẫn."
+        },
+        {
+          "t": "h",
+          "x": "Điểm cần chuyên gia xác minh"
+        },
+        {
+          "t": "p",
+          "x": "Kiểm tra căn cứ pháp lý, hiệu lực văn bản, thời hạn, thẩm quyền và hồ sơ áp dụng cho \"các bước lấy sổ đỏ\" trước khi xuất bản."
+        },
+        {
+          "t": "h",
+          "x": "Lưu ý"
+        },
+        {
+          "t": "p",
+          "x": "Dàn ý này chỉ là khung biên tập tự động, không trích dẫn hoặc xác nhận điều luật. Chuyên gia cần kiểm chứng, chỉnh sửa và bổ sung nguồn chính thức."
+        }
+      ]
+    },
+    {
       "id": "1",
       "title": "B?i vi?t m?u",
       "category": "Ph?p lu?t",

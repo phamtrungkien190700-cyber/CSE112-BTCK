@@ -35,6 +35,15 @@
       "passwordHash": "85b29738072c261c3af71a6ff8746188:96a2ce7ba55fd0e6e29447ddb82888e07b4e543302a897a3857481f4ac40263c67266c29f4804861583d690295d4f83e9476a65f6e6b5e5cdd87abcb32f043aa",
       "createdAt": "2026-10-25T02:45:39.281Z",
       "locked": false
+    },
+    {
+      "id": "8c926efd-7ec5-4510-b654-6bb9187e39e0",
+      "name": "huongg",
+      "identity": "huongg3100@gmail.com",
+      "role": "legal_expert",
+      "passwordHash": "030542c075996d3e00b4c38d3b43919c:de3275c44c1facdda079bd058a2eb76be6d45e9c52a038e0aa7bd3e08fce0ca52fe51e4244c6ab52a06b27e149d490e13ceb87cf2ff702ce8ff07f0260db615f",
+      "createdAt": "2026-10-25T08:08:58.298Z",
+      "locked": false
     }
   ]
 }

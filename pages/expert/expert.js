@@ -494,7 +494,7 @@ function ArticlesPage() {
   function renderTable() {
     const list = filtered();
     const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
-    state.page = Math.min(state.page, pages);
+    state.page = Math.min(state.page, pages); 
     const rows = list.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
     const tbody = $("#artTbody");
     if (!rows.length) {
