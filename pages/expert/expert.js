@@ -69,7 +69,7 @@ const QTYPES = { yesno: "Có / Không", single: "Chọn 1 đáp án", multi: "Ch
 const AR_STATUS = { published: "Đã xuất bản", pending: "Chờ duyệt", draft: "Bản nháp" };
 const CL_STATUS = { published: "Đã công bố", draft: "Bản nháp" };
 const STATUS_BADGE = { published: "badge-success", pending: "badge-warning", draft: "badge-neutral" };
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 7;
 
 /* ------------------------------ Kho dữ liệu ----------------------------- */
 const SEED_ARTICLES = [];
