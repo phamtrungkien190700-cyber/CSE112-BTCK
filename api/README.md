@@ -19,6 +19,11 @@ Pages that use the same resource share its API:
 - `expert-content.json`: `http://localhost:3003/expert_content/portal` (bài viết và checklist)
 - `expert-content.json`: `http://localhost:3003/notifications` (thông báo)
 
+The user AI assistant loads procedure categories from
+`http://localhost:3001/list-luat`. Saved recommendations and risk-review
+metadata are kept in browser storage for the signed-in account (or a guest
+workspace when signed out); situation text is not saved.
+
 The settings page appends account-specific notifications to the `notifications`
 collection in `expert-content.json`. Each notification is associated with the
 signed-in user's ID and role; the notifications page only displays records for
@@ -47,3 +52,9 @@ The expert article-management page lists both articles and checklists from this
 record. Checklist status is shown as awaiting review until approved, then as
 published; rejected checklists are labeled as rejected. Saving a checklist
 after editing sends it back to the review queue.
+
+Bật api 
+npx --yes json-server@0.17.4 api\users.json --host 127.0.0.1 --port 3000
+npx --yes json-server@0.17.4 api\legal-procedures.json --host 127.0.0.1 --port 3001
+npx --yes json-server@0.17.4 api\experts.json --host 127.0.0.1 --port 3002
+npx --yes json-server@0.17.4 api\expert-content.json --host 127.0.0.1 --port 3003

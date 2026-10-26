@@ -1,0 +1,96 @@
+:root {
+  --role-font-body: 14px;
+  --role-font-page-title: 20px;
+  --role-font-section-title: 16px;
+  --role-font-table: 12px;
+  --role-font-meta: 12px;
+}
+
+body[data-page-group="admin"],
+body[data-page-group="editor"],
+body[data-page-group="expert"] {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: var(--role-font-body);
+  line-height: 1.5;
+}
+
+body[data-page-group] .breadcrumbs,
+body[data-page-group] .nav-link {
+  font-size: 13px;
+}
+
+body[data-page-group] :is(.page-heading, .page-header) h1,
+body[data-page-group] .page-view > .page-heading h1 {
+  font-size: var(--role-font-page-title);
+  line-height: 1.35;
+}
+
+body[data-page-group] :is(.page-heading, .page-header) p {
+  font-size: var(--role-font-body);
+  line-height: 1.5;
+}
+
+body[data-page-group] :is(.panel-heading, .panel-head) h2,
+body[data-page-group] .panel > h2,
+body[data-page-group] .page-view h2 {
+  font-size: var(--role-font-section-title);
+  line-height: 1.4;
+}
+
+body[data-page-group] :is(
+  button,
+  input,
+  select,
+  textarea,
+  .btn-sm,
+  .btn,
+  .add-button,
+  .field,
+  .input,
+  .search-box input,
+  .search input,
+  .search-field input
+) {
+  font-size: var(--role-font-body);
+}
+
+body[data-page-group] :is(.form-field label, .field-label) {
+  font-size: var(--role-font-body);
+}
+
+body[data-page-group] :is(
+  .activity-table,
+  .user-table,
+  .taxonomy-table,
+  .article-table,
+  .page-view table
+) :is(th, td),
+body[data-page-group] :is(th, td) {
+  font-size: var(--role-font-table);
+}
+
+body[data-page-group] :is(
+  small,
+  .stat-trend,
+  .article-total,
+  .read-only-pill,
+  .verified-pill,
+  .badge,
+  .role-badge,
+  .status,
+  .pager,
+  .side-label,
+  .panel-head p,
+  .stat-copy span,
+  .article-meta,
+  .completion-line,
+  .completion-note,
+  .identity-meta span,
+  .t-desc
+) {
+  font-size: var(--role-font-meta);
+}
+
+body[data-page-group] .stat-card h2 {
+  font-size: var(--role-font-section-title);
+}

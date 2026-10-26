@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist thủ tục | LegalPath</title>
+  <link rel="stylesheet" href="style/laptop.css" media="(min-width: 1025px)">
+  <link rel="stylesheet" href="style/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="style/mobile.css" media="(max-width: 600px)">
+  <link rel="stylesheet" href="../../shared/user-page-typography.css">
+</head>
+<body>
+  <main class="checklist" id="checklist" data-api-url="http://localhost:3001/list-luat">
+    <header class="checklist__intro">
+      <div>
+        <h1>Checklist Thủ tục Cá nhân</h1>
+        <p>Theo dõi tiến độ thực hiện các bước thủ tục pháp lý của bạn.</p>
+      </div>
+      <button class="checklist__save" id="save-progress" type="button" disabled>
+        Lưu tiến độ
+      </button>
+    </header>
+
+    <p class="checklist__status" id="checklist-status" role="status" aria-live="polite">Đang tải dữ liệu...</p>
+    <div class="checklist__categories" id="checklist-categories"></div>
+  </main>
+  <script src="script/checklist.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#legal-search h1,
+#checklist h1,
+#danh-ba-chuyen-gia h1,
+.ai-page h1 {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+#legal-search h2,
+#checklist h2,
+#danh-ba-chuyen-gia h2,
+.ai-page h2 {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+#legal-search h3,
+#checklist h3,
+#danh-ba-chuyen-gia h3,
+.ai-page h3 {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+#legal-search p:not(.tra-cuu-phap-ly__trang-thai-ket-qua),
+#checklist p:not(.checklist__status),
+#danh-ba-chuyen-gia p:not(.danh-ba-chuyen-gia__trang-thai),
+.ai-page p:not(.ai-eyebrow):not(.ai-page-status) {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#checklist .procedure-card__name,
+#danh-ba-chuyen-gia .the-chuyen-gia__ten {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.tra-cuu-phap-ly__khung-o-nhap input,
+.tra-cuu-phap-ly__nut-tim-kiem,
+.checklist__save,
+.danh-ba-chuyen-gia__khung-tim-kiem input,
+.ai-page input,
+.ai-page select,
+.ai-page textarea,
+.ai-page button {
+  font-size: 14px;
+}
+
+.tra-cuu-phap-ly__trang-thai-ket-qua,
+.checklist__status,
+.danh-ba-chuyen-gia__trang-thai,
+.ai-page-status {
+  font-size: 12px;
+}

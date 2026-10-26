@@ -2,15 +2,19 @@
   const pages = {
     queue: {
       title: 'Hàng đợi duyệt',
-      path: '../File/hangdoiduyet/hangdoiduyet.html'
+      path: '../File/review-queue/review-queue.html'
     },
     sources: {
       title: 'Quản lý nguồn',
-      path: '../File/quanlynguon/quanlynguon.html'
+      path: '../File/source-management/source-management.html'
     },
     monitor: {
       title: 'Theo dõi độ mới',
-      path: '../File/theodoichedomoi/theodoichedomoi.html'
+      path: '../File/new-content-tracking/new-content-tracking.html'
+    },
+    assistant: {
+      title: 'Trợ lý AI',
+      path: '../../AI/ai-assistant.html'
     }
   };
 

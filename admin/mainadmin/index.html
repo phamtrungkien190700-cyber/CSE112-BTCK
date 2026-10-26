@@ -9,11 +9,12 @@
   <link rel="stylesheet" href="css/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
   <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px)">
   <link rel="stylesheet" href="../../shared/account-menu.css">
+  <link rel="stylesheet" href="../../shared/role-typography.css">
 </head>
-<body>
+<body data-page-group="admin">
   <div class="admin-shell">
     <aside class="sidebar" aria-label="Điều hướng quản trị">
-      <a class="brand" href="../dieukhuyennentang/dknentang.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-label="LegalPath - Bảng điều khiển">
+      <a class="brand" href="../platform-management/platform-dashboard.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-label="LegalPath - Bảng điều khiển">
         <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true">
           <path d="M16 2 29 8v3H3V8l13-6ZM5 13h5v12H5zm8 0h6v12h-6zm9 0h5v12h-5zM3 27h26v3H3z" fill="currentColor"/>
         </svg>
@@ -21,14 +22,17 @@
       </a>
 
       <nav class="primary-nav" aria-label="Các trang quản trị">
-        <a class="nav-link is-active" href="../dieukhuyennentang/dknentang.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-current="page">
+        <a class="nav-link is-active" href="../platform-management/platform-dashboard.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-current="page">
           <span class="nav-icon" aria-hidden="true">◷</span><span>Tổng quan nền tảng</span>
         </a>
-        <a class="nav-link" href="../quanliluat/quanliluat.html" target="admin-content" data-page-name="Quản lý Taxonomy">
+        <a class="nav-link" href="../law-management/law-management.html" target="admin-content" data-page-name="Quản lý Taxonomy">
           <span class="nav-icon" aria-hidden="true">▥</span><span>Quản lý Taxonomy</span>
         </a>
-        <a class="nav-link" href="../quanlitaikhoan/quanlitk.html" target="admin-content" data-page-name="Quản lý tài khoản">
+        <a class="nav-link" href="../account-management/account-management.html" target="admin-content" data-page-name="Quản lý tài khoản">
           <span class="nav-icon" aria-hidden="true">♣</span><span>Quản lý tài khoản</span>
+        </a>
+        <a class="nav-link" href="../../AI/ai-assistant.html" target="admin-content" data-page-name="Trợ lý AI">
+          <span class="nav-icon" aria-hidden="true">✧</span><span>Trợ lý AI</span>
         </a>
       </nav>
 
@@ -59,7 +63,7 @@
           class="content-frame"
           id="admin-content"
           name="admin-content"
-          src="../dieukhuyennentang/dknentang.html"
+          src="../platform-management/platform-dashboard.html"
           title="Nội dung quản trị LegalPath">
         </iframe>
       </main>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chuyên gia pháp lý | LegalPath</title>
+  <link rel="stylesheet" href="style/laptop.css">
+  <link rel="stylesheet" href="style/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
+  <link rel="stylesheet" href="style/mobile.css" media="(max-width: 600px)">
+  <link rel="stylesheet" href="../../shared/user-page-typography.css">
+</head>
+<body>
+  <main class="danh-ba-chuyen-gia" id="danh-ba-chuyen-gia" data-duong-dan-api="http://localhost:3002/experts_directory">
+    <section class="danh-ba-chuyen-gia__gioi-thieu" aria-labelledby="tieu-de-trang">
+      <h1 id="tieu-de-trang">Danh bạ Chuyên gia Pháp lý</h1>
+      <p>Kết nối với các luật sư và chuyên gia uy tín để được hỗ trợ giải đáp thắc mắc.</p>
+    </section>
+
+    <label class="danh-ba-chuyen-gia__khung-tim-kiem" for="o-tim-kiem-chuyen-gia">
+      <input id="o-tim-kiem-chuyen-gia" type="search" placeholder="Tìm kiếm theo tên chuyên gia hoặc lĩnh vực tư vấn..." autocomplete="off">
+    </label>
+
+    <p class="danh-ba-chuyen-gia__trang-thai" id="trang-thai-danh-ba" aria-live="polite">Đang tải danh sách chuyên gia...</p>
+    <section class="danh-ba-chuyen-gia__danh-sach" id="danh-sach-chuyen-gia" aria-label="Danh sách chuyên gia"></section>
+  </main>
+  <script src="script/expert-directory.js" defer></script>
+</body>
+</html>

@@ -146,7 +146,7 @@ function showToast(message) {
 document.querySelector("#logoutButton").addEventListener("click", () => {
   try {
     localStorage.removeItem("legalpath.auth.user.v1");
-    window.location.assign("../trang-dang-nhap/CSE122-BTGK/loginhtml/login.html");
+    window.location.assign("../login-pages/CSE122-BTGK/loginhtml/login.html");
   } catch (error) {
     console.error("Không thể đăng xuất:", error);
     showToast("Không thể đăng xuất. Vui lòng thử lại.");
