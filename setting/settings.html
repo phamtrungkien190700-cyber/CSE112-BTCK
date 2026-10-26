@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../shared/account-menu.css">
   <script src="../login-pages/CSE122-BTGK/js/auth-api.js" defer></script>
   <script src="../shared/notifications-api.js" defer></script>
-  <script src="settings.js?v=5" defer></script>
+  <script src="settings.js?v=6" defer></script>
   <script src="../shared/account-menu.js" defer></script>
 </head>
 <body data-page="settings" data-page-group="user">
@@ -28,6 +28,10 @@
         <a class="nav-link" href="../notification/notifications.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 8-3 9h18s-3-2-3-9ZM10 21h4"/></svg>
           <span>Thông báo</span><span class="nav-count">3</span>
+        </a>
+        <a class="nav-link" href="#roleSwitch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+          <span>Đổi vai trò</span>
         </a>
       </nav>
 
@@ -83,6 +87,27 @@
                   </label>
                   <p class="account-status" id="accountStatus" role="status" aria-live="polite">Đang kết nối tài khoản...</p>
                 </div>
+              </section>
+
+              <section class="panel role-switch-panel" id="roleSwitch" aria-labelledby="roleSwitchTitle">
+                <div class="panel-heading">
+                  <h2 id="roleSwitchTitle">Đổi loại người dùng</h2>
+                  <p>Thay đổi vai trò của tài khoản đang đăng nhập trong users.json.</p>
+                </div>
+                <div class="role-switch-controls">
+                  <label class="field" for="roleSelect">
+                    <span>Vai trò mới</span>
+                    <select id="roleSelect" name="role" disabled>
+                      <option value="user">Người dùng</option>
+                      <option value="legal_expert">Chuyên gia pháp lý</option>
+                      <option value="editor">Biên tập viên</option>
+                      <option value="manager">Quản trị viên</option>
+                    </select>
+                  </label>
+                  <button class="button button-primary" id="changeRoleButton" type="button" disabled>Lưu vai trò</button>
+                </div>
+                <span class="role-preview" id="rolePreview" data-role="user" aria-live="polite">Người dùng</span>
+                <p class="role-switch-status" id="roleSwitchStatus" role="status" aria-live="polite">Đang tải tài khoản...</p>
               </section>
 
               <section class="panel notifications-panel" aria-labelledby="notificationsTitle">

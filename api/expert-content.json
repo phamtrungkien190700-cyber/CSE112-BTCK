@@ -2,112 +2,26 @@
   "expert_content": [
     {
       "id": "portal",
-      "articles": [
-        {
-          "id": "1",
-          "title": "Bài viết mẫu",
-          "category": "Pháp luật",
-          "status": "published"
-        },
-        {
-          "id": "2",
-          "title": "Bảo vệ thông tin cá nhân",
-          "category": "An toàn thông tin",
-          "status": "draft"
-        },
-        {
-          "id": "art-mv4vdg73bc32a",
-          "title": "Xzasdas",
-          "desc": "dsadas",
-          "category": "Pháp luật lao động",
-          "status": "draft",
-          "checklistId": null,
-          "views": 0,
-          "date": "2026-10-12",
-          "author": "Luật sư",
-          "tags": [],
-          "content": [
-            {
-              "t": "p",
-              "x": "dsadas"
-            }
-          ]
-        }
-      ],
+      "articles": [],
       "checklists": [
         {
-          "id": "cl-mvnhw475y1rep",
-          "name": "Đệ",
-          "desc": "oke",
-          "category": "Pháp luật lao động",
-          "status": "published",
-          "questions": [
-            {
-              "id": "q-mvnhw4754yzvt",
-              "text": "oke",
-              "type": "yesno",
-              "required": true
-            }
-          ],
-          "updatedAt": "2026-10-25",
-          "createdAt": "2026-10-25"
-        },
-        {
-          "id": "cl-mv51e0cmczi41",
-          "name": "213123",
-          "desc": "",
-          "category": "Pháp luật lao động",
-          "status": "published",
-          "questions": [
-            {
-              "id": "q-mv51e0cmdn18d",
-              "text": "231312321321",
-              "type": "yesno",
-              "required": true
-            }
-          ],
-          "updatedAt": "2026-10-12",
-          "createdAt": "2026-10-12",
-          "reviewStatus": "approved",
-          "reviewedAt": "2026-10-25T07:39:09.701Z"
-        },
-        {
-          "id": "cl-mv50yzy27lir8",
-          "name": "ddeprrai",
-          "desc": "",
-          "category": "Pháp luật lao động",
-          "status": "published",
-          "questions": [
-            {
-              "id": "q-mv50yzy2b1uqu",
-              "text": "dđ",
-              "type": "yesno",
-              "required": true
-            }
-          ],
-          "updatedAt": "2026-10-12",
-          "createdAt": "2026-10-12",
-          "reviewStatus": "approved",
-          "reviewedAt": "2026-10-25T07:40:54.942Z"
-        },
-        {
-          "id": "cl-mv50rrpzziuar",
-          "name": "de;trak",
-          "desc": "",
+          "id": "cl-mvp45g2lxlckq",
+          "name": "nội dung về đất đai",
+          "desc": "các thông tin về đất đai",
           "category": "Pháp luật lao động",
           "status": "draft",
           "questions": [
             {
-              "id": "q-mv50rrpzfo8gc",
-              "text": "321312312312",
+              "id": "q-mvp45g2lss4kz",
+              "text": "tiêu chí về đất đai",
               "type": "yesno",
               "required": true
             }
           ],
-          "updatedAt": "2026-10-12",
-          "createdAt": "2026-10-12",
-          "reviewStatus": "rejected",
-          "reviewedAt": "2026-10-25T07:39:17.392Z"
+          "updatedAt": "2026-10-26",
+          "reviewStatus": "pending",
+          "reviewedAt": null,
+          "createdAt": "2026-10-26"
         }
       ]
     }

@@ -5,6 +5,10 @@ const passwordDialog = document.querySelector("#passwordDialog");
 const passwordForm = document.querySelector("#passwordForm");
 const toast = document.querySelector("#toast");
 const accountStatus = document.querySelector("#accountStatus");
+const roleSelect = document.querySelector("#roleSelect");
+const changeRoleButton = document.querySelector("#changeRoleButton");
+const roleSwitchStatus = document.querySelector("#roleSwitchStatus");
+const rolePreview = document.querySelector("#rolePreview");
 let toastTimer;
 let currentUser = null;
 const roleLabels = {
@@ -20,6 +24,13 @@ const defaultSettings = {
   questionReplies: true,
   emailDigest: false,
   language: "vi"
+};
+
+const roleDestinations = {
+  user: "../user-portal/user-dashboard/user-dashboard.html",
+  legal_expert: "../expert/expert-profile.html",
+  editor: "../editor/mainEditor/index.html",
+  manager: "../admin/mainadmin/index.html"
 };
 
 function readSavedSettings() {
@@ -79,6 +90,12 @@ function setAccountStatus(message, isError = false) {
   accountStatus.dataset.state = isError ? "error" : "info";
 }
 
+function updateRolePreview() {
+  const selectedOption = roleSelect.selectedOptions[0];
+  rolePreview.dataset.role = roleSelect.value;
+  rolePreview.textContent = selectedOption?.textContent || "Chưa chọn vai trò";
+}
+
 function redirectForHttpError(error) {
   const errorPages = {
     403: "../403/403.html",
@@ -118,6 +135,14 @@ async function loadCurrentUser() {
       ? new Date(currentUser.createdAt).toLocaleDateString("vi-VN", { month: "2-digit", year: "numeric" })
       : "";
     const roleLabel = roleLabels[currentUser.role] || "Người dùng";
+    roleSelect.value = currentUser.role;
+    const hasSupportedRole = roleSelect.value === currentUser.role;
+    updateRolePreview();
+    roleSelect.disabled = !hasSupportedRole;
+    changeRoleButton.disabled = !hasSupportedRole;
+    roleSwitchStatus.textContent = hasSupportedRole
+      ? `Vai trò hiện tại: ${roleLabel}.`
+      : "Vai trò tài khoản hiện tại không nằm trong danh sách được hỗ trợ.";
     document.querySelector("[data-account-meta]").textContent = createdDate
       ? `${roleLabel} · Tham gia từ ${createdDate}`
       : `Tài khoản ${roleLabel}`;
@@ -260,3 +285,38 @@ try {
   showToast(`Không thể tải cài đặt đã lưu: ${error.message}`);
 }
 loadCurrentUser();
+
+roleSelect.addEventListener("change", updateRolePreview);
+
+changeRoleButton.addEventListener("click", async () => {
+  if (!currentUser) {
+    roleSwitchStatus.textContent = "Không xác định được tài khoản đang đăng nhập.";
+    return;
+  }
+
+  const nextRole = roleSelect.value;
+  if (!roleDestinations[nextRole]) {
+    roleSwitchStatus.textContent = "Vai trò được chọn không hợp lệ.";
+    return;
+  }
+  if (nextRole === currentUser.role) {
+    roleSwitchStatus.textContent = "Đây là vai trò hiện tại của bạn.";
+    return;
+  }
+
+  changeRoleButton.disabled = true;
+  roleSelect.disabled = true;
+  roleSwitchStatus.textContent = "Đang cập nhật vai trò...";
+  try {
+    currentUser = await LegalPathAuthApi.updateUser(currentUser.id, { role: nextRole });
+    LegalPathAuthApi.setCurrentUser(currentUser);
+    window.location.assign(roleDestinations[nextRole]);
+  } catch (error) {
+    console.error("Không thể đổi vai trò tài khoản:", error);
+    if (redirectForHttpError(error)) return;
+    roleSelect.disabled = false;
+    changeRoleButton.disabled = false;
+    roleSwitchStatus.textContent = `Không thể đổi vai trò: ${error.message}`;
+    showToast(`Không thể đổi vai trò: ${error.message}`);
+  }
+});
