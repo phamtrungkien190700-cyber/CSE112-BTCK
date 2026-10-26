@@ -20,6 +20,17 @@
       "description": "Hồ sơ chuyên gia chưa có phần giới thiệu.",
       "action_label": "Gửi yêu cầu tư vấn",
       "id": "ilyYetw"
+    },
+    {
+      "user_id": "6",
+      "expert_id": "EXP-03",
+      "full_name": "Expert",
+      "title": "Chuyên gia pháp lý",
+      "category_id": "chua_cap_nhat",
+      "avatar_initials": "E",
+      "description": "Hồ sơ chuyên gia chưa có phần giới thiệu.",
+      "action_label": "Gửi yêu cầu tư vấn",
+      "id": "gvmuLH9"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

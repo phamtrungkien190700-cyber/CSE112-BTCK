@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../shared/account-menu.css">
   <script src="../login-pages/CSE122-BTGK/js/auth-api.js" defer></script>
   <script src="../shared/notifications-api.js" defer></script>
-  <script src="settings.js?v=5" defer></script>
+  <script src="settings.js?v=6" defer></script>
   <script src="../shared/account-menu.js" defer></script>
 </head>
 <body data-page="settings" data-page-group="user">
@@ -83,6 +83,27 @@
                   </label>
                   <p class="account-status" id="accountStatus" role="status" aria-live="polite">Đang kết nối tài khoản...</p>
                 </div>
+              </section>
+
+              <section class="panel role-switch-panel" id="roleSwitch" aria-labelledby="roleSwitchTitle">
+                <div class="panel-heading">
+                  <h2 id="roleSwitchTitle">Đổi loại người dùng</h2>
+                  <p>Thay đổi vai trò của tài khoản đang đăng nhập trong users.json.</p>
+                </div>
+                <div class="role-switch-controls">
+                  <label class="field" for="roleSelect">
+                    <span>Vai trò mới</span>
+                    <select id="roleSelect" name="role" disabled>
+                      <option value="user">Người dùng</option>
+                      <option value="legal_expert">Chuyên gia pháp lý</option>
+                      <option value="editor">Biên tập viên</option>
+                      <option value="manager">Quản trị viên</option>
+                    </select>
+                  </label>
+                  <button class="button button-primary" id="changeRoleButton" type="button" disabled>Lưu vai trò</button>
+                </div>
+                <span class="role-preview" id="rolePreview" data-role="user" aria-live="polite">Người dùng</span>
+                <p class="role-switch-status" id="roleSwitchStatus" role="status" aria-live="polite">Đang tải tài khoản...</p>
               </section>
 
               <section class="panel notifications-panel" aria-labelledby="notificationsTitle">
