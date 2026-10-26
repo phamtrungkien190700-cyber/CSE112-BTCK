@@ -85,13 +85,30 @@ form.addEventListener("submit", async (event) => {
       return;
     }
 
-    await LegalPathAuthApi.createUser({
+    const role = form.elements.role.value;
+    const user = await LegalPathAuthApi.createUser({
       name,
       identity,
-      role: form.elements.role.value,
+      role,
       password: passwordInput.value,
       createdAt: new Date().toISOString(),
     });
+    if (role === "legal_expert") {
+      try {
+        await LegalPathAuthApi.ensureExpertProfile(user);
+      } catch (error) {
+        console.error("Tài khoản đã tạo nhưng hồ sơ chuyên gia chưa được tạo:", error);
+        setMessage(
+          `Tài khoản đã được tạo, nhưng chưa thể tạo hồ sơ chuyên gia (${error.message}). Đăng nhập sau khi API chuyên gia hoạt động để hoàn tất hồ sơ.`,
+          "error"
+        );
+        redirecting = true;
+        window.setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2500);
+        return;
+      }
+    }
     setMessage("Đăng ký thành công! Bạn có thể đăng nhập ngay.", "success");
     form.reset();
     nameInput.setCustomValidity("");

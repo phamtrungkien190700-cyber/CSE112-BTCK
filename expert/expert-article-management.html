@@ -17,21 +17,22 @@
   <script src="../../js/pages/expert.js" defer></script>
   <script src="../../css/page-header.js" defer></script>
   <script src="expert.js" defer></script>
+  <script src="../login-pages/CSE122-BTGK/js/auth-api.js" defer></script>
   <script src="../shared/account-menu.js" defer></script>
+  <script src="../shared/account-name.js" defer></script>
+  <script src="../shared/ai-assistant-widget.js" defer></script>
 </head>
 <body data-page="articles" data-page-group="expert" data-required-role="legal_expert">
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="expert-article-management.html" aria-label="LegalPath, trang chủ">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 6v2h20V6L12 2ZM4 9v8H2v2h20v-2h-2V9h-2v8h-4V9h-2v8H8V9H6v8H4V9Zm-2 12h20v2H2v-2Z"/></svg></span>
-        <span class="brand-copy"><strong>LegalPath</strong><small>Pháp luật gần bạn hơn</small></span>
+        <img class="brand-logo-image" src="../shared/legalpath-logo.png" alt="LegalPath - Pháp luật gần bạn hơn">
       </a>
       <div class="side-label">Không gian chuyên gia</div>
       <nav class="side-nav" aria-label="Điều hướng chính">
         <a class="nav-link active" href="expert-article-management.html" aria-current="page"><span class="nav-icon">▤</span><span>Quản lý bài viết</span></a>
         <a class="nav-link" href="expert-checklist-management.html"><span class="nav-icon">☷</span><span>Quản lý checklist</span></a>
         <a class="nav-link" href="expert-profile.html"><span class="nav-icon">♙</span><span>Hồ sơ chuyên gia</span></a>
-        <a class="nav-link ai-assistant-link" href="../AI/ai-assistant.html" target="_blank" rel="noopener"><span class="nav-icon">✧</span><span>Trợ lý AI</span></a>
       </nav>
       <div class="sidebar-spacer"></div>
       <a class="nav-link help-link" href="#help"><span class="nav-icon">ⓘ</span><span>Trung tâm trợ giúp</span></a>
@@ -44,7 +45,7 @@
         <div class="account-menu" data-account-menu>
           <button class="topbar-actions account-menu__toggle" type="button" aria-label="Mở menu tài khoản" aria-haspopup="menu" aria-expanded="false" data-account-menu-toggle>
             <span class="avatar avatar-small expert-header-avatar" data-side-initials>TM</span>
-            <span class="expert-header-account"><span data-topbar-name>Trần Minh</span><span aria-hidden="true">·</span><span data-side-role>Chuyên gia pháp lý</span></span>
+            <span class="expert-header-account"><span data-topbar-name data-account-name>Trần Minh</span><span aria-hidden="true">·</span><span data-side-role>Chuyên gia pháp lý</span></span>
             <svg class="expert-header-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <nav class="account-menu__panel" role="menu" aria-label="Menu tài khoản" data-account-menu-panel hidden>

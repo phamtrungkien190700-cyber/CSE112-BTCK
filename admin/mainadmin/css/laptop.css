@@ -4,7 +4,7 @@ body { color: #29364b; background: #f7f8fa; font-family: Inter, "Segoe UI", Aria
 .admin-shell { display: grid; grid-template-columns: clamp(190px, 17vw, 240px) minmax(0, 1fr); width: 100%; height: 100vh; height: 100dvh; overflow: hidden; border: 1px solid #e7ebf1; }
 .sidebar { display: flex; flex-direction: column; min-width: 0; padding: 16px 12px 12px; background: #fff; border-right: 1px solid #e4e9f0; }
 .brand { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 5px 12px; color: #2443a5; border-bottom: 1px solid #e8edf3; text-decoration: none; }
-.brand__icon { width: 27px; height: 27px; flex: 0 0 auto; }
+.brand__icon { display: block; width: 100%; max-width: 166px; max-height: 44px; flex: 0 1 auto; object-fit: contain; object-position: left center; }
 .brand__text { display: grid; gap: 1px; min-width: 0; }
 .brand__text strong { font-size: 15px; line-height: 1; }
 .brand__text small { color: #8a98ad; font-size: 8px; white-space: nowrap; }

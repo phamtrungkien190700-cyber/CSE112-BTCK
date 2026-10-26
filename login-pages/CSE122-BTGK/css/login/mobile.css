@@ -1,8 +1,6 @@
 .page { width: calc(100% - 28px); padding: 18px 0 20px; }
 .auth-card { padding: 28px 20px 24px; border-radius: 18px; }
-.brand-icon { width: 34px; height: 34px; }
-.brand-name { font-size: 29px; }
-.brand-subtitle { font-size: 14px; }
+.brand-image { width: min(220px, 100%); max-height: 54px; }
 .divider { margin: 12px 0 22px; }
 .intro { margin-bottom: 22px; }
 .intro h1 { font-size: 26px; }

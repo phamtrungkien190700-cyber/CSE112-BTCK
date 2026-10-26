@@ -14,17 +14,9 @@
     padding: 0 14px;
   }
 
-  .brand-mark svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .brand strong {
-    font-size: 15px;
-  }
-
-  .brand small {
-    font-size: 8px;
+  .brand-logo-image {
+    width: min(170px, 100%);
+    max-height: 46px;
   }
 
   .side-label {

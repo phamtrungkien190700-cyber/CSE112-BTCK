@@ -13,16 +13,9 @@ body {
   gap: 6px;
 }
 
-.brand__mark {
-  font-size: 22px;
-}
-
-.brand__copy strong {
-  font-size: 17px;
-}
-
-.brand__copy small {
-  font-size: 9px;
+.brand-logo-image {
+  width: min(190px, 100%);
+  max-height: 48px;
 }
 
 .account-actions {

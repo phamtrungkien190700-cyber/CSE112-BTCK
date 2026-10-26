@@ -5,10 +5,21 @@
       "full_name": "ThS. Luật sư Trần Minh",
       "title": "Chuyên gia Luật Đất đai",
       "category_id": "dat_dai",
-      "avatar_initials": "TM",
+      "avatar_initials": "ĐM",
       "description": "Hơn 10 năm kinh nghiệm tư vấn thủ tục nhà đất, tranh chấp tài sản và cấp giấy chứng nhận.",
       "action_label": "Gửi yêu cầu tư vấn",
       "id": "fk8BYQFTRJ8"
+    },
+    {
+      "user_id": "7",
+      "expert_id": "EXP-02",
+      "full_name": "Expert-Hai",
+      "title": "Chuyên gia pháp lý",
+      "category_id": "doanh_nghiep",
+      "avatar_initials": "E",
+      "description": "Hồ sơ chuyên gia chưa có phần giới thiệu.",
+      "action_label": "Gửi yêu cầu tư vấn",
+      "id": "ilyYetw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

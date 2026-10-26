@@ -835,6 +835,7 @@ let articleCopilotDraft = null;
 const EXPERT_CONTENT_API = "http://localhost:3003/expert_content/portal";
 const EXPERT_DIRECTORY_API = "http://localhost:3002/experts_directory";
 const EXPERT_CATEGORY_LABELS = {
+  chua_cap_nhat: "Chưa cập nhật",
   dat_dai: "Đất đai",
   hon_nhan_gia_dinh: "Hôn nhân & gia đình",
   lao_dong: "Lao động",
@@ -980,9 +981,6 @@ function setSideProfile() {
   document.querySelectorAll("[data-side-name]").forEach((node) => { node.textContent = p.name || "Chuyên gia"; });
   document.querySelectorAll("[data-side-role]").forEach((node) => { node.textContent = p.role || "Chuyên gia pháp lý"; });
   document.querySelectorAll("[data-side-initials]").forEach((node) => { node.textContent = p.initials || p.name.split(/\s+/).slice(-2).map((part) => part[0]).join("").toUpperCase(); });
-  document.querySelectorAll("[data-topbar-name]").forEach((node) => {
-    node.textContent = p.name.replace(/^(?:ThS\.\s*)?(?:Luật sư\s*)/i, "");
-  });
 }
 
 function initPortalShell() {
@@ -1532,8 +1530,14 @@ async function initExpertPortal() {
       const response = await fetchExpertDirectory();
       const experts = await response.json();
       if (!Array.isArray(experts)) throw new Error("Danh sách chuyên gia trên máy chủ không đúng định dạng.");
-      portal.expertRecord = experts.find((expert) => expert.expert_id === "EXP-01") || null;
-      if (!portal.expertRecord) throw new Error("Không tìm thấy hồ sơ chuyên gia EXP-01.");
+      const session = window.LegalPathAuthApi?.getCurrentUser();
+      if (session && ["legal_expert", "expert"].includes(session.role)) {
+        const user = await window.LegalPathAuthApi.getUserById(session.id);
+        portal.expertRecord = await window.LegalPathAuthApi.ensureExpertProfile(user);
+      } else {
+        portal.expertRecord = experts.find((expert) => expert.expert_id === "EXP-01") || null;
+      }
+      if (!portal.expertRecord) throw new Error("Không tìm thấy hồ sơ chuyên gia.");
       setSideProfile();
     } catch (error) {
       console.error("[portal] Failed to load expert profile:", error);

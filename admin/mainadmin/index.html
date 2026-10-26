@@ -15,10 +15,7 @@
   <div class="admin-shell">
     <aside class="sidebar" aria-label="Điều hướng quản trị">
       <a class="brand" href="../platform-management/platform-dashboard.html" target="admin-content" data-page-name="Bảng điều khiển nền tảng" aria-label="LegalPath - Bảng điều khiển">
-        <svg class="brand__icon" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 2 29 8v3H3V8l13-6ZM5 13h5v12H5zm8 0h6v12h-6zm9 0h5v12h-5zM3 27h26v3H3z" fill="currentColor"/>
-        </svg>
-        <span class="brand__text"><strong>LegalPath</strong><small>Pháp luật gần bạn hơn</small></span>
+        <img class="brand__icon" src="../../shared/legalpath-logo.png" alt="LegalPath - Pháp luật gần bạn hơn">
       </a>
 
       <nav class="primary-nav" aria-label="Các trang quản trị">
@@ -30,9 +27,6 @@
         </a>
         <a class="nav-link" href="../account-management/account-management.html" target="admin-content" data-page-name="Quản lý tài khoản">
           <span class="nav-icon" aria-hidden="true">♣</span><span>Quản lý tài khoản</span>
-        </a>
-        <a class="nav-link" href="../../AI/ai-assistant.html" target="admin-content" data-page-name="Trợ lý AI">
-          <span class="nav-icon" aria-hidden="true">✧</span><span>Trợ lý AI</span>
         </a>
       </nav>
 
@@ -48,7 +42,7 @@
         <div class="account-menu" data-account-menu>
           <button class="admin-profile account-menu__toggle" type="button" aria-label="Mở menu tài khoản" aria-haspopup="menu" aria-expanded="false" data-account-menu-toggle>
             <span class="avatar" aria-hidden="true">A</span>
-            <span class="admin-profile__name">Quản trị viên</span>
+            <span class="admin-profile__name" data-account-name>Quản trị viên</span>
             <span aria-hidden="true">⌄</span>
           </button>
           <nav class="account-menu__panel" role="menu" aria-label="Menu tài khoản" data-account-menu-panel hidden>
@@ -69,7 +63,10 @@
       </main>
     </div>
   </div>
+  <script src="../../login-pages/CSE122-BTGK/js/auth-api.js" defer></script>
   <script src="js/mainadmin.js" defer></script>
   <script src="../../shared/account-menu.js" defer></script>
+  <script src="../../shared/account-name.js" defer></script>
+  <script src="../../shared/ai-assistant-widget.js" defer></script>
 </body>
 </html>

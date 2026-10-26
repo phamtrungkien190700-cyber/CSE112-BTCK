@@ -11,10 +11,6 @@
     monitor: {
       title: 'Theo dõi độ mới',
       path: '../File/new-content-tracking/new-content-tracking.html'
-    },
-    assistant: {
-      title: 'Trợ lý AI',
-      path: '../../AI/ai-assistant.html'
     }
   };
 

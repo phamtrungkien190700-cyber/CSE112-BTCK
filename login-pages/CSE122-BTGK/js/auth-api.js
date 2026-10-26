@@ -1,5 +1,6 @@
 (() => {
   const API_USERS = "http://localhost:3000/list-user";
+  const API_EXPERTS = "http://localhost:3002/experts_directory";
   const CURRENT_USER_KEY = "legalpath.auth.user.v1";
 
   function normalizeIdentity(identity) {
@@ -68,6 +69,83 @@
     return user;
   }
 
+  async function ensureExpertProfile(user) {
+    if (!user || user.id === undefined || !["legal_expert", "expert"].includes(user.role)) {
+      throw new Error("Không thể tạo hồ sơ cho tài khoản không phải chuyên gia pháp lý.");
+    }
+
+    const query = new URLSearchParams({ user_id: String(user.id) });
+    const existingResponse = await fetch(`${API_EXPERTS}?${query}`, {
+      headers: { Accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!existingResponse.ok) {
+      throw createHttpError(`Không thể kiểm tra hồ sơ chuyên gia (HTTP ${existingResponse.status}).`, existingResponse.status);
+    }
+    const existingProfiles = await existingResponse.json();
+    if (!Array.isArray(existingProfiles)) {
+      throw new Error("Dữ liệu hồ sơ chuyên gia từ API không hợp lệ.");
+    }
+
+    const existingProfile = existingProfiles.find(
+      (profile) => String(profile.user_id) === String(user.id)
+    );
+    if (existingProfile) return existingProfile;
+
+    const directoryResponse = await fetch(API_EXPERTS, {
+      headers: { Accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!directoryResponse.ok) {
+      throw createHttpError(`Không thể tải danh sách chuyên gia (HTTP ${directoryResponse.status}).`, directoryResponse.status);
+    }
+    const directory = await directoryResponse.json();
+    if (!Array.isArray(directory)) {
+      throw new Error("Danh sách chuyên gia từ API không hợp lệ.");
+    }
+
+    const nextNumber = directory.reduce((highest, profile) => {
+      const match = /^EXP-(\d+)$/.exec(String(profile.expert_id || ""));
+      return match ? Math.max(highest, Number(match[1])) : highest;
+    }, 0) + 1;
+    const name = typeof user.name === "string" && user.name.trim()
+      ? user.name.trim()
+      : "Chuyên gia pháp lý";
+    const initials = name
+      .split(/\s+/)
+      .slice(-2)
+      .map((part) => part.charAt(0))
+      .join("")
+      .toLocaleUpperCase("vi");
+    const profile = {
+      user_id: String(user.id),
+      expert_id: `EXP-${String(nextNumber).padStart(2, "0")}`,
+      full_name: name,
+      title: "Chuyên gia pháp lý",
+      category_id: "chua_cap_nhat",
+      avatar_initials: initials,
+      description: "Hồ sơ chuyên gia chưa có phần giới thiệu.",
+      action_label: "Gửi yêu cầu tư vấn"
+    };
+
+    const response = await fetch(API_EXPERTS, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(profile)
+    });
+    if (!response.ok) {
+      throw createHttpError(`Không thể tạo hồ sơ chuyên gia (HTTP ${response.status}).`, response.status);
+    }
+    const createdProfile = await response.json();
+    if (!createdProfile || String(createdProfile.user_id) !== String(user.id)) {
+      throw new Error("API không trả về hồ sơ chuyên gia đã liên kết đúng tài khoản.");
+    }
+    return createdProfile;
+  }
+
   function setCurrentUser(user) {
     if (!user || user.id === undefined || !user.role) {
       throw new Error("Không thể lưu phiên đăng nhập không hợp lệ.");
@@ -95,6 +173,7 @@
     normalizeIdentity,
     getUserById,
     updateUser,
+    ensureExpertProfile,
     setCurrentUser,
     getCurrentUser
   });

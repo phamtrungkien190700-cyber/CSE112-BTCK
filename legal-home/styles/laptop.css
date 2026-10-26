@@ -41,24 +41,12 @@ input {
   text-decoration: none;
 }
 
-.brand__mark {
-  color: #294fa9;
-  font-size: 25px;
-}
-
-.brand__copy {
-  display: grid;
-  gap: 2px;
-}
-
-.brand__copy strong {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.brand__copy small {
-  color: #8793a6;
-  font-size: 10px;
+.brand-logo-image {
+  display: block;
+  width: min(230px, 100%);
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .account-actions {

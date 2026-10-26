@@ -38,9 +38,12 @@ The settings page uses the logged-in user's ID to load
 `PATCH /list-user/{id}`. A successful login stores only the user's ID,
 identity, and role in browser storage; the password is not stored there.
 
-The expert profile page reads the `EXP-01` record from `/experts_directory` and
-updates that record with `PATCH /experts_directory/{id}`. Article and checklist
-pages continue to use `expert-content.json`.
+When a `legal_expert` account is registered, the application creates a matching
+`experts_directory` record with its `user_id`. The expert profile page loads and
+updates that account's record with `PATCH /experts_directory/{id}`. If profile
+creation could not complete during registration, opening the expert profile
+page retries creation for the signed-in account. Article and checklist pages
+continue to use `expert-content.json`.
 
 The editor review queue reads checklists from
 `GET /expert_content/portal`. Draft checklists are shown as awaiting review;

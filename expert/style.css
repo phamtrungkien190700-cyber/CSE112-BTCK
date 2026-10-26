@@ -31,11 +31,7 @@ button { color: inherit; }
 .app-shell { min-height: 100vh; }
 .sidebar { position: fixed; z-index: 20; inset: 0 auto 0 0; display: flex; flex-direction: column; width: clamp(190px, 15vw, 240px); background: var(--paper); border-right: 1px solid var(--line); }
 .brand { height: 60px; display: flex; flex: 0 0 auto; align-items: center; gap: 9px; padding: 0 20px; border-bottom: 1px solid var(--line-soft); color: #203c91; font-size: 17px; font-weight: 700; }
-.brand-mark { display: grid; flex: 0 0 auto; place-items: center; width: 26px; height: 28px; color: #2442a6; }
-.brand-mark svg { display: block; width: 26px; height: 26px; }
-.brand-copy { display: grid; gap: 0; }
-.brand-copy strong { font-size: 17px; line-height: 1.1; }
-.brand-copy small { color: #8a96aa; font-size: 9px; font-weight: 400; line-height: 1.2; }
+.brand-logo-image { display: block; width: min(170px, 100%); max-height: 44px; object-fit: contain; object-position: left center; }
 .side-label { padding: 20px 19px 10px; color: #62728b; font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .side-nav { display: grid; gap: 6px; padding: 0 12px; }
 .nav-link { display: flex; min-height: 44px; align-items: center; gap: 11px; padding: 0 12px; border-radius: 7px; color: #64748b; font-size: 12px; transition: background .15s ease, color .15s ease; }
