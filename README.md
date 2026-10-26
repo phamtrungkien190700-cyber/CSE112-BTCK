@@ -1,66 +1,116 @@
-# LegalPath
+# LegalPath — Điều hướng thông tin pháp lý phổ thông
 
-LegalPath is a Vietnamese legal-information project with public search, user, legal-expert, and administrator areas.
+Ứng dụng web tiếng Việt với các không gian công khai, người dùng, chuyên gia, biên tập viên và quản trị viên. Đây là dự án học tập; thông tin pháp lý chỉ mang tính tham khảo và cần đối chiếu cơ quan có thẩm quyền.
 
-## Run locally
+## Tài liệu dự án
 
-Requires Node.js 18 or newer. No third-party packages are needed.
+- [Đề xuất và phân tích sản phẩm](docs/project-proposal.md)
+- [Vai trò và chức năng](docs/roles-and-features.md)
+- [User Flow](docs/user-flow.md)
+- [Danh sách màn hình](docs/screen-list.md)
+- [Bảng kiểm kê 12 cột](docs/screen-inventory.md)
+- [Phân công thành viên và minh chứng](docs/team-assignment.md)
+- [Báo cáo sử dụng AI](docs/ai-usage-report.md)
+- [Đặc tả mockup Figma/Canva](design/figma-mockup-spec.md)
+- [Liên kết Figma hiện có và trạng thái xác minh](design/figma-link.txt)
+
+## Chạy ứng dụng local
+
+### Yêu cầu
+
+- Node.js và `npx` (khuyến nghị Node.js 18 trở lên).
+- VS Code với extension Live Server, hoặc một static web server tương đương.
+- Kết nối mạng trong lần đầu chạy `npx` để tải JSON Server nếu máy chưa có package trong cache.
+
+### 1. Mở thư mục dự án
+
+Mở thư mục `CSE112-BTCK` trong VS Code. Các lệnh dưới đây đều chạy từ thư mục này.
+
+### 2. Chuẩn bị dữ liệu tài khoản local
+
+Chạy một lần trong PowerShell:
 
 ```powershell
-$env:BOOTSTRAP_ADMIN_IDENTITY = "admin@example.com"
-$env:BOOTSTRAP_ADMIN_PASSWORD = "Set-A-Unique-Password-Here"
-node server.js
+if (-not (Test-Path "api\users.json")) {
+  Copy-Item "api\users.example.json" "api\users.json"
+}
 ```
 
-Set both bootstrap variables only when creating the first administrator. Use a unique password of at least 12 characters; do not store real credentials in source control. The server creates the administrator only when that identity is not already present.
+`api/users.json` chứa tài khoản local và được `.gitignore` loại khỏi Git. Không commit dữ liệu tài khoản, mật khẩu hay thông tin cá nhân. Tệp mẫu ban đầu không có user; mở trang đăng ký để tạo tài khoản thử nghiệm sau khi API chạy.
 
-Open `http://localhost:3001/` to use the Node server with shared JSON data and server-managed sessions.
+### 3. Khởi động JSON Server
 
-To use VS Code Live Server and save changes to JSON files, run `node server.js` in a separate terminal as well. Live Server serves the pages; the Node server handles API requests and writes data to disk. If the Node server is not running, the site displays an API connection error instead of saving accounts only in browser storage.
+Mở **4 terminal riêng**, mỗi terminal giữ một tiến trình chạy. Chạy mỗi lệnh từ thư mục `CSE112-BTCK`:
 
-## Project structure
-
-```text
-index.html
-css/
-  global.css
-  responsive.css
-  pages/                 # Page-specific CSS and responsive styles
-js/
-  api.js                 # Shared API client
-  main.js                # Shared session and UI behavior
-  pages/                 # Role-specific behavior
-pages/
-  auth/
-  public/
-  user/
-  expert/
-  editor/
-  admin/
-data/
-  users.json             # Registered accounts (passwords are hashed)
-  legal.json             # Legal categories and expert directory
-  legal-supplement.json  # Clearly labeled illustrative procedure records
-  expert-content.json    # Articles, checklists, and expert profiles
-  notifications.json     # Notification templates and user notifications
-  settings.json          # System settings
-  user-workspaces.json   # Per-user saved suggestions and redacted reviews
-  editor-content.json    # Review queue, source directory, and freshness monitor data
-  db.json                # Legacy seed data, imported on first run
-server.js                # Static site and same-origin API
-docs/
+```powershell
+npx --yes json-server@0.17.4 api/users.json --host 127.0.0.1 --port 3000
 ```
 
-## Data and roles
+```powershell
+npx --yes json-server@0.17.4 api/legal-procedures.json --host 127.0.0.1 --port 3001
+```
 
-The Node server stores each data group in its own JSON file under `data/`. On first start, it imports the matching data from the legacy `data/db.json` if a split file does not exist. After migration, the split files are the source of truth; `db.json` is retained unchanged as legacy seed data. Browser pages access these files only through `js/api.js` and the Node server. Checklist progress and personal display preferences remain in browser storage.
+```powershell
+npx --yes json-server@0.17.4 api/experts.json --host 127.0.0.1 --port 3002
+```
 
-Public registration supports `user` and `legal_expert`; administrators assign the `editor` role from account management. Administrator accounts must be bootstrapped using the environment variables above. Passwords are stored as salted scrypt hashes. Login sessions are HttpOnly cookies held in server memory and expire after eight hours; restarting the local server signs users out.
+```powershell
+npx --yes json-server@0.17.4 api/expert-content.json --host 127.0.0.1 --port 3003
+```
 
-The imported user, expert, editor, and admin pages retain their page-specific styles and scripts to preserve their existing layouts. Shared tokens, controls, API access, and role checks live in the root `css/` and `js/` directories.
+Các endpoint chính:
 
-## Local assistance and sample data
+| Dữ liệu | Endpoint |
+|---|---|
+| Tài khoản | `http://localhost:3000/list-user` |
+| Lĩnh vực và thủ tục | `http://localhost:3001/list-luat` |
+| Danh bạ chuyên gia | `http://localhost:3002/experts_directory` |
+| Bài viết/checklist | `http://localhost:3003/expert_content/portal` |
+| Thông báo | `http://localhost:3003/notifications` |
 
-The public search and signed-in user search support combined keyword, category, and fee filters, plus alphabetical sorting. The user workspace includes an explainable, local rule-based procedure recommender and preliminary checklist-risk review. The expert article editor can draft a generic outline from a topic and an existing checklist. These helpers do not call an external LLM or send case text outside the app; they are not legal advice and must not invent or verify legal rules. A user must review and explicitly save a suggestion or draft.
+Xác nhận mỗi API trả JSON bằng cách mở endpoint tương ứng trong trình duyệt hoặc chạy:
 
-Accepted procedure suggestions and risk-review summaries are stored per signed-in user in `data/user-workspaces.json`. Risk-review history stores only the selected procedure, a rule-based level, and reason codes—not the text entered for analysis. Additional procedure records in `data/legal-supplement.json` are marked as illustrative; verify all current requirements with an official source before relying on them.
+```powershell
+curl.exe --fail --show-error http://localhost:3001/list-luat
+```
+
+Chi tiết schema và các thao tác đọc/lưu được ghi trong [api/README.md](api/README.md).
+
+### 4. Mở giao diện
+
+Trong VS Code Explorer, mở `index-phapli/phapli.html`, chọn **Open with Live Server**. Địa chỉ thường có dạng `http://127.0.0.1:5500/index-phapli/phapli.html`. Dùng trang này để vào khu vực công khai; các trang role khác có trong [danh sách màn hình](docs/screen-list.md).
+
+Nếu dữ liệu không tải được, kiểm tra cả bốn terminal JSON Server, port đang dùng, và Console/Network trong DevTools. Khi dùng một HTTP static server thay Live Server, không mở trang trực tiếp bằng `file://`.
+
+> **Xung đột cổng editor:** `editor/File/server.js` cũng bind `127.0.0.1:3000`, trong khi JSON Server tài khoản dùng cổng 3000. Không thể chạy cả hai tiến trình cùng lúc trên cùng địa chỉ/cổng. Bản editor server dùng API riêng `/api/*`, không thay thế endpoint `/list-user`; nhóm cần thống nhất một backend hoặc đổi cấu hình/API trước khi demo kết hợp editor và đăng nhập.
+
+## Triển khai (Deployment)
+
+### Giới hạn quan trọng trước khi public
+
+Các trang hiện gọi API bằng URL `http://localhost:3000` đến `http://localhost:3003`. Khi người xem mở website đã deploy, `localhost` là **máy của chính người xem**, không phải máy phát triển hay hosting. Vì vậy, chỉ upload HTML/CSS/JS lên GitHub Pages, Netlify hoặc Vercel **không làm API hoạt động**; API JSON Server local cũng không phải backend production.
+
+**Chưa ghi nhận URL deployment hoặc production API đã cấu hình cho repository này.** Không trình bày deployment là hoạt động hoàn chỉnh cho tới khi kiểm tra trực tiếp từ URL công khai.
+
+### Chuẩn bị backend cho website công khai
+
+1. Chọn và triển khai một backend/API có thể truy cập công khai; tạo dữ liệu demo không chứa thông tin cá nhân thật.
+2. Cấu hình CORS chỉ cho phép origin của website.
+3. Cập nhật các URL API đang khai báo trong JavaScript để dùng endpoint production (không dùng `localhost`); kiểm tra tất cả trang đăng nhập, tài khoản, thủ tục, chuyên gia, nội dung và thông báo.
+4. Không đưa API key, secret, thông tin tài khoản hay dữ liệu nhạy cảm vào mã frontend hoặc repository công khai.
+5. Kiểm tra đọc/tạo/cập nhật/duyệt, quyền truy cập, lưu sau khi tải lại, lỗi mạng và trạng thái rỗng từ origin production.
+
+JSON Server local hiện là dữ liệu thử nghiệm, không có bảo vệ truy cập phù hợp để public làm backend của ứng dụng.
+
+### Deploy frontend tĩnh
+
+Sau khi backend production và URL API đã được cấu hình:
+
+- **GitHub Pages:** đẩy mã lên remote, vào **Settings → Pages**, chọn branch/folder chứa site, lưu và chờ URL được cấp.
+- **Netlify/Vercel:** import repository, chọn thư mục `CSE112-BTCK` làm publish/root directory và triển khai như static site; không cần build command nếu chỉ phục vụ các file HTML/CSS/JS hiện có.
+
+Sau khi deploy, mở `https://<domain-hoặc-project-url>/index-phapli/phapli.html` (trang chính hiện nằm trong thư mục `index-phapli`, không nằm ở root). Dùng cửa sổ riêng tư hoặc thiết bị khác để xác nhận trang và API tải thành công, thử một thao tác ghi dữ liệu, tải lại để kiểm tra lưu bền vững và rà Console/Network không có lỗi CORS hoặc `localhost`. Ghi URL đã xác minh vào README sau khi hoàn tất.
+
+## Trạng thái hồ sơ minh chứng
+
+Tài liệu được bổ sung dựa trên repository và lịch sử prompt có trong phiên làm việc này. Người phụ trách, ID Trello/Jira/Notion, feature branch, PR/review, deployment và OBS cần thành viên xác nhận; các placeholder trong inventory không phải bằng chứng đã hoàn thành. Đặc tả mockup chưa thay thế mockup Figma/Canva thực tế.

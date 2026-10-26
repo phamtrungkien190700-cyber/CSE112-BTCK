@@ -1,25 +1,15 @@
 # Danh sách màn hình
 
-| Màn hình | Đường dẫn | Quyền |
-|---|---|---|
-| Trang chào và điều hướng | `/` | Công khai |
-| Tra cứu pháp lý / Tổng quan chung | `/` | Công khai |
-| Đăng nhập / đăng ký | `/pages/auth/login.html` | Công khai |
-| Khôi phục mật khẩu | `/pages/auth/forgot-password.html` | Công khai; gửi email/SMS chưa tích hợp |
-| Không gian người dùng | `/pages/user/mainnguoidung/mainnguoidung.html` | `user` |
-| Tra cứu trong không gian người dùng | `/pages/user/tracuphapli/tracuu.html` | `user` |
-| Checklist thủ tục | `/pages/user/check list thu tuc/index.html` | `user` |
-| Trợ lý thông minh và lịch sử gợi ý | `/pages/user/ai-assistant.html` | `user` |
-| Danh bạ chuyên gia | `/pages/user/chuyengiaphapli/chuyengiaphapli.html` | `user` |
-| Thông báo | `/pages/user/notifications/notifications.html` | `user` |
-| Cài đặt | `/pages/user/settings/settings.html` | `user` |
-| Quản lý bài viết chuyên gia | `/pages/expert/expert-article-management.html` | `legal_expert` |
-| Quản lý checklist chuyên gia | `/pages/expert/expert-checklist-management.html` | `legal_expert` |
-| Hồ sơ chuyên gia | `/pages/expert/expert-profile.html` | `legal_expert` |
-| Không gian biên tập | `/pages/editor/index.html` | `editor` |
-| Hàng đợi duyệt nội dung | `/pages/editor/editor-review-queue.html` | `editor` |
-| Quản lý nguồn | `/pages/editor/editor-source-management.html` | `editor` |
-| Theo dõi độ mới | `/pages/editor/editor-freshness-monitor.html` | `editor` |
-| Bảng điều khiển quản trị | `/pages/admin/mainadmin/index.html` | `admin` |
-| Quản lý lĩnh vực pháp luật | `/pages/admin/quanliluat/quanliluat.html` | `admin` |
-| Quản lý tài khoản | `/pages/admin/quanlitaikhoan/quanlitk.html` | `admin` |
+Danh mục được quét từ các tệp HTML hiện có trong repository ngày 2026-10-26. Có 24 tệp HTML; trang chuyển hướng `editor/index.html` được giữ trong danh sách để tránh bỏ sót route. Đây là kiểm kê tệp, không phải xác nhận mọi màn hình/route đã hoàn tất.
+
+| Nhóm | Màn hình |
+|---|---|
+| Công khai và truy cập | [Trang LegalPath](../index-phapli/phapli.html); [Đăng nhập](../trang-dang-nhap/CSE122-BTGK/loginhtml/login.html); [Đăng ký](../trang-dang-nhap/CSE122-BTGK/loginhtml/register.html); [Quên mật khẩu](../trang-dang-nhap/CSE122-BTGK/loginhtml/forgot-password.html) |
+| Người dùng | [Không gian người dùng](../nguoidung/mainnguoidung/mainnguoidung.html); [Tra cứu pháp lý](../nguoidung/tracuphapli/tracuu.html); [Checklist thủ tục](../nguoidung/check%20list%20thu%20tuc/index.html); [Danh bạ chuyên gia](../nguoidung/chuyengiaphapli/chuyengiaphapli.html) |
+| Chuyên gia | [Quản lý bài viết](../expert/expert-article-management.html); [Quản lý checklist](../expert/expert-checklist-management.html); [Hồ sơ chuyên gia](../expert/expert-profile.html) |
+| Biên tập viên | [Trang chuyển hướng editor](../editor/index.html); [Dashboard biên tập](../editor/mainEditor/index.html); [Hàng đợi duyệt](../editor/File/hangdoiduyet/hangdoiduyet.html); [Quản lý nguồn](../editor/File/quanlynguon/quanlynguon.html); [Theo dõi độ mới](../editor/File/theodoichedomoi/theodoichedomoi.html) |
+| Quản trị viên | [Dashboard nền tảng](../admin/mainadmin/index.html); [Quản lý tài khoản](../admin/quanlitaikhoan/quanlitk.html); [Quản lý lĩnh vực/thủ tục](../admin/quanliluat/quanliluat.html); [Thiết lập nền tảng](../admin/dieukhuyennentang/dknentang.html) |
+| Dùng chung | [Thông báo](../notification/notifications.html); [Cài đặt](../setting/settings.html) |
+| Trạng thái lỗi | [403](../403/403.html); [404](../404/404.html) |
+
+Ma trận theo 12 cột của barem (vai trò, goal, task, màn hình, tệp, CRUD, state, AI, người phụ trách, task ID, branch, OBS): [docs/screen-inventory.md](./screen-inventory.md).
