@@ -73,6 +73,20 @@ button { -webkit-tap-highlight-color: transparent; }
 .role-preview { display: inline-flex; min-height: 24px; align-items: center; margin-top: 12px; padding: 0 10px; border: 1px solid #d7e4f8; border-radius: 999px; background: #edf4ff; color: #174eb1; font-size: 10px; font-weight: 600; }
 .role-switch-status { margin: 10px 0 0; color: var(--muted); font-size: 10px; line-height: 1.4; }
 
+.error-demo-panel { display: grid; gap: 10px; }
+.error-demo-panel .panel-heading { margin-bottom: 0; }
+.error-demo-actions, .error-page-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.error-page-actions { padding-top: 9px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; }
+.state-message { display: grid; gap: 6px; padding: 12px; border: 1px solid; border-radius: 6px; font-size: 10px; line-height: 1.45; }
+.state-message[hidden] { display: none; }
+.state-message--error { border-color: #e6aaa5; background: #fff3f2; color: #84221d; }
+.state-message--empty { border-color: #dce5ef; background: #f7f9fc; color: #52657f; }
+.state-message--success { border-color: #b8ddc4; background: #f1fbf4; color: #24643a; }
+.state-message__badge { width: fit-content; padding: 2px 6px; border-radius: 999px; background: #f9d9d6; color: #84221d; font-size: 8px; font-weight: 700; letter-spacing: .06em; }
+.state-message--empty .state-message__badge { background: #e8edf4; color: #52657f; }
+.state-message__next-step { font-weight: 600; }
+.state-message .button { justify-self: start; margin-top: 2px; }
+
 .preferences { display: grid; gap: 10px; }
 .preference-row { display: flex; min-height: 30px; align-items: center; gap: 12px; cursor: pointer; }
 .preference-copy { display: grid; min-width: 0; gap: 3px; }

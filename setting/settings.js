@@ -107,6 +107,32 @@ function redirectForHttpError(error) {
   return true;
 }
 
+function setDemoState(state) {
+  const errorState = document.querySelector("#errorDemoState");
+  const emptyState = document.querySelector("#emptyDemoState");
+  const recoveryState = document.querySelector("#errorDemoRecovery");
+  const errorTitle = document.querySelector("#errorDemoTitleText");
+  const errorDescription = document.querySelector("#errorDemoDescription");
+  const nextStep = document.querySelector("#errorDemoNextStep");
+  errorState.hidden = true;
+  emptyState.hidden = true;
+  recoveryState.hidden = true;
+
+  if (state === "network-error") {
+    errorTitle.textContent = "Không kết nối được máy chủ";
+    errorDescription.textContent = "Nguyên nhân mô phỏng: yêu cầu không nhận được phản hồi do mất mạng hoặc máy chủ không hoạt động.";
+    nextStep.textContent = "Cách xử lý: kiểm tra kết nối/API, sau đó chọn “Thử lại”.";
+    errorState.hidden = false;
+  } else if (state === "data-error") {
+    errorTitle.textContent = "Dữ liệu máy chủ không hợp lệ";
+    errorDescription.textContent = "Nguyên nhân mô phỏng: máy chủ có phản hồi nhưng dữ liệu trả về sai định dạng hoặc thiếu trường bắt buộc.";
+    nextStep.textContent = "Cách xử lý: kiểm tra dữ liệu/API, sau đó tải lại.";
+    errorState.hidden = false;
+  } else if (state === "empty") {
+    emptyState.hidden = false;
+  }
+}
+
 function validateIdentity() {
   const identityInput = settingsForm.elements.identity;
   const identity = identityInput.value.trim();
@@ -176,6 +202,20 @@ document.querySelector("#logoutButton").addEventListener("click", () => {
     console.error("Không thể đăng xuất:", error);
     showToast("Không thể đăng xuất. Vui lòng thử lại.");
   }
+});
+
+document.querySelectorAll("[data-demo-state]").forEach((button) => {
+  button.addEventListener("click", () => setDemoState(button.dataset.demoState));
+});
+document.querySelector("#retryErrorDemoButton").addEventListener("click", () => {
+  setDemoState("clear");
+  document.querySelector("#errorDemoRecovery").hidden = false;
+});
+document.querySelector("#show403Button").addEventListener("click", () => {
+  window.location.assign("../403/403.html");
+});
+document.querySelector("#show404Button").addEventListener("click", () => {
+  window.location.assign("../404/404.html");
 });
 
 settingsForm.addEventListener("change", () => updateSummary(getFormSettings(), settingsForm.elements.name.value));

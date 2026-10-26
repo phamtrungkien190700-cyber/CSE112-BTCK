@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../shared/account-menu.css">
   <script src="../login-pages/CSE122-BTGK/js/auth-api.js" defer></script>
   <script src="../shared/notifications-api.js" defer></script>
-  <script src="settings.js?v=6" defer></script>
+  <script src="settings.js?v=7" defer></script>
   <script src="../shared/account-menu.js" defer></script>
 </head>
 <body data-page="settings" data-page-group="user">
@@ -126,6 +126,41 @@
                     <input class="switch-input" type="checkbox" name="emailDigest">
                     <span class="switch" aria-hidden="true"></span>
                   </label>
+                </div>
+              </section>
+
+              <section class="panel error-demo-panel" aria-labelledby="errorDemoTitle">
+                <div class="panel-heading">
+                  <h2 id="errorDemoTitle">Mô phỏng trạng thái lỗi</h2>
+                  <p>Thử riêng Error State và Empty State; các nút này chỉ mô phỏng giao diện.</p>
+                </div>
+                <div class="error-demo-actions" aria-label="Chọn trạng thái mô phỏng">
+                  <button class="button button-outline" type="button" data-demo-state="network-error">Mô phỏng lỗi mạng</button>
+                  <button class="button button-outline" type="button" data-demo-state="data-error">Mô phỏng lỗi dữ liệu</button>
+                  <button class="button button-outline" type="button" data-demo-state="empty">Mô phỏng dữ liệu trống</button>
+                  <button class="button button-outline" type="button" data-demo-state="clear">Xóa trạng thái mô phỏng</button>
+                </div>
+                <div class="state-message state-message--error" id="errorDemoState" role="alert" hidden>
+                  <span class="state-message__badge">ERROR STATE</span>
+                  <strong id="errorDemoTitleText"></strong>
+                  <span id="errorDemoDescription"></span>
+                  <span class="state-message__next-step" id="errorDemoNextStep"></span>
+                  <button class="button button-outline" id="retryErrorDemoButton" type="button">Thử lại (mô phỏng)</button>
+                </div>
+                <div class="state-message state-message--empty" id="emptyDemoState" role="status" hidden>
+                  <span class="state-message__badge">EMPTY STATE</span>
+                  <strong>Empty State</strong>
+                  <span>Yêu cầu tải dữ liệu thành công nhưng hiện chưa có mục nào để hiển thị.</span>
+                  <span class="state-message__next-step">Empty State không phải lỗi mạng hoặc lỗi dữ liệu; hãy thử tạo dữ liệu hoặc đổi bộ lọc.</span>
+                </div>
+                <div class="state-message state-message--success" id="errorDemoRecovery" role="status" hidden>
+                  <strong>Đã thử lại (mô phỏng)</strong>
+                  <span>Trạng thái lỗi đã được gỡ. Thao tác này chỉ minh họa giao diện, không gửi yêu cầu tới API.</span>
+                </div>
+                <div class="error-page-actions">
+                  <span>Mở trang lỗi:</span>
+                  <button class="button button-outline" id="show403Button" type="button">403 — Không đủ quyền</button>
+                  <button class="button button-outline" id="show404Button" type="button">404 — Không tìm thấy</button>
                 </div>
               </section>
             </div>
