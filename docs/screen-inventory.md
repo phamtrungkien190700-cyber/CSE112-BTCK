@@ -23,7 +23,7 @@ Tài liệu tổng hợp các trang HTML hiện có trong dự án `CSE112-BTCK-
 | Danh bạ chuyên gia | Khách/người dùng | Tìm và xem thông tin chuyên gia pháp lý từ danh bạ. | [legal-experts.html](../user-portal/legal-experts/legal-experts.html) |
 | Cài đặt | Người dùng đã đăng nhập | Xem/cập nhật thông tin tài khoản và tùy chọn trên trang; có chức năng đăng xuất. | [settings.html](../setting/settings.html) |
 | Thông báo | Người dùng đã đăng nhập | Xem thông báo gắn với tài khoản và vai trò; tương tác với trạng thái thông báo. | [notifications.html](../notification/notifications.html) |
-| Trợ lý thông minh | Khách/người dùng | Nhận gợi ý thủ tục và rà soát rủi ro hồ sơ; xem hoặc lưu gợi ý. Nội dung trợ lý được xử lý cục bộ theo dữ liệu/quy tắc sẵn có, không phải dịch vụ LLM bên ngoài. | [ai-assistant.html](../AI/ai-assistant.html) |
+| Trợ lý thông minh | Khách/người dùng; copilot hỗ trợ góc nhìn chuyên gia, biên tập viên và quản trị viên | Khám phá/gợi ý thủ tục, phân loại dấu hiệu rủi ro và tóm tắt nội dung kèm bước xử lý gợi ý theo vai trò. Kết quả dùng dữ liệu và quy tắc cục bộ; nội dung copilot không được lưu hoặc gửi đến dịch vụ AI bên ngoài. | [ai-assistant.html](../AI/ai-assistant.html) |
 
 ## Chuyên gia pháp lý
 
@@ -48,7 +48,7 @@ Tài liệu tổng hợp các trang HTML hiện có trong dự án `CSE112-BTCK-
 | Màn hình | Đối tượng | Mục đích và chức năng chính | Tệp |
 |---|---|---|---|
 | Không gian quản trị | Quản trị viên (`manager`) | Khung điều hướng tới dashboard, quản lý tài khoản và quản lý lĩnh vực pháp luật; có menu tài khoản. | [index.html](../admin/mainadmin/index.html) |
-| Dashboard nền tảng | Quản trị viên (`manager`) | Xem tổng quan tình hình nền tảng. | [platform-dashboard.html](../admin/platform-management/platform-dashboard.html) |
+| Dashboard nền tảng | Quản trị viên (`manager`) | Xem thống kê tổng quan và hoạt động bài viết/checklist gần đây được tải từ `expert_content/portal` trong `expert-content.json`. | [platform-dashboard.html](../admin/platform-management/platform-dashboard.html) |
 | Quản lý tài khoản | Quản trị viên (`manager`) | Tra cứu và quản lý tài khoản người dùng. | [account-management.html](../admin/account-management/account-management.html) |
 | Quản lý lĩnh vực pháp luật | Quản trị viên (`manager`) | Quản lý dữ liệu lĩnh vực pháp luật trên nền tảng. | [law-management.html](../admin/law-management/law-management.html) |
 

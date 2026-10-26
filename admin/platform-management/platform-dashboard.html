@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/tablet.css" media="(min-width: 601px) and (max-width: 1024px)">
   <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px)">
   <link rel="stylesheet" href="../../shared/role-typography.css">
+  <script src="js/platform-dashboard.js" defer></script>
 </head>
 <body data-page-group="admin">
   <main class="dashboard">
@@ -59,8 +60,9 @@
       <article class="panel activity-panel">
         <div class="panel-heading">
           <h2>Hoạt động hệ thống gần đây</h2>
-          <a href="#activity">Xem tất cả</a>
+          <a href="http://localhost:3003/expert_content/portal" target="_blank" rel="noopener noreferrer">Mở dữ liệu</a>
         </div>
+        <p class="activity-status" id="activity-status" role="status" aria-live="polite">Đang tải hoạt động nội dung...</p>
         <div class="table-scroll">
           <table class="activity-table">
             <thead>
@@ -71,32 +73,7 @@
                 <th scope="col">Người thực hiện</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td data-label="Thời gian">10 phút trước</td>
-                <td data-label="Thực thể"><strong>Checklist</strong></td>
-                <td data-label="Hành động"><span class="action action--green">Tạo mới</span> thủ tục đất đai</td>
-                <td data-label="Người thực hiện">ThS. Luật sư Trần Minh</td>
-              </tr>
-              <tr>
-                <td data-label="Thời gian">45 phút trước</td>
-                <td data-label="Thực thể"><strong>Taxonomy</strong></td>
-                <td data-label="Hành động"><span class="action action--blue">Cập nhật</span> danh mục con</td>
-                <td data-label="Người thực hiện">Quản trị viên (Admin)</td>
-              </tr>
-              <tr>
-                <td data-label="Thời gian">2 giờ trước</td>
-                <td data-label="Thực thể"><strong>Articles</strong></td>
-                <td data-label="Hành động"><span class="action action--green">Xuất bản</span> bài viết mới</td>
-                <td data-label="Người thực hiện">Lê Thị Hồng (Editor)</td>
-              </tr>
-              <tr>
-                <td data-label="Thời gian">Hôm qua</td>
-                <td data-label="Thực thể"><strong>Users</strong></td>
-                <td data-label="Hành động"><span class="action action--red">Đã khóa</span> tài khoản vi phạm</td>
-                <td data-label="Người thực hiện">Quản trị viên (Admin)</td>
-              </tr>
-            </tbody>
+            <tbody id="activity-rows"></tbody>
           </table>
         </div>
       </article>

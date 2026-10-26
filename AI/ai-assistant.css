@@ -114,7 +114,18 @@ body {
 }
 
 .ai-form label,
+.ai-form__label,
 .ai-saved h3 {
+  font-weight: 700;
+}
+
+.ai-role-lock {
+  margin: 0;
+  padding: 11px 12px;
+  border: 1px solid #d5e5fa;
+  border-radius: 8px;
+  background: #f0f6ff;
+  color: var(--primary-color-dark);
   font-weight: 700;
 }
 
@@ -226,6 +237,28 @@ body {
   padding: 9px 11px;
   border-left: 3px solid #e3a328;
   background: #fff8e7;
+}
+
+.ai-copilot-note {
+  margin: 12px 0 0;
+  color: var(--muted-color);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.ai-copilot__summary,
+.ai-copilot__actions {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 14px;
+  padding-left: 22px;
+  line-height: 1.55;
+}
+
+.ai-copilot__summary li::marker,
+.ai-copilot__actions li::marker {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 .ai-result__choice {

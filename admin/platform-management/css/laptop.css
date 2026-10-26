@@ -24,6 +24,10 @@ a:hover { text-decoration: underline; }
 .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 39px; padding: 0 13px; }
 .panel-heading h2 { margin: 0; color: #354258; font-size: 11px; font-weight: 600; }
 .panel-heading a { font-size: 9px; }
+.activity-status { margin: 0 13px 8px; color: #718098; font-size: 9px; line-height: 1.4; }
+.activity-status.is-error { color: #b42318; }
+.activity-retry { padding: 6px 9px; border: 1px solid #dce5ef; border-radius: 5px; background: #fff; color: #1760cf; cursor: pointer; font: inherit; }
+.activity-retry:hover { border-color: #a8bfdf; background: #f7faff; }
 .panel-bell { color: #66758d; font-size: 12px; }
 .table-scroll { overflow-x: auto; padding: 0 13px 10px; }
 .activity-table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }

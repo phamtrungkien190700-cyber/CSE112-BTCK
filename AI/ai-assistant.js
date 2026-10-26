@@ -20,7 +20,14 @@
     savedProcedures: byId("saved-procedures"),
     savedProceduresEmpty: byId("saved-procedures-empty"),
     riskReviews: byId("risk-reviews"),
-    riskReviewsEmpty: byId("risk-reviews-empty")
+    riskReviewsEmpty: byId("risk-reviews-empty"),
+    copilotForm: byId("copilot-form"),
+    copilotRole: byId("copilot-role"),
+    copilotInput: byId("copilot-input"),
+    copilotCharacterCount: byId("copilot-character-count"),
+    copilotProgress: byId("copilot-progress"),
+    copilotResult: byId("copilot-result"),
+    copilotActions: byId("copilot-actions")
   };
 
   const ignoredTerms = new Set([
@@ -40,12 +47,26 @@
     low: "Chưa thấy dấu hiệu cảnh báo theo bộ quy tắc",
     "needs-review": "Chưa đủ thông tin để phân loại"
   };
+  const copilotRoleLabels = {
+    user: "Người dùng",
+    legal_expert: "Chuyên gia pháp lý / cố vấn",
+    editor: "Biên tập viên",
+    manager: "Quản trị viên / vận hành"
+  };
+  const copilotRoleByAccountRole = {
+    user: "user",
+    expert: "legal_expert",
+    legal_expert: "legal_expert",
+    editor: "editor",
+    manager: "manager"
+  };
   const state = {
     categories: [],
     procedures: [],
     workspace: { savedProcedures: [], riskReviews: [] },
     recommendation: null,
     risk: null,
+    copilotRole: "user",
     recommendationBusy: false,
     riskBusy: false
   };
@@ -322,6 +343,130 @@
     return { level, confidence, reasonCodes, uncertain, explanations, procedureId: procedureId || null };
   }
 
+  function summarizeContent(content) {
+    const sentences = (content.match(/[^.!?…]+[.!?…]*/g) || [content])
+      .map((sentence) => sentence.trim())
+      .filter(Boolean);
+    if (sentences.length <= 3) return sentences;
+
+    const frequencies = new Map();
+    sentences.forEach((sentence) => {
+      new Set(tokens(sentence)).forEach((token) => {
+        frequencies.set(token, (frequencies.get(token) || 0) + 1);
+      });
+    });
+    const maxFrequency = Math.max(...frequencies.values(), 1);
+    return sentences
+      .map((sentence, index) => {
+        const sentenceTokens = [...new Set(tokens(sentence))];
+        const relevance = sentenceTokens.reduce(
+          (score, token) => score + (frequencies.get(token) || 0) / maxFrequency,
+          0
+        );
+        return { sentence, index, score: relevance / Math.max(sentenceTokens.length, 1) + 1 / (index + 1) };
+      })
+      .sort((left, right) => right.score - left.score)
+      .slice(0, 3)
+      .sort((left, right) => left.index - right.index)
+      .map(({ sentence }) => sentence);
+  }
+
+  function getCopilotActions(role, analysis) {
+    const actions = {
+      user: [
+        "Xác định thủ tục hoặc thông tin cần tra cứu từ nội dung đã nhập.",
+        "Kiểm tra giấy tờ và thời hạn với hướng dẫn của cơ quan có thẩm quyền."
+      ],
+      legal_expert: [
+        "Đối chiếu căn cứ và thời hạn với văn bản, nguồn chính thức còn hiệu lực.",
+        "Xác định dữ kiện hoặc giấy tờ còn thiếu trước khi đưa ra nhận định."
+      ],
+      editor: [
+        "Kiểm tra nguồn trích dẫn, ngày cập nhật và tính nhất quán của nội dung.",
+        "Đánh dấu phần cần chuyên gia xác minh trước khi xuất bản."
+      ],
+      manager: [
+        "Gán người phụ trách và mức ưu tiên dựa trên thời hạn, mức độ ảnh hưởng.",
+        "Theo dõi phần còn thiếu và chuyển chuyên gia phụ trách khi cần."
+      ]
+    }[role];
+    if (analysis.reasonCodes.includes("urgent_deadline")) {
+      actions.unshift("Ưu tiên xác minh mốc thời hạn được nhắc đến.");
+    }
+    if (analysis.reasonCodes.includes("missing_documents")) {
+      actions.push("Lập danh sách giấy tờ cần bổ sung và người chịu trách nhiệm.");
+    }
+    return [...new Set(actions)].slice(0, 4);
+  }
+
+  function initializeCopilotRole() {
+    try {
+      const currentUser = window.LegalPathAuthApi?.getCurrentUser();
+      state.copilotRole = copilotRoleByAccountRole[currentUser?.role] || "user";
+      elements.copilotRole.textContent = copilotRoleLabels[state.copilotRole];
+    } catch (error) {
+      console.error("Không thể xác định vai trò cho copilot:", error);
+      state.copilotRole = "user";
+      elements.copilotRole.textContent = copilotRoleLabels.user;
+      showMessage(
+        elements.workspaceStatus,
+        "Không thể xác định vai trò đăng nhập; đang dùng trợ lý dành cho Người dùng.",
+        true
+      );
+    }
+  }
+
+  function renderCopilotResult(content, role) {
+    const summary = summarizeContent(content);
+    const analysis = analyzeRisk(content, "");
+    const result = elements.copilotResult;
+    result.replaceChildren(
+      createElement("h3", "", `Tóm tắt · ${copilotRoleLabels[role]}`),
+      createElement(
+        "p",
+        "ai-result__meta",
+        `Phân loại sơ bộ: ${levelLabels[analysis.level]} · ${analysis.explanations.join(" · ")}`
+      ),
+      createElement("h3", "", "Ý chính")
+    );
+    const summaryList = createElement("ul", "ai-copilot__summary");
+    summary.forEach((sentence) => summaryList.append(createElement("li", "", sentence)));
+    result.append(summaryList, createElement("h3", "", "Bước tiếp theo gợi ý"));
+    const actionsList = createElement("ul", "ai-copilot__actions");
+    getCopilotActions(role, analysis).forEach((action) => {
+      actionsList.append(createElement("li", "", action));
+    });
+    result.append(
+      actionsList,
+      createElement(
+        "p",
+        "ai-result__caution",
+        "Phân loại được tạo bằng bộ quy tắc cục bộ; hãy kiểm tra nội dung gốc trước khi sử dụng."
+      )
+    );
+    elements.copilotActions.hidden = false;
+  }
+
+  async function runCopilot(event) {
+    event.preventDefault();
+    const content = elements.copilotInput.value.trim();
+    if (content.length < 40) {
+      elements.copilotInput.setCustomValidity("Hãy nhập ít nhất 40 ký tự để tạo bản tóm tắt có ý nghĩa.");
+      elements.copilotInput.reportValidity();
+      elements.copilotInput.setCustomValidity("");
+      return;
+    }
+    elements.copilotActions.hidden = true;
+    elements.copilotProgress.hidden = false;
+    showMessage(elements.copilotProgress, "Đang tóm tắt và phân loại nội dung tại trình duyệt...");
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 120));
+      renderCopilotResult(content, state.copilotRole);
+    } finally {
+      elements.copilotProgress.hidden = true;
+    }
+  }
+
   function renderRiskResult(result) {
     state.risk = result;
     elements.riskResult.replaceChildren();
@@ -492,6 +637,25 @@
     event.preventDefault();
     runRiskReview();
   });
+  elements.copilotForm.addEventListener("submit", runCopilot);
+  elements.copilotInput.addEventListener("input", () => {
+    elements.copilotCharacterCount.textContent =
+      `${elements.copilotInput.value.length}/3000 ký tự · Xử lý tại trình duyệt, không gửi đến dịch vụ AI bên ngoài.`;
+  });
+  byId("clear-copilot-result").addEventListener("click", () => {
+    elements.copilotResult.replaceChildren();
+    elements.copilotActions.hidden = true;
+    showMessage(elements.workspaceStatus, "Đã xóa kết quả copilot. Nội dung nhập không được lưu.");
+  });
+  byId("copy-copilot-result").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(elements.copilotResult.innerText);
+      showMessage(elements.workspaceStatus, "Đã sao chép kết quả copilot.");
+    } catch (error) {
+      console.error("Không thể sao chép kết quả copilot:", error);
+      showMessage(elements.workspaceStatus, "Không thể sao chép tự động. Hãy chọn và sao chép kết quả thủ công.", true);
+    }
+  });
   document.addEventListener("click", (event) => {
     const recommendationAction = event.target.closest("[data-recommendation-action]");
     if (recommendationAction) {
@@ -534,5 +698,6 @@
     });
   });
 
+  initializeCopilotRole();
   loadData();
 })();

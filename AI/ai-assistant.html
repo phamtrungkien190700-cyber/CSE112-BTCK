@@ -93,6 +93,33 @@
         <small>Lịch sử chỉ lưu mức độ, lý do và thủ tục liên quan; nội dung tình huống không được lưu.</small>
       </section>
     </section>
+
+    <section class="ai-card" aria-labelledby="copilot-title">
+      <div class="ai-card__heading">
+        <span class="ai-step">03</span>
+        <div>
+          <p class="ai-eyebrow">AI COPILOT · TÓM TẮT</p>
+          <h2 id="copilot-title">Hỗ trợ công việc theo vai trò</h2>
+          <p>Tóm tắt nội dung, nhận diện dấu hiệu cần chú ý và gợi ý bước xử lý phù hợp với vai trò hiện đang đăng nhập.</p>
+        </div>
+      </div>
+      <form id="copilot-form" class="ai-form">
+        <span class="ai-form__label">Trợ lý dành cho tài khoản hiện tại</span>
+        <p class="ai-role-lock" id="copilot-role" aria-live="polite">Đang xác định vai trò...</p>
+        <small>Góc nhìn được khóa theo vai trò đăng nhập; không thể chuyển sang trợ lý của vai trò khác.</small>
+        <label for="copilot-input">Nội dung cần tóm tắt</label>
+        <textarea id="copilot-input" name="content" rows="6" maxlength="3000" required minlength="40" placeholder="Dán nội dung cần rà soát. Không nhập thông tin định danh hoặc hồ sơ nhạy cảm."></textarea>
+        <small id="copilot-character-count">0/3000 ký tự · Xử lý tại trình duyệt, không gửi đến dịch vụ AI bên ngoài.</small>
+        <button class="btn" type="submit">Tóm tắt và phân loại</button>
+      </form>
+      <div class="ai-progress" id="copilot-progress" hidden aria-live="polite"></div>
+      <section class="ai-result" id="copilot-result" aria-live="polite" aria-atomic="true"></section>
+      <div class="ai-actions" id="copilot-actions" hidden>
+        <button class="btn btn--primary" id="copy-copilot-result" type="button">Sao chép kết quả</button>
+        <button class="btn btn--quiet" id="clear-copilot-result" type="button">Xóa kết quả</button>
+      </div>
+      <p class="ai-copilot-note">Bản tóm tắt và phân loại dựa trên quy tắc cục bộ, chỉ để hỗ trợ tham khảo. Không thay thế việc kiểm chứng nguồn, căn cứ pháp lý hoặc quyết định nghiệp vụ của người phụ trách.</p>
+    </section>
   </main>
 </body>
 </html>
